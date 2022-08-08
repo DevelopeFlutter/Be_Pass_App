@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace, use_key_in_widget_constructors
 
 import 'package:be_pass/Screens/generl_profile_screen.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -9,7 +9,7 @@ import '../app_Colors.dart';
 
 class Profile extends StatefulWidget {
   static const routeName = "user-profile";
-  Profile({Key? key}) : super(key: key);
+  Profile();
 
   @override
   State<Profile> createState() => _ProfileState();
