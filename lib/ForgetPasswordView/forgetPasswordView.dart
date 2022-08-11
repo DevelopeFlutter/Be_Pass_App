@@ -1,17 +1,14 @@
-// ignore_for_file: file_names
-
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
-import 'package:be_pass/ForgetPasswordView/textformfield.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../app_Colors.dart';
 import 'auth_controller.dart';
+import 'textformfield.dart';
 
 class ForgetPasswordView extends StatefulWidget {
-  static const routeName = "forgot-password-screen";
+  static const routeName = "forgot-password";
   const ForgetPasswordView({Key? key}) : super(key: key);
 
   @override
@@ -20,7 +17,6 @@ class ForgetPasswordView extends StatefulWidget {
 
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   AuthController controller = Get.put(AuthController());
-  String _errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -78,25 +74,16 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           Column(
             children: [
               textformfeild(
-                  isObscureText: false,
-                  boolTitleShowHide: true,
-                  fieldName: "Email",
-                  hint_text: "johndoe@gmail.com",
-                  returnDatacall: (val) {
-                    controller.email.value = val;
-                  },
-                  onchanged: (val) {
-                    validateEmail(val);
-                  }),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 20),
-                  child: Text(
-                    _errorMessage,
-                    style: const TextStyle(color: Colors.red),
-                  ),
-                ),
+                isObscureText: false,
+                boolTitleShowHide: true,
+                fieldName: "Email",
+                hint_text: "johndoe@gmail.com",
+                returnDatacall: (val) {
+                  controller.email.value = val;
+                },
+              ),
+              const SizedBox(
+                height: 20,
               ),
               SizedBox(
                 height: 45,
@@ -144,21 +131,5 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             ],
           )
         ]));
-  }
-
-  void validateEmail(String val) {
-    if (val.isEmpty) {
-      setState(() {
-        _errorMessage = "Enter Email";
-      });
-    } else if (!EmailValidator.validate(val, true)) {
-      setState(() {
-        _errorMessage = "Invalid Email Address";
-      });
-    } else {
-      setState(() {
-        _errorMessage = "";
-      });
-    }
   }
 }
