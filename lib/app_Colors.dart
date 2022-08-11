@@ -1,10 +1,12 @@
+// ignore_for_file: constant_identifier_names,, use_full_hex_values_for_flutter_colors, prefer_interpolation_to_compose_strings, file_names
+
 import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
 
   static const Color transparent = Color(0xFF00000000);
-
+  static const Color backGround = Color(0xffEFF0EF);
   static const Color Primarycolor = Color(0xFF224289);
   static const Color DarkPrimarycolor = Color(0xFF152b79);
   static const Color lightPrimarycolor = Color(0xFF1454f2);
@@ -12,6 +14,7 @@ class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color red = Color(0xFFFF0000);
   static const Color gradientGreen = Color(0xff2DC52A);
+  static const Color starColor = Color(0xffF29843);
 
 // ! Text Colors
   static const Color DarkText = Color(0xFF0e255b);

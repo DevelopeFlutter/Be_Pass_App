@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
+import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
 import 'package:be_pass/Screens/user_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'ForgetPasswordView/forgetPasswordView.dart';
 import 'Screens/generl_profile_screen.dart';
+import 'Screens/landingPageView.dart';
 import 'Screens/profile_screen.dart';
 import 'app_Colors.dart';
 import 'Screens/splash_screen.dart';
@@ -30,6 +33,9 @@ class MyApp extends StatelessWidget {
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
         Profile.routeName: (ctx) => Profile(),
+        ForgetPasswordView.routeName: (ctx) => ForgetPasswordView(),
+        ResetPasswordView.routeName: (ctx) => ResetPasswordView(),
+        LandingPageView.routeName: (ctx) => LandingPageView(),
       },
     );
   }

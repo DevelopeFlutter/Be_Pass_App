@@ -15,7 +15,7 @@ class SplashScreen extends StatelessWidget {
       body: AnimatedSplashScreen(
         splash: Container(
             height: 250, width: 250, child: Image.asset("assets/img.svg")),
-        nextScreen: HomeScreen(),
+        nextScreen: HomeScreen(false),
         duration: 3000,
         splashIconSize: 1000,
         backgroundColor: Color.fromRGBO(237, 237, 237, 1),

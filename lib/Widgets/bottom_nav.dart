@@ -1,7 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_final_fields, prefer_const_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 
+import 'package:be_pass/Screens/chat_screen.dart';
+import 'package:be_pass/Screens/home_screen.dart';
+import 'package:be_pass/Screens/landingPageView.dart';
 import 'package:be_pass/Screens/profile_screen.dart';
-import 'package:be_pass/Screens/user_card.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
 
@@ -18,22 +20,21 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 1;
   static List<Widget> _widgetOptions = <Widget>[
-    UC(),
+    HomeScreen(false),
+    LandingPageView(),
+    ChatScreen(),
     Profile(),
-    Text('Chat Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Profile Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    AppDrawer("abd", true),
+    AppDrawer(true),
   ];
 
   final List appbarText = [
-    Text("usercard"),
-    Text("usercard1"),
-    Text("usercard2"),
-    Text("usercard3"),
-    Text("usercard4"),
+    Text("usercard", textAlign: TextAlign.center),
+    Text("usercard1", textAlign: TextAlign.center),
+    Text("usercard2", textAlign: TextAlign.center),
+    Text("usercard3", textAlign: TextAlign.center),
+    Text("Menu", textAlign: TextAlign.center),
   ];
+  final List stringText = ["usercard", "usercard1", "usercard2", "Menu"];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -44,10 +45,15 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: appbarText.elementAt(_selectedIndex),
-        backgroundColor: AppColors.gradientGreen,
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: appbarText.elementAt(_selectedIndex),
+      //   backgroundColor: appbarText.elementAt(_selectedIndex) == "Menu"
+      //       ? Colors.grey
+      //       : Colors.white,
+      //   elevation: 0,
+      // ),
+      backgroundColor: Color.fromARGB(255, 232, 232, 232),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -60,7 +66,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.web_asset),
-              label: 'Landing',
+              label: 'B-Card',
               backgroundColor: Color.fromARGB(255, 13, 227, 10),
             ),
             BottomNavigationBarItem(

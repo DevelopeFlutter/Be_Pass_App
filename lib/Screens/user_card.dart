@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../Widgets/app_drawer.dart';
 import '../Widgets/bottom_nav.dart';
-import '../app_Colors.dart';
 
 class Usercard extends StatefulWidget {
   const Usercard({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class _UsercardState extends State<Usercard> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(),
-      drawer: Drawer(child: AppDrawer("Abdullah Ayaz", false)),
+      drawer: Drawer(child: AppDrawer(true)),
       bottomNavigationBar: BottomBar(),
       body: Column(children: [
         UserCardWidget("assets/man.jpg", "Abdullah Ayaz",
