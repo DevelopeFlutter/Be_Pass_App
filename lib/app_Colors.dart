@@ -15,11 +15,13 @@ class AppColors {
   static const Color red = Color(0xFFFF0000);
   static const Color gradientGreen = Color(0xff2DC52A);
   static const Color starColor = Color(0xffF29843);
+  static const Color backgroundColor = Color(0xffE5E5E5);
+  static const Color boldTextColor = Color(0xff5E5873);
 
 // ! Text Colors
   static const Color DarkText = Color(0xFF0e255b);
   static const Color greenishText = Color(0xFF21a886);
-  static const Color greyText = Color(0xFF939dac);
+  static const Color greyText = Color(0xFF757575);
 }
 
 class HexColor extends Color {

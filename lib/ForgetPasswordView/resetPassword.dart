@@ -114,7 +114,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               },
               child: Text('Send Reset Link',
                   style: GoogleFonts.poppins(
-                      fontSize: 20, fontWeight: FontWeight.w400)),
+                      fontSize: 20, fontWeight: FontWeight.w400,
+                  color: AppColors.white)),
             ),
           ),
           const SizedBox(

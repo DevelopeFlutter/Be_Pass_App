@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
+import 'package:be_pass/Screens/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,11 +20,12 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   AuthController controller = Get.put(AuthController());
+  bool value = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 232, 232, 232),
+        backgroundColor:AppColors.backgroundColor,
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Column(children: [
@@ -43,13 +45,22 @@ class _SignUpViewState extends State<SignUpView> {
                     Text(
                       "Adventure starts here",
                       style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black54),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.boldTextColor),
                     ),
-                    const Icon(
-                      Icons.rocket_launch,
-                      color: AppColors.starColor,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(5,0,0,10),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          image: DecorationImage(image: AssetImage("assets/smiling-face-with-heart-eyes.png"),
+                          fit: BoxFit.fill),
+
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -61,9 +72,9 @@ class _SignUpViewState extends State<SignUpView> {
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Text("Make your app management easy and fun!",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Colors.white)),
+                        color: AppColors.greyText)),
               ),
             ),
             const SizedBox(
@@ -99,6 +110,57 @@ class _SignUpViewState extends State<SignUpView> {
                     controller.email.value = val;
                   },
                 ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 5),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: Checkbox(
+                            value: this.value,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                this.value = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    RichText(text:TextSpan(
+                      text: "I agree to",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        color: AppColors.greyText
+
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(text: "Terms of Services",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          color: AppColors.gradientGreen,
+                          decoration: TextDecoration.underline,
+                          letterSpacing: 1
+                        )),
+                        TextSpan(text: "&",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          color: AppColors.greyText
+                        )),
+                        TextSpan(text: "Privacy Policy",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          color: AppColors.gradientGreen,
+                          decoration: TextDecoration.underline,
+                        ))
+                      ]
+                    ))
+                  ],
+
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -116,11 +178,12 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ResetPasswordView()));
+                          builder: (context) => const LoginView()));
                     },
-                    child: Text('Sign up',
+                    child: Text('Login',
                         style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w400)),
+                            fontSize: 20, fontWeight: FontWeight.w400,
+                        color: AppColors.white)),
                   ),
                 ),
                 const SizedBox(
@@ -174,7 +237,7 @@ class _SignUpViewState extends State<SignUpView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset("assets/logo.png", height: 60, width: 60),
+                          Image.asset("assets/google-icon.png", height: 60, width: 60),
                           Text(
                             "Sign in with Google",
                             softWrap: true,

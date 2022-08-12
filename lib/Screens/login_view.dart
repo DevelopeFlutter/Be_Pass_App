@@ -35,7 +35,7 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
+              padding: const EdgeInsets.fromLTRB(20, 40, 0, 10),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Row(
@@ -151,7 +151,7 @@ class _LoginViewState extends State<LoginView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset("assets/logo.png", height: 60, width: 60),
+                          Image.asset("assets/google-icon.png"),
                           Text(
                             "Sign in with Google",
                             style: GoogleFonts.poppins(

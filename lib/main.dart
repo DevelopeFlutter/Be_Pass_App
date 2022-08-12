@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: LoginView(),
+      home: SignUpView(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
         Profile.routeName: (ctx) => Profile(),
