@@ -43,7 +43,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               child: Row(
                 children: [
                   Text(
-                    "Forget Password ?",
+                    "Forget Password ? ",
                     style: GoogleFonts.poppins(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,

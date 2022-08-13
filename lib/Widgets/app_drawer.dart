@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unused_import, non_constant_identifier_names
 
+import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,22 +29,26 @@ class AppDrawer extends StatelessWidget {
               SizedBox(height: 40),
               headingText("Preferences"),
               SizedBox(height: 10),
-              customTileTrail("Language / Hebrew", Icons.language),
-              SizedBox(height: 10),
               customTileTrail(
-                  "Currency & Time Format", Icons.currency_exchange_sharp),
+                  "Language / Hebrew", Icons.language, "null", context),
+              SizedBox(height: 10),
+              customTileTrail("Currency & Time Format",
+                  Icons.currency_exchange_sharp, "null", context),
               SizedBox(height: 10),
               headingText("Account Settings"),
               SizedBox(height: 10),
-              customTileTrail("Change Email", Icons.mail_outline_outlined),
+              customTileTrail(
+                  "Change Email", Icons.mail_outline_outlined, "null", context),
               SizedBox(height: 10),
-              customTileTrail("Change Username", Icons.person_outline_rounded),
+              customTileTrail("Change Username", Icons.person_outline_rounded,
+                  "null", context),
               SizedBox(height: 10),
-              customTileTrail("Change Password", Icons.lock_outline),
+              customTileTrail("Change Password", Icons.lock_outline,
+                  ForgetPasswordView.routeName, context),
               SizedBox(height: 10),
               headingText("Credits"),
               SizedBox(height: 10),
-              customTileTrail("Credit", Icons.attach_money),
+              customTileTrail("Credit", Icons.attach_money, "null", context),
               SizedBox(height: 10),
               headingText("Other"),
               SizedBox(height: 10),
@@ -126,9 +131,14 @@ class AppDrawer extends StatelessWidget {
     );
   }
 
-  GestureDetector customTileTrail(String text, IconData icon) {
+  GestureDetector customTileTrail(
+      String text, IconData icon, String route, BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        if (route != "null") {
+          Navigator.of(context).pushNamed(route);
+        }
+      },
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: ListTile(

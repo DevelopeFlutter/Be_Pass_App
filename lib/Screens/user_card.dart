@@ -22,7 +22,7 @@ class _UsercardState extends State<Usercard> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(),
       drawer: Drawer(child: AppDrawer(true)),
-      bottomNavigationBar: BottomBar(),
+      //bottomNavigationBar: BottomBar(),
       body: Column(children: [
         UserCardWidget("assets/man.jpg", "Abdullah Ayaz",
             "Trainer, Nutritionist, Consultant", "Lahore, Pakistan", 3, 14, 10),

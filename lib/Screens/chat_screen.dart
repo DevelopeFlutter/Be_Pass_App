@@ -13,13 +13,18 @@ class ChatScreen extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20),
-            child: Center(
-              child: Text("Chat",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  )),
+            child: Column(
+              children: [
+                SizedBox(height: 20),
+                Center(
+                  child: Text("Chat",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+              ],
             ),
           ),
           Center(

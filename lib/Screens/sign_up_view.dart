@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../ForgetPasswordView/auth_controller.dart';
-import '../ForgetPasswordView/resetPassword.dart';
 import '../ForgetPasswordView/textformfield.dart';
 import '../app_Colors.dart';
 
@@ -25,7 +24,7 @@ class _SignUpViewState extends State<SignUpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundColor,
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Column(children: [
@@ -50,15 +49,16 @@ class _SignUpViewState extends State<SignUpView> {
                           color: AppColors.boldTextColor),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(5,0,0,10),
+                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
                       child: Container(
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
-                          image: DecorationImage(image: AssetImage("assets/smiling-face-with-heart-eyes.png"),
-                          fit: BoxFit.fill),
-
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/smiling-face-with-heart-eyes.png"),
+                              fit: BoxFit.fill),
                         ),
                       ),
                     )
@@ -113,7 +113,7 @@ class _SignUpViewState extends State<SignUpView> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20,right: 5),
+                      padding: const EdgeInsets.only(left: 20, right: 5),
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: SizedBox(
@@ -130,36 +130,32 @@ class _SignUpViewState extends State<SignUpView> {
                         ),
                       ),
                     ),
-                    RichText(text:TextSpan(
-                      text: "I agree to",
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: AppColors.greyText
-
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(text: "Terms of Services",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: AppColors.gradientGreen,
-                          decoration: TextDecoration.underline,
-                          letterSpacing: 1
-                        )),
-                        TextSpan(text: "&",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: AppColors.greyText
-                        )),
-                        TextSpan(text: "Privacy Policy",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: AppColors.gradientGreen,
-                          decoration: TextDecoration.underline,
-                        ))
-                      ]
-                    ))
+                    RichText(
+                        text: TextSpan(
+                            text: "I agree to",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14, color: AppColors.greyText),
+                            children: <TextSpan>[
+                          TextSpan(
+                              text: "Terms of Services",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  color: AppColors.gradientGreen,
+                                  decoration: TextDecoration.underline,
+                                  letterSpacing: 1)),
+                          TextSpan(
+                              text: "&",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, color: AppColors.greyText)),
+                          TextSpan(
+                              text: "Privacy Policy",
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                color: AppColors.gradientGreen,
+                                decoration: TextDecoration.underline,
+                              ))
+                        ]))
                   ],
-
                 ),
                 const SizedBox(
                   height: 20,
@@ -182,8 +178,9 @@ class _SignUpViewState extends State<SignUpView> {
                     },
                     child: Text('Login',
                         style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w400,
-                        color: AppColors.white)),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.white)),
                   ),
                 ),
                 const SizedBox(
@@ -237,7 +234,8 @@ class _SignUpViewState extends State<SignUpView> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset("assets/google-icon.png", height: 60, width: 60),
+                          Image.asset("assets/google-icon.png",
+                              height: 60, width: 60),
                           Text(
                             "Sign in with Google",
                             softWrap: true,

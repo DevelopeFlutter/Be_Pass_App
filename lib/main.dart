@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
+import 'package:be_pass/Screens/home_screen.dart';
 import 'package:be_pass/Screens/login_view.dart';
+import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/sign_up_view.dart';
 import 'package:be_pass/Screens/user_card.dart';
+import 'package:be_pass/Widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';
@@ -31,15 +34,16 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: SignUpView(),
+      home: BottomBar(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
-        Profile.routeName: (ctx) => Profile(),
+        Profile.routeName: (ctx) => Profile(false),
         ForgetPasswordView.routeName: (ctx) => ForgetPasswordView(),
         ResetPasswordView.routeName: (ctx) => ResetPasswordView(),
-        LandingPageView.routeName: (ctx) => LandingPageView(),
+        LandingPageView.routeName: (ctx) => LandingPageView(true),
         SignUpView.routeName: (ctx) => SignUpView(),
         LoginView.routeName: (ctx) => LoginView(),
+        ServicesScreen.routeName: (ctx) => ServicesScreen(),
       },
     );
   }

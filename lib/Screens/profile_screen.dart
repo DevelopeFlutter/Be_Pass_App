@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace, use_key_in_widget_constructors, camel_case_types
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace, use_key_in_widget_constructors, camel_case_types, unnecessary_null_comparison
 
 import 'package:be_pass/Screens/generl_profile_screen.dart';
+import 'package:be_pass/Screens/services.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +10,8 @@ import '../app_Colors.dart';
 
 class Profile extends StatefulWidget {
   static const routeName = "user-profile";
-  Profile();
+  final bool userCheck;
+  Profile(this.userCheck);
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -18,18 +20,157 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffE1E1E3),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Headse(), Bio(), Gen(), Info()],
-          ),
+    return widget.userCheck
+        ? Scaffold(
+            backgroundColor: Color(0xffE1E1E3),
+            body: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Headse(),
+                    Bio(),
+                    ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        GenProfile.routeName),
+                    ProfileCard("Information",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard(
+                        "Social", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard(
+                        "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard(
+                        "Services",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        ServicesScreen.routeName),
+                    ProfileCard("Working Hours",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard("Certificates",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard("Gallery", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        "null"),
+                    ProfileCard(
+                        "Price", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                  ],
+                ),
+              ),
+            ),
+          )
+        : Scaffold(
+            backgroundColor: Color.fromARGB(255, 232, 232, 232),
+            body: Center(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20),
+                        Center(
+                          child: Text("Profile",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Card(
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Center(
+                                child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text("Build your business card",
+                                  softWrap: true,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold)),
+                            )),
+                            Text(
+                              "It's easy",
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "All you have to do is fill in the blanks",
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "And let clients choose you!",
+                              textAlign: TextAlign.center,
+                            ),
+                            Center(
+                                child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text("But for that, you need",
+                                  softWrap: true,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold)),
+                            )),
+                            Icon(
+                              Icons.arrow_downward_rounded,
+                              color: AppColors.gradientGreen,
+                              size: 45,
+                            ),
+                            CustomListTile(
+                                "Create an account",
+                                Icons.person_add_alt_outlined,
+                                AppColors.gradientGreen,
+                                Colors.white),
+                            SizedBox(height: 10),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("Already have an account? "),
+                                  Text("Log in",
+                                      style: TextStyle(
+                                          color: AppColors.gradientGreen))
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 30)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+  }
+}
+
+GestureDetector CustomListTile(
+    String text, IconData icon, Color Concolor, Color textColor) {
+  return GestureDetector(
+    onTap: () {},
+    child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Concolor, borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Icon(icon, color: textColor),
+            SizedBox(width: 10),
+            Text(text, style: TextStyle(color: textColor)),
+          ]),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
 class Headse extends StatefulWidget {
@@ -335,8 +476,115 @@ class _BioState extends State<Bio> {
   }
 }
 
-class Gen extends StatelessWidget {
-  const Gen({Key? key}) : super(key: key);
+// class Gen extends StatelessWidget {
+//   const Gen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       child: Padding(
+//         padding: const EdgeInsets.all(15.0),
+//         child: Container(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Text(
+//                 "General",
+//                 style: TextStyle(fontSize: 20),
+//               ),
+//               Divider(
+//                 thickness: 0.8,
+//               ),
+//               Text(
+//                 "About, Service, Certificate, Working hours, Gallery, Price ",
+//                 style: GoogleFonts.poppins(
+//                   textStyle: TextStyle(
+//                       color: AppColors.greyText, wordSpacing: 10, fontSize: 12),
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 20,
+//               ),
+//               Material(
+//                 child: Center(
+//                   child: Container(
+//                     width: 200,
+//                     child: CustomButton(
+//                       onTap: () {},
+//                       buttonText: "Add Information",
+//                       buttonColor: AppColors.gradientGreen,
+//                       textColor: AppColors.white,
+//                       borderRadius: 20,
+//                     ),
+//                   ),
+//                 ),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class Info extends StatelessWidget {
+//   const Info({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       child: Padding(
+//         padding: const EdgeInsets.all(15.0),
+//         child: Container(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Text(
+//                 "Information",
+//                 style: TextStyle(fontSize: 20),
+//               ),
+//               Divider(
+//                 thickness: 0.8,
+//               ),
+//               Text(
+//                 "About, Service, Certificate, Working hours, Gallery, Price ",
+//                 style: GoogleFonts.poppins(
+//                   textStyle: TextStyle(
+//                       color: AppColors.greyText, wordSpacing: 10, fontSize: 12),
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 20,
+//               ),
+//               Material(
+//                 child: Center(
+//                   child: Container(
+//                     width: 200,
+//                     child: CustomButton(
+//                       onTap: () {
+//                         Navigator.of(context).pushNamed(GenProfile.routeName);
+//                       },
+//                       buttonText: "Add Information",
+//                       buttonColor: AppColors.gradientGreen,
+//                       textColor: AppColors.white,
+//                       borderRadius: 20,
+//                     ),
+//                   ),
+//                 ),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class ProfileCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final String route;
+  const ProfileCard(this.title, this.description, this.route);
 
   @override
   Widget build(BuildContext context) {
@@ -348,14 +596,14 @@ class Gen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "General",
+                title,
                 style: TextStyle(fontSize: 20),
               ),
               Divider(
                 thickness: 0.8,
               ),
               Text(
-                "About, Service, Certificate, Working hours, Gallery, Price ",
+                description,
                 style: GoogleFonts.poppins(
                   textStyle: TextStyle(
                       color: AppColors.greyText, wordSpacing: 10, fontSize: 12),
@@ -370,60 +618,9 @@ class Gen extends StatelessWidget {
                     width: 200,
                     child: CustomButton(
                       onTap: () {
-                        Navigator.of(context).pushNamed(GenProfile.routeName);
-                      },
-                      buttonText: "Add Information",
-                      buttonColor: AppColors.gradientGreen,
-                      textColor: AppColors.white,
-                      borderRadius: 20,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Info extends StatelessWidget {
-  const Info({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Information",
-                style: TextStyle(fontSize: 20),
-              ),
-              Divider(
-                thickness: 0.8,
-              ),
-              Text(
-                "About, Service, Certificate, Working hours, Gallery, Price ",
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                      color: AppColors.greyText, wordSpacing: 10, fontSize: 12),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Material(
-                child: Center(
-                  child: Container(
-                    width: 200,
-                    child: CustomButton(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(GenProfile.routeName);
+                        if (route != "null") {
+                          Navigator.of(context).pushNamed(route);
+                        }
                       },
                       buttonText: "Add Information",
                       buttonColor: AppColors.gradientGreen,
