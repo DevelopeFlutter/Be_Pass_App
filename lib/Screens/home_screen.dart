@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         height: 400,
                         width: double.infinity,
-                        color: Color(0xff59DF56),
+                        color: Color.fromRGBO(89, 223, 86, 1),
                         child: Column(
                           children: [
                             Padding(
@@ -44,7 +44,8 @@ class HomeScreen extends StatelessWidget {
                                     child: CircleAvatar(
                                       radius: 18,
                                       foregroundColor: Colors.white,
-                                      backgroundColor: Color(0xff59DF56),
+                                      backgroundColor:
+                                          Color.fromRGBO(89, 223, 86, 1),
                                       child: Text("en"),
                                     ),
                                   ),
@@ -55,12 +56,14 @@ class HomeScreen extends StatelessWidget {
                               height: 70,
                             ),
                             Text(
-                              "Work Simply ",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 36),
+                              "Find Professionals",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "Thanks to Be-Pass ",
+                              "That Be-Pass tailors especially for you",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
@@ -119,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         height: 400,
                         width: double.infinity,
-                        color: Color(0xff59DF56),
+                        color: Color.fromRGBO(89, 223, 86, 1),
                         child: Column(
                           children: [
                             Padding(
@@ -134,7 +137,8 @@ class HomeScreen extends StatelessWidget {
                                     child: CircleAvatar(
                                       radius: 18,
                                       foregroundColor: Colors.white,
-                                      backgroundColor: Color(0xff59DF56),
+                                      backgroundColor:
+                                          Color.fromRGBO(89, 223, 86, 1),
                                       child: Text("en"),
                                     ),
                                   ),
@@ -145,12 +149,14 @@ class HomeScreen extends StatelessWidget {
                               height: 70,
                             ),
                             Text(
-                              "Work Simply ",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 36),
+                              "Find Professionals",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              "Thanks to Be-Pass ",
+                              "That Be-Pass tailors especially for you",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
@@ -177,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                         height: 50,
                         width: 312,
                         decoration: BoxDecoration(
-                            color: Color(0xff59DF56),
+                            color: Color.fromRGBO(89, 223, 86, 1),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
@@ -198,7 +204,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: TextDecoration.underline,
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff59DF56),
+                          color: Color.fromRGBO(89, 223, 86, 1),
                         ),
                       ),
                     ),
@@ -212,7 +218,7 @@ class HomeScreen extends StatelessWidget {
                               TextSpan(
                                 text: ' Log in',
                                 style: TextStyle(
-                                    color: Color(0xff59DF56),
+                                    color: Color.fromRGBO(89, 223, 86, 1),
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.underline),

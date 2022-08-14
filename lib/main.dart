@@ -7,6 +7,7 @@ import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/sign_up_view.dart';
 import 'package:be_pass/Screens/user_card.dart';
 import 'package:be_pass/Widgets/bottom_nav.dart';
+import 'package:be_pass/test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';

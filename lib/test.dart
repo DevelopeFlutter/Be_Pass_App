@@ -1,81 +1,63 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, unused_local_variable, non_constant_identifier_names, unused_import, prefer_const_constructors, unused_element, prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'ForgetPasswordView/auth_controller.dart';
-import 'app_Colors.dart';
+class TestFile extends StatefulWidget {
+  const TestFile({Key? key}) : super(key: key);
 
-AuthController controller = Get.put(AuthController());
-Widget textformfeild({
-  required isObscureText,
-  required boolTitleShowHide,
-  required fieldName,
-  hint_text,
-  icon,
-  padding,
-  required Function returnDatacall,
+  @override
+  State<TestFile> createState() => _TestFileState();
+}
 
-  // Function
-}) {
-  return Container(
-    height: boolTitleShowHide ? 105 : 92,
-    padding: padding ??
-        const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+class _TestFileState extends State<TestFile> {
+  @override
+  Widget build(BuildContext context) {
+    late List<Widget> ColWidget;
+    void removeItem() {
+      if (ColWidget.isNotEmpty) {
+        ColWidget.removeLast();
+        print("this is " + ColWidget.length.toString());
+      }
+    }
+
+    ColWidget = [
+      CustomWidgetItem(removeItem),
+      CustomWidgetItem(removeItem),
+      CustomWidgetItem(removeItem)
+    ];
+
+    void addItem() {
+      ColWidget.add(CustomWidgetItem(removeItem));
+      print("this is " + ColWidget.length.toString());
+    }
+
+    return Scaffold(
+        body: Column(children: [
+      Column(children: ColWidget),
+      GestureDetector(
+          onTap: addItem,
+          child: Row(
+            children: [Text("AddItem"), Icon(Icons.add)],
+          )),
+    ]));
+  }
+}
+
+class CustomWidgetItem extends StatelessWidget {
+  final Function removeItem;
+  const CustomWidgetItem(this.removeItem);
+  @override
+  Widget build(BuildContext context) {
+    return rowMethod();
+  }
+
+  Row rowMethod() {
+    return Row(
       children: [
-        boolTitleShowHide
-            ? Text(
-                fieldName,
-                style: GoogleFonts.poppins(
-                    color: AppColors.greyText,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16),
-              )
-            : Container(
-                height: 10,
-              ),
-        SizedBox(
-          height: 80,
-          child: TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "$fieldName  Required";
-              }
-              if (fieldName == "email" || fieldName == "Email") {
-                if (!value.contains("@")) {
-                  return ("Email must be valid");
-                }
-                return null;
-              }
-            },
-            obscureText:
-                isObscureText == true ? controller.isObscureText.value : false,
-            style: GoogleFonts.poppins(),
-            decoration: InputDecoration(
-              suffixIcon: Icon(icon),
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              hintStyle:
-                  const TextStyle(fontSize: 14, color: AppColors.greyText),
-              focusedBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: AppColors.greyText, width: 2.0),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              hintText: hint_text,
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: const BorderSide(color: AppColors.greyText)),
-              helperStyle: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ),
-        )
+        TextFormField(),
+        TextFormField(),
+        IconButton(icon: Icon(Icons.cancel), onPressed: removeItem())
       ],
-    ),
-  );
+    );
+  }
 }

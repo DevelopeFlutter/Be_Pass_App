@@ -325,33 +325,60 @@ class _HeadseState extends State<Headse> {
                     ))
               ],
             ),
+            SizedBox(height: 5),
+            Text("Confirm Your Email",
+                style: TextStyle(
+                    color: Color.fromRGBO(89, 223, 86, 1),
+                    fontSize: 15,
+                    decoration: TextDecoration.underline)),
             Divider(
               color: AppColors.greyText,
               thickness: 0.8,
             ),
-            textformwidget(
-                labeltext: "Date of Birth",
-                controller: _uname,
-                actionKeyboard: TextInputAction.next,
-                onSubmitField: () {},
-                textInputType: TextInputType.datetime,
-                hintText: "13/2/1998"),
+            Text("Date of Birth", style: TextStyle()),
+            Text("20-02-1998",
+                style: TextStyle(fontSize: 19, color: Colors.grey)),
+            Divider(
+              color: AppColors.greyText,
+              thickness: 0.8,
+            ),
+            Text("Location", style: TextStyle()),
+            Text("Barcelona, Spain",
+                style: TextStyle(fontSize: 19, color: Colors.grey)),
+            Divider(
+              color: AppColors.greyText,
+              thickness: 0.8,
+            ),
+            Text("User Name", style: TextStyle()),
+            Text("kylo.seeelina",
+                style: TextStyle(fontSize: 19, color: Colors.grey)),
+            Divider(
+              color: AppColors.greyText,
+              thickness: 0.8,
+            ),
+            // textformwidget(
+            //     labeltext: "Date of Birth",
+            //     controller: _uname,
+            //     actionKeyboard: TextInputAction.next,
+            //     onSubmitField: () {},
+            //     textInputType: TextInputType.datetime,
+            //     hintText: "13/2/1998"),
 
-            textformwidget(
-                labeltext: "Location",
-                controller: _uname,
-                actionKeyboard: TextInputAction.next,
-                onSubmitField: () {},
-                textInputType: TextInputType.streetAddress,
-                hintText: "Barcelona, Spain"),
+            // textformwidget(
+            //     labeltext: "Location",
+            //     controller: _uname,
+            //     actionKeyboard: TextInputAction.next,
+            //     onSubmitField: () {},
+            //     textInputType: TextInputType.streetAddress,
+            //     hintText: "Barcelona, Spain"),
 
-            textformwidget(
-                labeltext: "Username",
-                controller: _uname,
-                actionKeyboard: TextInputAction.next,
-                onSubmitField: () {},
-                textInputType: TextInputType.datetime,
-                hintText: "kylo.neee"),
+            // textformwidget(
+            //     labeltext: "Username",
+            //     controller: _uname,
+            //     actionKeyboard: TextInputAction.next,
+            //     onSubmitField: () {},
+            //     textInputType: TextInputType.datetime,
+            //     hintText: "kylo.neee"),
 
             SizedBox(
               height: 20,
