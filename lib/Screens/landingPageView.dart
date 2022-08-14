@@ -73,7 +73,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                                   Positioned(
                                       bottom: 50,
                                       child: Container(
-                                        height: 210,
+                                        height: 230,
                                         width: 220,
                                         decoration: BoxDecoration(
                                             color: AppColors.white,
@@ -119,7 +119,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                                                     const EdgeInsets.fromLTRB(
                                                         0, 10, 0, 0),
                                                 child: Container(
-                                                    height: 100,
+                                                    height: 110,
                                                     width: 200,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
@@ -230,7 +230,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                 height: 20,
               ),
               SizedBox(
-                height: 200,
+                height: 220,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
@@ -251,7 +251,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                                   Positioned(
                                       bottom: 0,
                                       child: Container(
-                                        height: 80,
+                                        height: 90,
                                         width: 150,
                                         decoration: BoxDecoration(
                                             color: AppColors.white,
