@@ -36,7 +36,7 @@ class _SignUpViewState extends State<SignUpView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
+              padding: EdgeInsets.fromLTRB(20, 0, 0, 10),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Row(
@@ -49,7 +49,7 @@ class _SignUpViewState extends State<SignUpView> {
                           color: AppColors.boldTextColor),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
+                      padding: EdgeInsets.fromLTRB(5, 0, 0, 10),
                       child: Container(
                         height: 30,
                         width: 30,
@@ -69,7 +69,7 @@ class _SignUpViewState extends State<SignUpView> {
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                 child: Text("Make your app management easy and fun!",
                     style: TextStyle(
                         fontSize: 16,
@@ -77,7 +77,7 @@ class _SignUpViewState extends State<SignUpView> {
                         color: AppColors.greyText)),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 20,
             ),
             Column(
@@ -113,7 +113,7 @@ class _SignUpViewState extends State<SignUpView> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 5),
+                      padding: EdgeInsets.only(left: 20, right: 5),
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: SizedBox(
@@ -157,7 +157,7 @@ class _SignUpViewState extends State<SignUpView> {
                         ]))
                   ],
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -173,8 +173,8 @@ class _SignUpViewState extends State<SignUpView> {
                           MaterialStateProperty.all(AppColors.gradientGreen),
                     ),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const LoginView()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => LoginView()));
                     },
                     child: Text('Login',
                         style: GoogleFonts.poppins(
@@ -183,7 +183,7 @@ class _SignUpViewState extends State<SignUpView> {
                             color: AppColors.white)),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -206,7 +206,7 @@ class _SignUpViewState extends State<SignUpView> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -229,23 +229,20 @@ class _SignUpViewState extends State<SignUpView> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Card(
-                        child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset("assets/google-icon.png",
-                              height: 60, width: 60),
-                          Text(
-                            "Sign in with Google",
-                            softWrap: true,
-                            style: GoogleFonts.poppins(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.greyText),
-                          )
-                        ],
-                      ),
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Image.asset("assets/google-icon.png",
+                            height: 60, width: 60),
+                        Text(
+                          "Sign in with Google",
+                          softWrap: true,
+                          style: GoogleFonts.poppins(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.greyText),
+                        )
+                      ],
                     )),
                   ),
                 )

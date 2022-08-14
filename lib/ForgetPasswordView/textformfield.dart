@@ -20,9 +20,8 @@ Widget textformfeild({
   // Function
 }) {
   return Container(
-    height: boolTitleShowHide ? 105 : 92,
-    padding: padding ??
-        const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+    height: boolTitleShowHide ? 110 : 92,
+    padding: padding ?? EdgeInsets.symmetric(horizontal: 15),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
