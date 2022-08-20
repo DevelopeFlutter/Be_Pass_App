@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, use_key_in_widget_constructors, camel_case_types
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, use_key_in_widget_constructors, camel_case_types, sized_box_for_whitespace
 
+import 'package:be_pass/Screens/working_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,36 @@ TextEditingController _des = TextEditingController();
 TextEditingController _profession = TextEditingController();
 TextEditingController _price = TextEditingController();
 
+Row rowTime(void Function() remove) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Row(children: [
+        DropDownButton(),
+        SizedBox(width: 5),
+        DropDownButton(),
+      ]),
+      IconButton(icon: Icon(Icons.cancel), onPressed: remove)
+    ],
+  );
+}
+
 class _ServicesScreenState extends State<ServicesScreen> {
+  final List<Widget> _rowList = [];
+  void _addRowWidget() {
+    setState(() {
+      _rowList.add(rowTime(_removeRowWidget));
+    });
+  }
+
+  void _removeRowWidget() {
+    setState(() {
+      if (_rowList.isNotEmpty) {
+        _rowList.removeLast();
+      }
+    });
+  }
+
   build(context) => Scaffold(
         backgroundColor: Colors.blueGrey[100],
         appBar: AppBar(
@@ -82,7 +112,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                       ),
                     ),
                   ),
-                  Textlist(),
+                  Textlist(_rowList, _addRowWidget),
                 ],
               ),
             ),
@@ -138,7 +168,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                             TextStyle(color: AppColors.black, fontSize: 12),
                       ),
                     ).pSymmetric(h: 10),
-                    Textlist()
+                    Textlist(_rowList, _addRowWidget)
                   ],
                 ),
               ),
@@ -227,7 +257,9 @@ class listcheckwid extends StatelessWidget {
 }
 
 class Textlist extends StatefulWidget {
-  const Textlist({Key? key}) : super(key: key);
+  final List _rowList;
+  final void Function() _addWidget;
+  const Textlist(this._rowList, this._addWidget);
 
   @override
   State<Textlist> createState() => _TextlistState();
@@ -245,82 +277,87 @@ class _TextlistState extends State<Textlist> {
           Container(
             height: 200,
             child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 200,
-                          height: 40,
-                          child: TextFormField(
-                            controller: _profession,
-                            decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
-                                  borderSide:
-                                      BorderSide(color: AppColors.greyText)),
-                              hintText: "Ex. Personal Trainer",
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: AppColors.greyText,
-                                  width: 1.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Container(
-                          width: 60,
-                          height: 40,
-                          child: TextFormField(
-                            controller: _price,
-                            decoration: InputDecoration(
-                              hintText: "Price",
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
-                                  borderSide:
-                                      BorderSide(color: AppColors.greyText)),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                borderSide: BorderSide(
-                                  color: AppColors.greyText,
-                                  width: 1.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            _profession.clear();
-                            _price.clear();
-                          },
-                          child: Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                                color: AppColors.greyText,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Icon(Icons.close),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
+                itemCount: widget._rowList.length,
+                itemBuilder: (context, index) {
+                  return widget._rowList[index];
                 }),
+            // child: ListView.builder(
+            //     itemCount: 3,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Padding(
+            //         padding: const EdgeInsets.all(10.0),
+            //         child: Row(
+            //           children: [
+            //             Container(
+            //               width: 200,
+            //               height: 40,
+            //               child: TextFormField(
+            //                 controller: _profession,
+            //                 decoration: InputDecoration(
+            //                   focusedBorder: OutlineInputBorder(
+            //                       borderRadius:
+            //                           BorderRadius.all(Radius.circular(5.0)),
+            //                       borderSide:
+            //                           BorderSide(color: AppColors.greyText)),
+            //                   hintText: "Ex. Personal Trainer",
+            //                   enabledBorder: OutlineInputBorder(
+            //                     borderRadius: BorderRadius.circular(5.0),
+            //                     borderSide: BorderSide(
+            //                       color: AppColors.greyText,
+            //                       width: 1.0,
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+            //             SizedBox(
+            //               width: 20,
+            //             ),
+            //             Container(
+            //               width: 60,
+            //               height: 40,
+            //               child: TextFormField(
+            //                 controller: _price,
+            //                 decoration: InputDecoration(
+            //                   hintText: "Price",
+            //                   focusedBorder: OutlineInputBorder(
+            //                       borderRadius:
+            //                           BorderRadius.all(Radius.circular(5.0)),
+            //                       borderSide:
+            //                           BorderSide(color: AppColors.greyText)),
+            //                   enabledBorder: OutlineInputBorder(
+            //                     borderRadius: BorderRadius.circular(5.0),
+            //                     borderSide: BorderSide(
+            //                       color: AppColors.greyText,
+            //                       width: 1.0,
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+            //             SizedBox(
+            //               width: 10,
+            //             ),
+            //             GestureDetector(
+            //               onTap: () {
+            //                 _profession.clear();
+            //                 _price.clear();
+            //               },
+            //               child: Container(
+            //                 height: 30,
+            //                 width: 30,
+            //                 decoration: BoxDecoration(
+            //                     color: AppColors.greyText,
+            //                     borderRadius: BorderRadius.circular(20)),
+            //                 child: Icon(Icons.close),
+            //               ),
+            //             )
+            //           ],
+            //         ),
+            //       );
+            //     }),
           ),
-          Text("Add")
+          GestureDetector(onTap: widget._addWidget, child: Text("Add"))
         ],
       ),
     );

@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
+import 'dart:developer';
+
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
 import 'package:be_pass/Screens/home_screen.dart';
 import 'package:be_pass/Screens/login_view.dart';
 import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/sign_up_view.dart';
 import 'package:be_pass/Screens/user_card.dart';
+import 'package:be_pass/Screens/working_hours.dart';
 import 'package:be_pass/Widgets/bottom_nav.dart';
 import 'package:be_pass/test.dart';
 import 'package:flutter/material.dart';
