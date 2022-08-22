@@ -1,10 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_interpolation_to_compose_strings, avoid_types_as_parameter_names, unused_element
 
-import 'package:accordion/accordion.dart';
-import 'package:accordion/accordion_section.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 import '../app_Colors.dart';
 
@@ -210,13 +207,31 @@ class _WorkingHoursState extends State<WorkingHours> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            Center(
-                child: Text("Add Working Hours",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ))),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Center(
+                    child: Row(
+                      children: [
+                        IconButton(
+                            icon: Icon(Icons.arrow_back_ios),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            }),
+                        Text("Add Working Hours",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Container(
               width: size.width / 1.1,
               child: Card(

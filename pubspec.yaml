@@ -46,7 +46,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   email_validator: ^2.1.17
   accordion: ^2.5.1
-  flutter_switch: ^0.3.2
+  image_picker: ^0.8.5+3
+  dotted_border: ^2.0.0+2
 
 dev_dependencies:
   flutter_test:

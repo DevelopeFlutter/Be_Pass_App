@@ -1,7 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace, use_key_in_widget_constructors, camel_case_types, unnecessary_null_comparison
 
+import 'package:be_pass/Screens/bio_screen.dart';
+import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/generl_profile_screen.dart';
 import 'package:be_pass/Screens/services.dart';
+import 'package:be_pass/Screens/social_screen.dart';
+import 'package:be_pass/Screens/working_areas.dart';
+import 'package:be_pass/Screens/working_hours.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,18 +39,26 @@ class _ProfileState extends State<Profile> {
                         GenProfile.routeName),
                     ProfileCard("Information",
                         "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard(
-                        "Social", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        SocialScreen.routeName),
                     ProfileCard(
                         "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                     ProfileCard(
                         "Services",
                         "Lorem Ipsum Lorem IpsumLorem Ipsum",
                         ServicesScreen.routeName),
-                    ProfileCard("Working Hours",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard("Certificates",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    ProfileCard(
+                        "Working Hours",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        WorkingHours.routeName),
+                    ProfileCard(
+                        "Working Areas",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        WorkingAreas.routeName),
+                    ProfileCard(
+                        "Certificates",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        CertificatesScreen.routeName),
                     ProfileCard("Gallery", "Lorem Ipsum Lorem IpsumLorem Ipsum",
                         "null"),
                     ProfileCard(
@@ -486,7 +499,7 @@ class _BioState extends State<Bio> {
                   width: 200,
                   child: CustomButton(
                     onTap: () {
-                      Navigator.of(context).pushNamed(GenProfile.routeName);
+                      Navigator.of(context).pushNamed(BioScreen.routeName);
                     },
                     buttonText: "Edit  Bio",
                     buttonColor: AppColors.gradientGreen,
