@@ -3,10 +3,14 @@
 import 'dart:developer';
 
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
+import 'package:be_pass/Screens/bio_screen.dart';
+import 'package:be_pass/Screens/certificates_screen.dart';
+import 'package:be_pass/Screens/filters_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
 import 'package:be_pass/Screens/login_view.dart';
 import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/sign_up_view.dart';
+import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/user_card.dart';
 import 'package:be_pass/Screens/working_hours.dart';
 import 'package:be_pass/Widgets/bottom_nav.dart';
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: BottomBar(),
+      home: FilterScreen(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
         Profile.routeName: (ctx) => Profile(false),
@@ -48,6 +52,9 @@ class MyApp extends StatelessWidget {
         SignUpView.routeName: (ctx) => SignUpView(),
         LoginView.routeName: (ctx) => LoginView(),
         ServicesScreen.routeName: (ctx) => ServicesScreen(),
+        CertificatesScreen.routeName: (ctx) => CertificatesScreen(),
+        SocialScreen.routeName: (ctx) => SocialScreen(),
+        WorkingHours.routeName: (ctx) => WorkingHours(),
       },
     );
   }

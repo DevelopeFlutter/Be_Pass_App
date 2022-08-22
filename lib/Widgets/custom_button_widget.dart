@@ -28,9 +28,10 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      width: 158.21,
-      height: 44,
+      width: size.width / 2.3,
+      height: 45,
       decoration: BoxDecoration(
           color: buttonColor ?? AppColors.gradientGreen,
           border: Border.all(color: borderColor ?? Colors.white),
@@ -43,7 +44,7 @@ class CustomButton extends StatelessWidget {
             child: Text(
               buttonText,
               style: TextStyle(
-                  color: textColor, fontSize: 16, fontWeight: FontWeight.w600),
+                  color: textColor, fontSize: 16, fontWeight: FontWeight.w400),
             ),
           ),
         ),
