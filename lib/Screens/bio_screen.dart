@@ -4,6 +4,7 @@ import 'package:be_pass/Screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class BioScreen extends StatelessWidget {
+  static const routeName = "bio-screen";
   const BioScreen({Key? key}) : super(key: key);
 
   @override

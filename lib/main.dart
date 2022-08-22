@@ -21,6 +21,7 @@ import 'ForgetPasswordView/forgetPasswordView.dart';
 import 'Screens/generl_profile_screen.dart';
 import 'Screens/landingPageView.dart';
 import 'Screens/profile_screen.dart';
+import 'Screens/working_areas.dart';
 import 'app_Colors.dart';
 import 'Screens/splash_screen.dart';
 import 'dart:math';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: FilterScreen(),
+      home: WorkingAreas(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
         Profile.routeName: (ctx) => Profile(false),
@@ -53,8 +54,10 @@ class MyApp extends StatelessWidget {
         LoginView.routeName: (ctx) => LoginView(),
         ServicesScreen.routeName: (ctx) => ServicesScreen(),
         CertificatesScreen.routeName: (ctx) => CertificatesScreen(),
+        BioScreen.routeName: (ctx) => BioScreen(),
         SocialScreen.routeName: (ctx) => SocialScreen(),
         WorkingHours.routeName: (ctx) => WorkingHours(),
+        WorkingAreas.routeName: (ctx) => WorkingAreas(),
       },
     );
   }
