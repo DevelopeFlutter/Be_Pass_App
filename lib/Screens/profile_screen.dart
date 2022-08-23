@@ -35,6 +35,10 @@ class _ProfileState extends State<Profile> {
                   children: [
                     Headse(),
                     Bio(),
+                    ProfileCard(
+                        "Services",
+                        "Describe your services, explain everything you are doing and set the prices",
+                        ServicesScreen.routeName),
                     ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
                         GenProfile.routeName),
                     ProfileCard("Information",
@@ -43,10 +47,6 @@ class _ProfileState extends State<Profile> {
                         SocialScreen.routeName),
                     ProfileCard(
                         "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard(
-                        "Services",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                        ServicesScreen.routeName),
                     ProfileCard(
                         "Working Hours",
                         "Lorem Ipsum Lorem IpsumLorem Ipsum",
@@ -662,7 +662,7 @@ class ProfileCard extends StatelessWidget {
                           Navigator.of(context).pushNamed(route);
                         }
                       },
-                      buttonText: "Add Information",
+                      buttonText: "Add Info",
                       buttonColor: AppColors.gradientGreen,
                       textColor: AppColors.white,
                       borderRadius: 20,
