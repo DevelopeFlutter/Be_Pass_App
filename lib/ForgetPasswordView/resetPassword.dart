@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
-import 'package:be_pass/ForgetPasswordView/textformfield.dart';
+import 'package:be_pass/Authentication/Components/textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../app_Colors.dart';
-import 'auth_controller.dart';
+import '../Authentication/Controller/auth_controller.dart';
 
 class ResetPasswordView extends StatefulWidget {
   static const routeName = "reset-pass";
@@ -33,7 +33,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         ),
       ),
       const SizedBox(
-        height: 150,
+        height: 100,
       ),
       Padding(
         padding: const EdgeInsets.fromLTRB(20, 0, 5, 10),
@@ -78,7 +78,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
             boolTitleShowHide: true,
             hint_text: "Password",
             returnDatacall: (val) {
-              controller.password.value = val;
+              controller.newPassword.value = val;
             },
           ),
           textformfeild(

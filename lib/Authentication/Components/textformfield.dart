@@ -4,34 +4,56 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../app_Colors.dart';
-import 'auth_controller.dart';
+import '../../app_Colors.dart';
+import '../Controller/auth_controller.dart';
 
 AuthController controller = Get.put(AuthController());
 Widget textformfeild({
   required isObscureText,
   required boolTitleShowHide,
   required fieldName,
+  rightLabel = "",
   hint_text,
   icon,
   padding,
-  required Function returnDatacall,
+  Function? returnDatacall,
 
   // Function
 }) {
   return Container(
     height: boolTitleShowHide ? 110 : 92,
-    padding: padding ?? EdgeInsets.symmetric(horizontal: 15),
+    padding: padding ??
+        const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         boolTitleShowHide
-            ? Text(
-                fieldName,
-                style: GoogleFonts.poppins(
-                    color: AppColors.greyText,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16),
+            ? Padding(
+                padding: const EdgeInsets.only(bottom: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      fieldName,
+                      style: GoogleFonts.poppins(
+                          color: AppColors.greyText,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16),
+                    ),
+                    InkWell(
+                      child: Text(
+                        rightLabel,
+                        style: GoogleFonts.poppins(
+                          color: AppColors.greenishText,
+                          fontSize: 16,
+                          // fontWeight: FontWeight.w300
+                        ),
+                      ),
+                      onTap: () {},
+                    )
+                  ],
+                ),
               )
             : Container(
                 height: 10,
@@ -74,6 +96,9 @@ Widget textformfeild({
                 fontSize: 16,
               ),
             ),
+            onChanged: (val) {
+              returnDatacall!(val);
+            },
           ),
         )
       ],

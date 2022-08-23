@@ -4,7 +4,6 @@ import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/generl_profile_screen.dart';
 import 'package:be_pass/Screens/services.dart';
-import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/working_areas.dart';
 import 'package:be_pass/Screens/working_hours.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -43,8 +42,8 @@ class _ProfileState extends State<Profile> {
                         GenProfile.routeName),
                     ProfileCard("Information",
                         "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                        SocialScreen.routeName),
+                    // ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    //     SocialScreen.routeName),
                     ProfileCard(
                         "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                     ProfileCard(

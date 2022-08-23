@@ -1,10 +1,15 @@
 import 'package:get/get.dart';
 
 class AuthController extends GetxController{
-// Forget Password Controller!
+// sign up Controller!
   RxBool isObscureText = true.obs;
+  var username = "abc".obs;
   var email = "".obs;
   var password = "".obs;
+
+//  Reset password Controller!
+  var newPassword = "".obs;
   var confirmPassword = "".obs;
+
 
 }
