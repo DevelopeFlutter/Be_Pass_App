@@ -2,7 +2,7 @@
 
 import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
-import 'package:be_pass/Screens/language_time.dart';
+import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

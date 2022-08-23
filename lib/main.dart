@@ -8,7 +8,7 @@ import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
 import 'package:be_pass/Screens/filters_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
-import 'package:be_pass/Screens/language_time.dart';
+import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/Screens/login_view.dart';
 import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/sign_up_view.dart';
