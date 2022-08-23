@@ -39,6 +39,14 @@ class _ProfileState extends State<Profile> {
                         "Services",
                         "Describe your services, explain everything you are doing and set the prices",
                         ServicesScreen.routeName),
+                    ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        GenProfile.routeName),
+                    ProfileCard("Information",
+                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    //     SocialScreen.routeName),
+                    ProfileCard(
+                        "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                     ProfileCard(
                         "Working Hours",
                         "Set your working hours for each day and let the clients know when you are available",

@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../app_Colors.dart';
-import 'auth_controller.dart';
-import 'textformfield.dart';
+import '../Authentication/Controller/auth_controller.dart';
+import '../Authentication/Components/textformfield.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   static const routeName = "forgot-password";

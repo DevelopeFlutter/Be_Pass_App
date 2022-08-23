@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../ForgetPasswordView/auth_controller.dart';
+import '../Authentication/Controller/auth_controller.dart';
 import '../ForgetPasswordView/resetPassword.dart';
-import '../ForgetPasswordView/textformfield.dart';
+import '../Authentication/Components/textformfield.dart';
 import '../app_Colors.dart';
 
 class LoginView extends StatefulWidget {
@@ -19,6 +19,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   AuthController controller = Get.put(AuthController());
+  bool value = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +89,39 @@ class _LoginViewState extends State<LoginView> {
                   isObscureText: true,
                   boolTitleShowHide: true,
                   fieldName: "Password",
+                  rightLabel:"Forgot Password?",
                   hint_text: ".........",
                   icon: Icons.remove_red_eye_outlined,
                   returnDatacall: (val) {
                     controller.email.value = val;
                   },
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 5),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: Checkbox(
+                            value: this.value,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                this.value = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text("Remember me",
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color:AppColors.boldTextColor
+                    ),)
+                  ],
                 ),
                 const SizedBox(
                   height: 20,
@@ -122,6 +152,21 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(
                   height: 20,
                 ),
+                RichText(text:TextSpan(
+                    text: "New on our platform?",
+                    style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: AppColors.greyText
+
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: "Create an account",
+                          style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              color: AppColors.gradientGreen,
+                          )),
+                    ]
+                )),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 30, 20, 40),
                   child: Row(
@@ -147,7 +192,7 @@ class _LoginViewState extends State<LoginView> {
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Card(
                         child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 40, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

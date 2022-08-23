@@ -23,11 +23,11 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(true),
-    LandingPageView(true),
+    HomeScreen(false),
+    LandingPageView(false),
     ChatScreen(),
-    Profile(true),
-    AppDrawer(true),
+    Profile(false),
+    AppDrawer(false),
   ];
 
   final List appbarText = [

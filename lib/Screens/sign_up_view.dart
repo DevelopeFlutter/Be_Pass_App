@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
+import 'package:be_pass/Authentication/Components/textformfield.dart';
+import 'package:be_pass/Authentication/Controller/auth_controller.dart';
 import 'package:be_pass/Screens/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../ForgetPasswordView/auth_controller.dart';
-import '../ForgetPasswordView/textformfield.dart';
 import '../app_Colors.dart';
 
 class SignUpView extends StatefulWidget {
