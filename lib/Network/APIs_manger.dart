@@ -1,4 +1,5 @@
 class api_manger {
-  static const BASE_URL = "http://localhost:3000/api/user/";
+  static const BASE_URL = "https://interns-pk.herokuapp.com/api/user/";
   static const SIGNUP = "register";
+  static const LOGIN = "login";
 }

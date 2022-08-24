@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors
 
 import 'package:be_pass/Authentication/Controller/auth_controller.dart';
-import 'package:be_pass/Screens/login_view.dart';
+import 'package:be_pass/Authentication/View/login_view.dart';
 import 'package:be_pass/Services/auth%20services/signUp.dart';
 import 'package:be_pass/utils/Loader.dart';
 import 'package:be_pass/utils/showMessage.dart';
@@ -15,6 +15,8 @@ import '../Components/textformfield.dart';
 import '../../app_Colors.dart';
 
 class SignUpView extends StatefulWidget {
+  static const routeName = "SignUpView";
+
   SignUpView({Key? key}) : super(key: key);
 
   @override
@@ -207,6 +209,10 @@ class _SignUpViewState extends State<SignUpView> {
                             MaterialStateProperty.all(AppColors.gradientGreen),
                       ),
                       onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginView()),
+                        );
                         if (_formKey.currentState!.validate()) {
                           _submitform();
                         }

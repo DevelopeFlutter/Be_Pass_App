@@ -9,7 +9,7 @@ import 'package:be_pass/Screens/credits_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
 import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/time_currency.dart';
-import 'package:be_pass/Screens/login_view.dart';
+import 'package:be_pass/Authentication/View/login_view.dart';
 import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:be_pass/Screens/user_card.dart';
@@ -62,6 +62,7 @@ class MyApp extends StatelessWidget {
         WorkingAreas.routeName: (ctx) => WorkingAreas(),
         CreditsScreen.routeName: (ctx) => CreditsScreen(),
         CurrencyTimeScreen.routeName: (ctx) => CurrencyTimeScreen(),
+        SignUpView.routeName: (ctx)=>SignUpView(),
       },
     );
   }
