@@ -39,14 +39,6 @@ class _ProfileState extends State<Profile> {
                         "Services",
                         "Describe your services, explain everything you are doing and set the prices",
                         ServicesScreen.routeName),
-                    ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                        GenProfile.routeName),
-                    ProfileCard("Information",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    // ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                    //     SocialScreen.routeName),
-                    ProfileCard(
-                        "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                     ProfileCard(
                         "Working Hours",
                         "Set your working hours for each day and let the clients know when you are available",
@@ -64,17 +56,25 @@ class _ProfileState extends State<Profile> {
                         "Upload all the images that you have for each service, to impress everyone",
                         "null"),
                     ProfileCard(
-                        "Social",
+                        "Social Media",
                         "Add all the links to your social media",
                         SocialScreen.routeName),
-                    ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                        GenProfile.routeName),
-                    ProfileCard("Information",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard(
-                        "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard(
-                        "Price", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    //     GenProfile.routeName),
+                    // ProfileCard("Information",
+                    //     "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // // ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    // //     SocialScreen.routeName),
+                    // ProfileCard(
+                    //     "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    //     GenProfile.routeName),
+                    // ProfileCard("Information",
+                    //     "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard(
+                    //     "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard(
+                    //     "Price", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                   ],
                 ),
               ),
@@ -665,8 +665,10 @@ class ProfileCard extends StatelessWidget {
                 height: 20,
               ),
               Material(
+                color: Colors.white,
                 child: Center(
                   child: Container(
+                    color: Colors.white,
                     width: 200,
                     child: CustomButton(
                       onTap: () {

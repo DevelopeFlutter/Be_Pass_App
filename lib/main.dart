@@ -7,10 +7,10 @@ import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
+import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/Screens/login_view.dart';
 import 'package:be_pass/Screens/services.dart';
-import 'package:be_pass/Screens/sign_up_view.dart';
 import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:be_pass/Screens/user_card.dart';
 import 'package:be_pass/Screens/working_hours.dart';
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home:BottomBar(),
+      home: BottomBar(),
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
         ServicesScreen.routeName: (ctx) => ServicesScreen(),
         CertificatesScreen.routeName: (ctx) => CertificatesScreen(),
         BioScreen.routeName: (ctx) => BioScreen(),
-        // SocialScreen.routeName: (ctx) => SocialScreen(),
+        SocialScreen.routeName: (ctx) => SocialScreen(),
         WorkingHours.routeName: (ctx) => WorkingHours(),
         WorkingAreas.routeName: (ctx) => WorkingAreas(),
         CreditsScreen.routeName: (ctx) => CreditsScreen(),

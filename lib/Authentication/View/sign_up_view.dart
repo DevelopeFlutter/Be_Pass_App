@@ -25,9 +25,9 @@ class _SignUpViewState extends State<SignUpView> {
   final _formKey = GlobalKey<FormState>();
   AuthController controller = Get.put(AuthController());
   bool value = false;
-  void _submitform()async {
+  void _submitform() async {
     FocusScope.of(context).unfocus();
-    try{
+    try {
       PopupLoader.show();
       var _authResponse = await signUp(
         controller.username.value,
@@ -35,21 +35,21 @@ class _SignUpViewState extends State<SignUpView> {
         controller.password.value,
       );
       PopupLoader.hide();
-      if(!_authResponse["error"]){
+      if (!_authResponse["error"]) {
         ShowMessage().showMessage(context, "Successfully SignUp");
-      }else{
+      } else {
         ShowMessage().showErrorMessage(context, "Some error");
       }
-    }catch(e){
+    } catch (e) {
       PopupLoader.hide();
-      print(["SubmitLogin exception:",e.toString()]);
+      print(["SubmitLogin exception:", e.toString()]);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundColor,
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: Column(children: [
@@ -74,15 +74,16 @@ class _SignUpViewState extends State<SignUpView> {
                           color: AppColors.boldTextColor),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(5,0,0,10),
+                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
                       child: Container(
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
-                          image: DecorationImage(image: AssetImage("assets/smiling-face-with-heart-eyes.png"),
-                          fit: BoxFit.fill),
-
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  "assets/smiling-face-with-heart-eyes.png"),
+                              fit: BoxFit.fill),
                         ),
                       ),
                     )
@@ -114,7 +115,7 @@ class _SignUpViewState extends State<SignUpView> {
                     fieldName: "Username",
                     hint_text: "johndoe",
                     returnDatacall: (val) {
-                      setState((){
+                      setState(() {
                         controller.username.value = val;
                       });
                     },
@@ -125,7 +126,7 @@ class _SignUpViewState extends State<SignUpView> {
                     fieldName: "Email",
                     hint_text: "johndoe@gmail.com",
                     returnDatacall: (val) {
-                      setState((){
+                      setState(() {
                         controller.email.value = val;
                       });
                     },
@@ -137,14 +138,15 @@ class _SignUpViewState extends State<SignUpView> {
                     hint_text: ".........",
                     icon: Icons.remove_red_eye_outlined,
                     returnDatacall: (val) {
-                      setState((){
+                      setState(() {
                         controller.password.value = val;
-                      });                    },
+                      });
+                    },
                   ),
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 20,right: 5),
+                        padding: const EdgeInsets.only(left: 20, right: 5),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: SizedBox(
@@ -161,36 +163,32 @@ class _SignUpViewState extends State<SignUpView> {
                           ),
                         ),
                       ),
-                      RichText(text:TextSpan(
-                        text: "I agree to",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: AppColors.greyText
-
-                        ),
-                        children: <TextSpan>[
-                          TextSpan(text: "Terms of Services",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: AppColors.gradientGreen,
-                            decoration: TextDecoration.underline,
-                            letterSpacing: 1
-                          )),
-                          TextSpan(text: "&",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: AppColors.greyText
-                          )),
-                          TextSpan(text: "Privacy Policy",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: AppColors.gradientGreen,
-                            decoration: TextDecoration.underline,
-                          ))
-                        ]
-                      ))
+                      RichText(
+                          text: TextSpan(
+                              text: "I agree to",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, color: AppColors.greyText),
+                              children: <TextSpan>[
+                            TextSpan(
+                                text: "Terms of Services",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    color: AppColors.gradientGreen,
+                                    decoration: TextDecoration.underline,
+                                    letterSpacing: 1)),
+                            TextSpan(
+                                text: "&",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14, color: AppColors.greyText)),
+                            TextSpan(
+                                text: "Privacy Policy",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  color: AppColors.gradientGreen,
+                                  decoration: TextDecoration.underline,
+                                ))
+                          ]))
                     ],
-
                   ),
                   const SizedBox(
                     height: 20,
@@ -200,23 +198,24 @@ class _SignUpViewState extends State<SignUpView> {
                     width: 350,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
                         backgroundColor:
                             MaterialStateProperty.all(AppColors.gradientGreen),
                       ),
                       onPressed: () {
-                        if(_formKey.currentState!.validate()){
+                        if (_formKey.currentState!.validate()) {
                           _submitform();
-
                         }
                       },
-                      child: Text('Login',
+                      child: Text('Sign up',
                           style: GoogleFonts.poppins(
-                              fontSize: 20, fontWeight: FontWeight.w400,
-                          color: AppColors.white)),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.white)),
                     ),
                   ),
                   const SizedBox(
@@ -234,7 +233,7 @@ class _SignUpViewState extends State<SignUpView> {
                       ),
                       TextButton(
                         child: Text(
-                          "Sign in instead",
+                          "Log in in instead",
                           style: GoogleFonts.poppins(fontSize: 16),
                         ),
                         onPressed: () {},
@@ -246,7 +245,8 @@ class _SignUpViewState extends State<SignUpView> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(height: 1.5, width: 150, color: Colors.black26),
+                        Container(
+                            height: 1.5, width: 150, color: Colors.black26),
                         Text(
                           "or",
                           style: GoogleFonts.poppins(
@@ -270,9 +270,10 @@ class _SignUpViewState extends State<SignUpView> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset("assets/google-icon.png", height: 40, width: 40),
+                            Image.asset("assets/google-icon.png",
+                                height: 40, width: 40),
                             Text(
-                              "Sign in with Google",
+                              " Signup with Google",
                               softWrap: true,
                               style: GoogleFonts.poppins(
                                   fontSize: 24,
