@@ -25,14 +25,14 @@ class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
   AuthController controller = Get.put(AuthController());
   bool value = false;
-  void _submitform()async{
+  void _submitform() async {
     FocusScope.of(context).unfocus();
-    try{
+    try {
       PopupLoader.show();
-      var authResponse = await login(controller.loginEmail.value,
-      controller.loginPassword.value);
+      var authResponse = await login(
+          controller.loginEmail.value, controller.loginPassword.value);
       PopupLoader.hide();
-      if(!authResponse["error"]){
+      if (!authResponse["error"]) {
         ShowMessage().showMessage(context, 'SuccessFully Login');
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => BottomBar()));
@@ -43,8 +43,9 @@ class _LoginViewState extends State<LoginView> {
     } catch (e) {
       PopupLoader.hide();
       print(['SubmitLogin Exception:', e.toString()]);
+    }
+  }
 
-      }}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +115,7 @@ class _LoginViewState extends State<LoginView> {
                     isObscureText: true,
                     boolTitleShowHide: true,
                     fieldName: "Password",
-                    rightLabel:"Forgot Password?",
+                    rightLabel: "Forgot Password?",
                     hint_text: ".........",
                     icon: Icons.remove_red_eye_outlined,
                     returnDatacall: (val) {
@@ -124,7 +125,7 @@ class _LoginViewState extends State<LoginView> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 20,right: 5),
+                        padding: const EdgeInsets.only(left: 20, right: 5),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: SizedBox(
@@ -141,11 +142,11 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                       ),
-                      Text("Remember me",
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        color:AppColors.boldTextColor
-                      ),)
+                      Text(
+                        "Remember me",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16, color: AppColors.boldTextColor),
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -156,22 +157,22 @@ class _LoginViewState extends State<LoginView> {
                     width: 350,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
                         backgroundColor:
                             MaterialStateProperty.all(AppColors.gradientGreen),
                       ),
                       onPressed: () {
-                        if(_formKey.currentState!.validate()){
+                        if (_formKey.currentState!.validate()) {
                           _submitform();
-
                         }
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const ResetPasswordView()));
                       },
-                      child: Text('Sign In',
+                      child: Text('Log In',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
@@ -181,27 +182,26 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(
                     height: 20,
                   ),
-                  RichText(text:TextSpan(
-                      text: "New on our platform?",
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: AppColors.greyText
-
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(text: "Create an account",
+                  RichText(
+                      text: TextSpan(
+                          text: "New on our platform?",
+                          style: GoogleFonts.poppins(
+                              fontSize: 16, color: AppColors.greyText),
+                          children: <TextSpan>[
+                        TextSpan(
+                            text: " Create an account",
                             style: GoogleFonts.poppins(
-                                fontSize: 16,
-                                color: AppColors.gradientGreen,
+                              fontSize: 16,
+                              color: AppColors.gradientGreen,
                             )),
-                      ]
-                  )),
+                      ])),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 30, 20, 40),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(height: 1.5, width: 150, color: Colors.black26),
+                        Container(
+                            height: 1.5, width: 150, color: Colors.black26),
                         Text(
                           "or",
                           style: GoogleFonts.poppins(
@@ -227,7 +227,7 @@ class _LoginViewState extends State<LoginView> {
                           children: [
                             Image.asset("assets/google-icon.png"),
                             Text(
-                              "Sign in with Google",
+                              "Log in with Google",
                               style: GoogleFonts.poppins(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w600,
