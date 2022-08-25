@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "961397931993",
+    "project_id": "be-pass-55b8a",
+    "storage_bucket": "be-pass-55b8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961397931993:android:7a02d1ce3e47153ae4a3c8",
+        "android_client_info": {
+          "package_name": "com.example.be_pass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961397931993-uvb4g44ejg028tkgbu73va2kcjeeg278.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXiJvXJvAIAP_qwHZz7djQ0bo12j-NifE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961397931993-uvb4g44ejg028tkgbu73va2kcjeeg278.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
