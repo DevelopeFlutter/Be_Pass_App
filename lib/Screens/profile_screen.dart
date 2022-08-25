@@ -35,34 +35,46 @@ class _ProfileState extends State<Profile> {
                   children: [
                     Headse(),
                     Bio(),
-                    ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                        GenProfile.routeName),
-                    ProfileCard("Information",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                        SocialScreen.routeName),
-                    ProfileCard(
-                        "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                     ProfileCard(
                         "Services",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        "Describe your services, explain everything you are doing and set the prices",
                         ServicesScreen.routeName),
                     ProfileCard(
                         "Working Hours",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        "Set your working hours for each day and let the clients know when you are available",
                         WorkingHours.routeName),
                     ProfileCard(
                         "Working Areas",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        "Let the clients know in what places are you working",
                         WorkingAreas.routeName),
                     ProfileCard(
                         "Certificates",
-                        "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                        "List your certifications, degrees, courses and everything you got to show that you are qualified",
                         CertificatesScreen.routeName),
-                    ProfileCard("Gallery", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    ProfileCard(
+                        "Gallery",
+                        "Upload all the images that you have for each service, to impress everyone",
                         "null"),
                     ProfileCard(
-                        "Price", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                        "Social Media",
+                        "Add all the links to your social media",
+                        SocialScreen.routeName),
+                    // ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    //     GenProfile.routeName),
+                    // ProfileCard("Information",
+                    //     "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // // ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    // //     SocialScreen.routeName),
+                    // ProfileCard(
+                    //     "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
+                    //     GenProfile.routeName),
+                    // ProfileCard("Information",
+                    //     "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard(
+                    //     "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
+                    // ProfileCard(
+                    //     "Price", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                   ],
                 ),
               ),
@@ -484,7 +496,7 @@ class _BioState extends State<Bio> {
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText:
-                      'Experienced web developer with a strong background in developing award-winning applications for a diverse clientele. 5+ years of industry',
+                      'Here you can introduce yourself better Write couple of words',
                   hintStyle: TextStyle(color: Colors.grey),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -501,7 +513,7 @@ class _BioState extends State<Bio> {
                     onTap: () {
                       Navigator.of(context).pushNamed(BioScreen.routeName);
                     },
-                    buttonText: "Edit  Bio",
+                    buttonText: "Add Info",
                     buttonColor: AppColors.gradientGreen,
                     textColor: AppColors.white,
                     borderRadius: 20,
@@ -653,8 +665,10 @@ class ProfileCard extends StatelessWidget {
                 height: 20,
               ),
               Material(
+                color: Colors.white,
                 child: Center(
                   child: Container(
+                    color: Colors.white,
                     width: 200,
                     child: CustomButton(
                       onTap: () {
@@ -662,7 +676,7 @@ class ProfileCard extends StatelessWidget {
                           Navigator.of(context).pushNamed(route);
                         }
                       },
-                      buttonText: "Add Information",
+                      buttonText: "Add Info",
                       buttonColor: AppColors.gradientGreen,
                       textColor: AppColors.white,
                       borderRadius: 20,

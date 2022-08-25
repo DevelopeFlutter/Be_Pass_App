@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unused_import, non_constant_identifier_names
 
 import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
+import 'package:be_pass/Screens/credits_screen.dart';
+import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,8 +34,11 @@ class AppDrawer extends StatelessWidget {
               customTileTrail(
                   "Language / Hebrew", Icons.language, "null", context),
               SizedBox(height: 10),
-              customTileTrail("Currency & Time Format",
-                  Icons.currency_exchange_sharp, "null", context),
+              customTileTrail(
+                  "Currency & Time Format",
+                  Icons.currency_exchange_sharp,
+                  CurrencyTimeScreen.routeName,
+                  context),
               SizedBox(height: 10),
               headingText("Account Settings"),
               SizedBox(height: 10),
@@ -48,7 +53,8 @@ class AppDrawer extends StatelessWidget {
               SizedBox(height: 10),
               headingText("Credits"),
               SizedBox(height: 10),
-              customTileTrail("Credit", Icons.attach_money, "null", context),
+              customTileTrail("Credit", Icons.attach_money,
+                  CreditsScreen.routeName, context),
               SizedBox(height: 10),
               headingText("Other"),
               SizedBox(height: 10),

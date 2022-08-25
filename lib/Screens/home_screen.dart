@@ -1,10 +1,12 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unused_import
 
+import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:be_pass/Widgets/category_dropdown.dart';
 import 'package:be_pass/Widgets/country_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../Authentication/View/sign_up_view.dart';
 import '../Widgets/bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -197,7 +199,12 @@ class HomeScreen extends StatelessWidget {
                       height: size.height / 10,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpView()),
+                        );
+                      },
                       child: Text(
                         "Create an account",
                         style: TextStyle(
