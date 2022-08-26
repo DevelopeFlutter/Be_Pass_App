@@ -23,11 +23,12 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file(‘key.properties’)
+def keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
@@ -49,13 +50,13 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-        defaultConfig {
-            applicationId "com.example.be_pass"
-            minSdkVersion 22
-            targetSdkVersion 31
-            versionCode 1
-            versionName "1.0"
-            multiDexEnabled true
+    defaultConfig {
+        applicationId "com.example.be_pass"
+        minSdkVersion 22
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -63,28 +64,28 @@ android {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword'] }
+            storePassword keystoreProperties['storePassword']
+        }
+
+        buildTypes {
+            debug {
+                signingConfig signingConfigs.debug
+            }
+            release {
+                signingConfig signingConfigs.release
+            }
+        }
     }
 
-    buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.release
-        }
+    flutter {
+        source '../..'
     }
-}
 
-flutter {
-    source '../..'
-}
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation platform('com.google.firebase:firebase-bom:30.3.2')
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'com.android.support:multidex:1.0.3'
+        implementation 'com.google.firebase:firebase-analytics'
+        implementation 'com.google.firebase:firebase-crashlytics'
+        implementation platform('com.google.firebase:firebase-bom:30.3.2')
+    }
 }
