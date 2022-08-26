@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'dart:developer';
-
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
@@ -27,6 +26,10 @@ import 'Screens/working_areas.dart';
 import 'app_Colors.dart';
 import 'Screens/splash_screen.dart';
 import 'dart:math';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+await Firebase.initializeApp();
 
 void main() {
   runApp(const MyApp());
