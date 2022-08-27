@@ -30,7 +30,7 @@ import 'Screens/splash_screen.dart';
 import 'dart:math';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() async {
+Future<void> main() async {
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
