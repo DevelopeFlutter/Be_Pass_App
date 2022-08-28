@@ -7,6 +7,7 @@ import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
 import 'package:be_pass/Screens/filters_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
+import 'package:be_pass/Screens/language_screen.dart';
 import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/Authentication/View/login_view.dart';
@@ -18,7 +19,6 @@ import 'package:be_pass/Widgets/bottom_nav.dart';
 import 'package:be_pass/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_tags/flutter_tags.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';
 import 'Screens/generl_profile_screen.dart';
@@ -30,17 +30,15 @@ import 'Screens/splash_screen.dart';
 import 'dart:math';
 import 'package:firebase_core/firebase_core.dart';
 
-Future<void> main() async {
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
 }
 
 TextEditingController bla = TextEditingController();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,6 +65,7 @@ class MyApp extends StatelessWidget {
         WorkingAreas.routeName: (ctx) => WorkingAreas(),
         CreditsScreen.routeName: (ctx) => CreditsScreen(),
         CurrencyTimeScreen.routeName: (ctx) => CurrencyTimeScreen(),
+        LanguageScreen.routeName: (ctx) => LanguageScreen(),
         SignUpView.routeName: (ctx) => SignUpView(),
       },
     );
