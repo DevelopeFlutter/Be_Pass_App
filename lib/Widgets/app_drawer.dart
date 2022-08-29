@@ -2,6 +2,7 @@
 
 import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
+import 'package:be_pass/Screens/language_screen.dart';
 import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,8 @@ class AppDrawer extends StatelessWidget {
               SizedBox(height: 40),
               headingText("Preferences"),
               SizedBox(height: 10),
-              customTileTrail(
-                  "Language / Hebrew", Icons.language, "null", context),
+              customTileTrail("Language / Hebrew", Icons.language,
+                  LanguageScreen.routeName, context),
               SizedBox(height: 10),
               customTileTrail(
                   "Currency & Time Format",
