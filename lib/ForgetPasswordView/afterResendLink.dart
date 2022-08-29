@@ -8,15 +8,15 @@ import '../app_Colors.dart';
 import '../Authentication/Controller/auth_controller.dart';
 import '../Authentication/Components/textformfield.dart';
 
-class ForgetPasswordView extends StatefulWidget {
-  static const routeName = "forgot-password";
-  const ForgetPasswordView({Key? key}) : super(key: key);
+class AfterResendLinkView extends StatefulWidget {
+  static const routeName = "verify-email";
+  const AfterResendLinkView({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
+  State<AfterResendLinkView> createState() => _AfterResendLinkViewState();
 }
 
-class _ForgetPasswordViewState extends State<ForgetPasswordView> {
+class _AfterResendLinkViewState extends State<AfterResendLinkView> {
   AuthController controller = Get.put(AuthController());
 
   @override
@@ -35,23 +35,24 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             ),
           ),
           const SizedBox(
-            height: 150,
+            height: 180,
           ),
+          Image.asset("assets/Mask.png",height: 70,color: AppColors.greenishText,),
           Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 5, 10),
+            padding: const EdgeInsets.fromLTRB(20, 40, 5, 10),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Row(
                 children: [
                   Text(
-                    "Forget Password ? ",
+                    "Check your email",
                     style: GoogleFonts.poppins(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
                         color: AppColors.black),
                   ),
                   const Icon(
-                    Icons.key,
+                    Icons.email_outlined,
                     color: AppColors.starColor,
                   )
                 ],
@@ -61,7 +62,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
-              "Enter your email and we will send you instructions to reset your password.",
+              "We sent an email to: hello@pixinvent.com\n""Please follow the link inside to continue."
+                  "If you can’t find the email within your Inbox,please check your Spam folder.",
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
@@ -69,22 +71,11 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
+
           Column(
             children: [
-              textformfeild(
-                isObscureText: false,
-                boolTitleShowHide: true,
-                fieldName: "Email",
-                hint_text: "johndoe@gmail.com",
-                returnDatacall: (val) {
-                  controller.email.value = val;
-                },
-              ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               Container(
                 height: 45,
@@ -94,35 +85,34 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 ),
                 child: CustomButton(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ResetPasswordView()));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const ResetPasswordView()));
                   },
-                  buttonText: "Send Reset Link",
+                  buttonText: "Back to profile",
                   textColor: AppColors.white,
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              TextButton(
-                  onPressed: () {
-                    // Navigator.of(context).pop();
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColors.gradientGreen,
-                        size: 18,
-                      ),
-                      Text(
-                        "Back to login",
-                        style:
-                            GoogleFonts.poppins(color: AppColors.gradientGreen),
-                      )
-                    ],
-                  ))
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Didn't recive an email?",
+                      style: GoogleFonts.poppins(
+                        color: AppColors.greyText,
+                      ),),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5),
+                    child: Text(
+                      "Resend",
+                      style:
+                      GoogleFonts.poppins(color: AppColors.gradientGreen,
+                      fontSize: 16),
+                    ),
+                  )
+                ],
+              )
             ],
           )
         ]));

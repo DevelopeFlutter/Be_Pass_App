@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:be_pass/Authentication/Components/textformfield.dart';
+import 'package:be_pass/ForgetPasswordView/verifiyEmail.dart';
+import 'package:be_pass/Widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -93,29 +95,19 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           const SizedBox(
             height: 10,
           ),
-          SizedBox(
-            height: 40,
+          Container(
+            height: 45,
             width: 350,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                )),
-                backgroundColor:
-                    MaterialStateProperty.all(AppColors.gradientGreen),
-              ),
-              onPressed: () {
-                // if (_formKey.currentState!.validate()) {
-                //
-                //   Navigator.of(context).push(MaterialPageRoute(
-                //       builder: (context) => ResetPassword()));
-                // }
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: CustomButton(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const VerifyEmailView()));
               },
-              child: Text('Send Reset Link',
-                  style: GoogleFonts.poppins(
-                      fontSize: 20, fontWeight: FontWeight.w400,
-                  color: AppColors.white)),
+              buttonText: "Set New Password",
+              textColor: AppColors.white,
             ),
           ),
           const SizedBox(

@@ -4,6 +4,9 @@ import 'dart:developer';
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
+import 'package:be_pass/Screens/changeEmail.dart';
+import 'package:be_pass/Screens/changePassword.dart';
+import 'package:be_pass/Screens/changeUserName.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
 import 'package:be_pass/Screens/filters_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: BottomBar(),
+      home: ChangeUserName(),
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),

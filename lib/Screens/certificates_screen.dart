@@ -109,7 +109,7 @@ class _CertificatesScreenState extends State<CertificatesScreen> {
             SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: 148,
               child: CustomButton(

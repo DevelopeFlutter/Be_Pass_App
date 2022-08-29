@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../app_Colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -26,6 +27,7 @@ class CustomButton extends StatelessWidget {
 
   Color? borderColor;
 
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,7 +37,7 @@ class CustomButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: buttonColor ?? AppColors.gradientGreen,
           border: Border.all(color: borderColor ?? Colors.white),
-          borderRadius: BorderRadius.circular(borderRadius ?? 0)),
+          borderRadius: BorderRadius.circular((buttonText == "Send Reset Link"|| buttonText=="Set New Password" || buttonText=="Resend Link" ||buttonText =="Back to profile")?borderRadius ??10:buttonText == "Update" || buttonText == "Change Email"?borderRadius??30:0)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -43,8 +45,8 @@ class CustomButton extends StatelessWidget {
           child: Center(
             child: Text(
               buttonText,
-              style: TextStyle(
-                  color: textColor, fontSize: 16, fontWeight: FontWeight.w400),
+              style: GoogleFonts.poppins(
+                  color: textColor, fontSize:buttonText =="Send Reset Link"|| buttonText =="Set New Password"||buttonText=="Resend Link" || buttonText =="Back to profile" ||buttonText == "Update"?20:16, fontWeight: FontWeight.w400),
             ),
           ),
         ),

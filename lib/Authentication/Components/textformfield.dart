@@ -79,7 +79,7 @@ Widget textformfeild({
             decoration: InputDecoration(
               suffixIcon: Icon(icon),
               contentPadding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  const EdgeInsets.fromLTRB(10,0,10,0),
               hintStyle:
                   const TextStyle(fontSize: 14, color: AppColors.greyText),
               focusedBorder: OutlineInputBorder(

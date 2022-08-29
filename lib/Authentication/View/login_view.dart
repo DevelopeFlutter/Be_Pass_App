@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
 import 'package:be_pass/Services/auth%20services/login.dart';
 import 'package:be_pass/Widgets/bottom_nav.dart';
 import 'package:be_pass/utils/Loader.dart';
@@ -170,7 +171,7 @@ class _LoginViewState extends State<LoginView> {
                           _submitform();
                         }
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const ResetPasswordView()));
+                            builder: (context) => const ForgetPasswordView()));
                       },
                       child: Text('Log In',
                           style: TextStyle(
