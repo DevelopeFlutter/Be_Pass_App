@@ -18,9 +18,13 @@ class _ChangePasswordState extends State<ChangePassword> {
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
-         const SizedBox(height: 40,),
-          Header(Icons.arrow_back_ios_new, "Change Password",""),
-         const SizedBox(height: 50,),
+          const SizedBox(
+            height: 40,
+          ),
+          Header(Icons.arrow_back_ios_new, "Change Password", ""),
+          const SizedBox(
+            height: 50,
+          ),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Card(
@@ -32,37 +36,37 @@ class _ChangePasswordState extends State<ChangePassword> {
                         isObscureText: false,
                         boolTitleShowHide: true,
                         fieldName: "Current Password",
-                      hint_text: "Enter current password"
-                    ),
+                        hint_text: "Enter current password"),
                   ),
                   textformfeild(
                       isObscureText: false,
                       boolTitleShowHide: true,
                       fieldName: "New Password",
-                      hint_text: "Enter New password"
-                  ),
+                      hint_text: "Enter New password"),
                   textformfeild(
                       isObscureText: false,
                       boolTitleShowHide: true,
                       fieldName: "Retype New Password",
-                      hint_text: "Retype new password"
+                      hint_text: "Retype new password"),
+                  SizedBox(
+                    height: 20,
                   ),
-                  SizedBox(height: 20,),
                   SizedBox(
                     height: 50,
                     width: 220,
-                    child: CustomButton(onTap: () {  }, buttonText: 'Update',
-                    textColor: AppColors.white,),
+                    child: CustomButton(
+                      onTap: () {},
+                      buttonText: 'Update',
+                      textColor: AppColors.white,
+                    ),
                   ),
-                  SizedBox(height: 30,),
-
-
-
+                  SizedBox(
+                    height: 30,
+                  ),
                 ],
-              ),),
+              ),
+            ),
           )
-
-
         ],
       ),
     );
@@ -73,7 +77,7 @@ class Header extends StatelessWidget {
   dynamic icon;
   String title;
   String empty;
-  Header(this.icon,this.title,this.empty, {Key? key}) : super(key: key);
+  Header(this.icon, this.title, this.empty, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -82,22 +86,27 @@ class Header extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 10),
-          child: Icon(icon,size: 22,),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Icon(
+                icon,
+                size: 22,
+              )),
         ),
-      Text(title,style: GoogleFonts.poppins(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: AppColors.black
-      ),),
+        Text(
+          title,
+          style: GoogleFonts.poppins(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+              color: AppColors.black),
+        ),
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: Text(empty),
         )
-
       ],
     );
   }
 }
-
-
-

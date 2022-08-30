@@ -6,6 +6,7 @@ import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
 
 class ChangeUserName extends StatefulWidget {
+  static const routeName = "change-username";
   const ChangeUserName({Key? key}) : super(key: key);
 
   @override

@@ -24,6 +24,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';
+import 'Screens/gallery.dart';
 import 'Screens/generl_profile_screen.dart';
 import 'Screens/landingPageView.dart';
 import 'Screens/profile_screen.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: ChangeUserName(),
+      home: BottomBar(),
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
@@ -70,6 +71,8 @@ class MyApp extends StatelessWidget {
         CurrencyTimeScreen.routeName: (ctx) => CurrencyTimeScreen(),
         LanguageScreen.routeName: (ctx) => LanguageScreen(),
         SignUpView.routeName: (ctx) => SignUpView(),
+        ChangeEmailView.routeName: (ctx) => ChangeEmailView(),
+        ChangeUserName.routeName: (ctx) => ChangeUserName(),
       },
     );
   }

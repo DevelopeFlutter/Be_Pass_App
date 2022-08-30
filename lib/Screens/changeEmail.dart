@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChangeEmailView extends StatefulWidget {
+  static const routeName = "change-email";
   const ChangeEmailView({Key? key}) : super(key: key);
 
   @override
