@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
+import 'package:be_pass/ForgetPasswordView/verifiyEmail.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/changeEmail.dart';
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
         SignUpView.routeName: (ctx) => SignUpView(),
         ChangeEmailView.routeName: (ctx) => ChangeEmailView(),
         ChangeUserName.routeName: (ctx) => ChangeUserName(),
+        VerifyEmailView.routeName: (ctx) => VerifyEmailView(),
       },
     );
   }
