@@ -78,7 +78,7 @@ class _CertificatesScreenState extends State<CertificatesScreen> {
                       child: Text("No Certificates !",
                           style: TextStyle(fontSize: 20)))
                   : ListView.builder(
-                      itemCount: 1 + certificateList.length,
+                      itemCount: certificateList.length,
                       itemBuilder: (BuildContext context, int index) {
                         return certificateCard(context, _removeCard);
                       },
@@ -109,7 +109,7 @@ class _CertificatesScreenState extends State<CertificatesScreen> {
             SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               height: 40,
               width: 148,
               child: CustomButton(
@@ -136,7 +136,7 @@ Column certificateCard(BuildContext context, void Function() remove) {
               color: AppColors.greyText,
             ),
             borderRadius: BorderRadius.circular(10)),
-        height: MediaQuery.of(context).size.height / 1.5,
+        height: MediaQuery.of(context).size.height / 1.2,
         width: 328,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

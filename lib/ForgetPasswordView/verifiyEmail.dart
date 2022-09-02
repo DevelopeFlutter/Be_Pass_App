@@ -1,3 +1,4 @@
+import 'package:be_pass/ForgetPasswordView/afterResendLink.dart';
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
 import 'package:be_pass/Widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,15 @@ import '../app_Colors.dart';
 import '../Authentication/Controller/auth_controller.dart';
 import '../Authentication/Components/textformfield.dart';
 
-class ForgetPasswordView extends StatefulWidget {
-  static const routeName = "forgot-password";
-  const ForgetPasswordView({Key? key}) : super(key: key);
+class VerifyEmailView extends StatefulWidget {
+  static const routeName = "verify-email";
+  const VerifyEmailView({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
+  State<VerifyEmailView> createState() => _VerifyEmailViewState();
 }
 
-class _ForgetPasswordViewState extends State<ForgetPasswordView> {
+class _VerifyEmailViewState extends State<VerifyEmailView> {
   AuthController controller = Get.put(AuthController());
 
   @override
@@ -35,7 +36,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             ),
           ),
           const SizedBox(
-            height: 150,
+            height: 220,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 5, 10),
@@ -44,14 +45,14 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               child: Row(
                 children: [
                   Text(
-                    "Forget Password ? ",
+                    "Verify your email ",
                     style: GoogleFonts.poppins(
                         fontSize: 24,
                         fontWeight: FontWeight.w500,
                         color: AppColors.black),
                   ),
                   const Icon(
-                    Icons.key,
+                    Icons.email_outlined,
                     color: AppColors.starColor,
                   )
                 ],
@@ -61,7 +62,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
-              "Enter your email and we will send you instructions to reset your password.",
+              "Account activation link sent to your email address: hello@pixinvent.com \n"
+                  "Please follow the link inside to continue.",
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
@@ -69,22 +71,11 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
+
           Column(
             children: [
-              textformfeild(
-                isObscureText: false,
-                boolTitleShowHide: true,
-                fieldName: "Email",
-                hint_text: "johndoe@gmail.com",
-                returnDatacall: (val) {
-                  controller.email.value = val;
-                },
-              ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               Container(
                 height: 45,
@@ -95,9 +86,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 child: CustomButton(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ResetPasswordView()));
+                        builder: (context) => const AfterResendLinkView()));
                   },
-                  buttonText: "Send Reset Link",
+                  buttonText: "Resend Link",
                   textColor: AppColors.white,
                 ),
               ),
@@ -106,7 +97,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               ),
               TextButton(
                   onPressed: () {
-                    // Navigator.of(context).pop();
+                    Navigator.of(context).pop();
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +110,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       Text(
                         "Back to login",
                         style:
-                            GoogleFonts.poppins(color: AppColors.gradientGreen),
+                        GoogleFonts.poppins(color: AppColors.gradientGreen),
                       )
                     ],
                   ))

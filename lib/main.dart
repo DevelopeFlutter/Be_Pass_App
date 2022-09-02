@@ -2,12 +2,17 @@
 
 import 'dart:developer';
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
+import 'package:be_pass/ForgetPasswordView/verifiyEmail.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
+import 'package:be_pass/Screens/changeEmail.dart';
+import 'package:be_pass/Screens/changePassword.dart';
+import 'package:be_pass/Screens/changeUserName.dart';
 import 'package:be_pass/Screens/credits_screen.dart';
 import 'package:be_pass/Screens/filters_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
 import 'package:be_pass/Screens/language_screen.dart';
+import 'package:be_pass/Screens/searching_screen.dart';
 import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/time_currency.dart';
 import 'package:be_pass/Authentication/View/login_view.dart';
@@ -21,6 +26,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';
+import 'Screens/gallery.dart';
+import 'Screens/gallery_view.dart';
 import 'Screens/generl_profile_screen.dart';
 import 'Screens/landingPageView.dart';
 import 'Screens/profile_screen.dart';
@@ -48,7 +55,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: BottomBar(),
+      home: GalleryScreenView(),
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
@@ -67,6 +74,10 @@ class MyApp extends StatelessWidget {
         CurrencyTimeScreen.routeName: (ctx) => CurrencyTimeScreen(),
         LanguageScreen.routeName: (ctx) => LanguageScreen(),
         SignUpView.routeName: (ctx) => SignUpView(),
+        ChangeEmailView.routeName: (ctx) => ChangeEmailView(),
+        ChangeUserName.routeName: (ctx) => ChangeUserName(),
+        VerifyEmailView.routeName: (ctx) => VerifyEmailView(),
+        SearchingScreen.routeName: (ctx) => SearchingScreen()
       },
     );
   }
