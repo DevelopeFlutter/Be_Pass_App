@@ -7,18 +7,138 @@ import '../Widgets/custom_button_widget.dart';
 import '../Widgets/text_widget.dart';
 import '../app_Colors.dart';
 
-class GenProfile extends StatelessWidget {
+class GenProfile extends StatefulWidget {
   static const routeName = "gen-profile";
-  TextEditingController _fname = TextEditingController();
-  TextEditingController _lname = TextEditingController();
-  TextEditingController _dob = TextEditingController();
-  TextEditingController _loc = TextEditingController();
 
   GenProfile({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<GenProfile> createState() => _GenProfileState();
+}
+
+class _GenProfileState extends State<GenProfile> {
+  TextEditingController _fname = TextEditingController();
+
+  TextEditingController _lname = TextEditingController();
+
+  TextEditingController _textEditingControllerPro = TextEditingController();
+
+  TextEditingController _textEditingControllerSkill = TextEditingController();
+
+  TextEditingController _dob = TextEditingController();
+
+  TextEditingController _loc = TextEditingController();
+  List<String> _valuesSkill = [];
+  List<bool> _selectedSkill = [];
+  List<String> _valuesPro = [];
+  List<bool> _selectedPro = [];
+
+  @override
+  void dispose() {
+    _fname.dispose();
+    _lname.dispose();
+    _loc.dispose();
+    super.dispose();
+  }
+
+  Widget buildChipsPro() {
+    List<Widget> chips = [];
+
+    for (int i = 0; i < _valuesPro.length; i++) {
+      InputChip actionChip = InputChip(
+        selected: _selectedPro[i],
+        label: Text(
+          _valuesPro[i],
+          style: TextStyle(
+              color: AppColors.gradientGreen,
+              fontWeight: FontWeight.w600,
+              fontSize: 12),
+        ),
+        selectedColor: Color.fromARGB(83, 78, 228, 64),
+        deleteIconColor: AppColors.gradientGreen,
+        elevation: 10,
+        pressElevation: 5,
+        shadowColor: Colors.teal,
+        onPressed: () {
+          setState(() {
+            _selectedPro[i] = !_selectedPro[i];
+          });
+        },
+        onDeleted: () {
+          _valuesPro.removeAt(i);
+          _selectedPro.removeAt(i);
+
+          setState(() {
+            _valuesPro = _valuesPro;
+            _selectedPro = _selectedPro;
+          });
+        },
+      );
+
+      chips.add(actionChip);
+    }
+    return GridView(
+      // This next line does the trick.
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 120,
+          childAspectRatio: 2,
+          crossAxisSpacing: 5,
+          mainAxisExtent: 50),
+      //scrollDirection: Axis.horizontal,
+      children: chips,
+    );
+  }
+
+  Widget buildChipsSkill() {
+    List<Widget> chips = [];
+
+    for (int i = 0; i < _valuesSkill.length; i++) {
+      InputChip actionChip = InputChip(
+        selected: _selectedSkill[i],
+        label: Text(
+          _valuesSkill[i],
+          style: TextStyle(
+              color: AppColors.gradientGreen,
+              fontWeight: FontWeight.w600,
+              fontSize: 12),
+        ),
+        selectedColor: Color.fromARGB(83, 78, 228, 64),
+        deleteIconColor: AppColors.gradientGreen,
+        elevation: 10,
+        pressElevation: 5,
+        shadowColor: Colors.teal,
+        onPressed: () {
+          setState(() {
+            _selectedSkill[i] = !_selectedSkill[i];
+          });
+        },
+        onDeleted: () {
+          _valuesSkill.removeAt(i);
+          _selectedSkill.removeAt(i);
+
+          setState(() {
+            _valuesSkill = _valuesSkill;
+            _selectedSkill = _selectedSkill;
+          });
+        },
+      );
+
+      chips.add(actionChip);
+    }
+    return GridView(
+      // This next line does the trick.
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 120,
+          childAspectRatio: 2,
+          crossAxisSpacing: 5,
+          mainAxisExtent: 50),
+      //scrollDirection: Axis.horizontal,
+      children: chips,
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -131,7 +251,79 @@ class GenProfile extends StatelessWidget {
                 onSubmitField: () {},
                 textInputType: TextInputType.name,
                 hintText: "last name"),
-            profsel(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                    label: Text("Profession"),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
+                  controller: _textEditingControllerPro,
+                  onEditingComplete: () {
+                    _valuesPro.add(_textEditingControllerPro.text);
+                    _selectedPro.add(true);
+                    _textEditingControllerPro.clear();
+
+                    setState(() {
+                      _valuesPro = _valuesPro;
+                      _selectedPro = _selectedPro;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: _valuesPro.isEmpty ? 5 : 100,
+              child: buildChipsPro(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.name,
+                  decoration: InputDecoration(
+                    label: Text("Skills"),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: BorderSide(
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  controller: _textEditingControllerSkill,
+                  onEditingComplete: () {
+                    _valuesSkill.add(_textEditingControllerSkill.text);
+                    _selectedSkill.add(true);
+                    _textEditingControllerSkill.clear();
+
+                    setState(() {
+                      _valuesSkill = _valuesSkill;
+                      _selectedSkill = _selectedSkill;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: _valuesSkill.isEmpty ? 5 : 100,
+              child: buildChipsSkill(),
+            ),
             Mytextwidget(
                 labeltext: "Date of Birth",
                 controller: _fname,

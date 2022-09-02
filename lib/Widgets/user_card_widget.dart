@@ -13,8 +13,15 @@ class UserCardWidget extends StatelessWidget {
   final int reviews;
   final int money;
 
-  UserCardWidget(this.imgUrl, this.name, this.profession, this.location,
-      this.rating, this.reviews, this.money);
+  UserCardWidget(
+    this.imgUrl,
+    this.name,
+    this.profession,
+    this.location,
+    this.rating,
+    this.reviews,
+    this.money,
+  );
 
   @override
   Widget build(BuildContext context) {
