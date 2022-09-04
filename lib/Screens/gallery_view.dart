@@ -9,8 +9,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import '../Widgets/custom_button_widget.dart';
-import '../Widgets/image_select.dart';
-import '../Widgets/text_widget.dart';
+
 
 class GalleryScreenView extends StatefulWidget {
   static const routeName = "certificate-screen";
@@ -19,9 +18,6 @@ class GalleryScreenView extends StatefulWidget {
   @override
   State<GalleryScreenView> createState() => _GalleryScreenViewState();
 }
-
-TextEditingController _org = TextEditingController();
-TextEditingController _Cnam = TextEditingController();
 
 class _GalleryScreenViewState extends State<GalleryScreenView> {
   List<Widget> certificateList = [];
@@ -47,17 +43,18 @@ class _GalleryScreenViewState extends State<GalleryScreenView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
         children: [
-          //CertNotify(),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20),
             child: Column(
               children: [
                 Center(
                   child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
                           icon: Icon(Icons.arrow_back_ios),
@@ -70,6 +67,10 @@ class _GalleryScreenViewState extends State<GalleryScreenView> {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           )),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 70),
+                        child: Text(""),
+                      )
                     ],
                   ),
                 ),
@@ -192,7 +193,8 @@ Column certificateCard(BuildContext context, void Function() remove) {
                                 TextStyle(color: AppColors.red, fontSize: 16),
                           )).pOnly(right: 8),
                     ),
-                  )
+                  ),
+                  SizedBox(height: 60,)
                 ],
               )
             ],
@@ -214,6 +216,7 @@ class _ImageSelState extends State<ImageSel> {
 
   List<XFile>? imageFile = [];
 
+  List Index = [{"asd"},{"dfr"}];
   void getImageFromGallery() async {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
     setState(() {
@@ -230,78 +233,86 @@ class _ImageSelState extends State<ImageSel> {
       }
     });
   }
-
+  // void initState() {
+  //   super.initState();
+  //   imageFile!.add(XFile();
+  // }
   @override
   Widget build(BuildContext context) {
+    int length =  imageFile!.length +1;
+    print('length === ${length}');
     return Scaffold(
         body: Column(
-      children: [
-        GestureDetector(
-          child: Image.asset(
-            "assets/upload-image.png",
-            height: 60,
-          ),
-          onTap: () {
-            getImageFromGallery();
-          },
-        ),
-        Container(
-          height: 300,
-          width: double.infinity,
-          child: GridView.count(
-            crossAxisCount: 4,
-            children: List.generate(imageFile!.length, (index) {
-              return SizedBox(
-                  height: 120,
-                  width: 120,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Stack(
-                      children: [
-                        Image.file(
-                          File(
-                            imageFile![index].path,
-                          ),
-                          height: 60,
-                          width: 80,
-                          fit: BoxFit.fill,
+          children: [
+            SizedBox(
+              height: 300,
+              // color: AppColors.greyText,
+              width: double.infinity,
+              child: GridView.count(
+                crossAxisCount: 4,
+                children: List.generate(length, (index) {
+                  bool show = length == index+1;
+                  return !show? SizedBox(
+                      height: 120,
+                      width: 120,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Stack(
+                          children: [
+                            Image.file(
+                              File(
+                                imageFile![index].path,
+                              ),
+                              height: 60,
+                              width: 80,
+                              fit: BoxFit.fill,
+                            ),
+                            Positioned(
+                                top: 0,
+                                right: 0,
+                                child: InkWell(
+                                  child: Container(
+                                      height: 25,
+                                      width: 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(100),
+                                        // color: AppColors.gradientGreen,
+                                        image: const DecorationImage(
+                                            image:
+                                            AssetImage("assets/X.png")),
+                                      )),
+                                  onTap: () {
+                                    _removeImage();
+                                  },
+                                )),
+                          ],
                         ),
-                        Positioned(
-                            top: 0,
-                            right: 0,
-                            child: InkWell(
-                              child: Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    // color: AppColors.gradientGreen,
-                                    image: const DecorationImage(
-                                        image:
-                                            AssetImage("assets/fitness.png")),
-                                  )),
-                              onTap: () {
-                                _removeImage();
-                              },
-                            )),
-                      ],
+                      )):GestureDetector(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(14,10,16,20),
+                    child: DottedBorder(
+                      borderType: BorderType.RRect,
+                      radius: Radius.circular(5),
+                      dashPattern: [10, 10],
+                      color: AppColors.greenishText,
+                      strokeWidth: 2,
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: Image.asset("assets/upload-image.png"))
                     ),
-                  ));
-              //   Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Image.file(
-              //     File(
-              //       imageFile![index].path,
-              //     ),
-              //     height: 40,
-              //     width: 40,
-              //     fit: BoxFit.fill,
-              //   ),
-              // );
-            }),
-          ),
-        )
-      ],
-    ));
+                  ),
+                  onTap: () {
+                  getImageFromGallery();
+                  },
+                  );
+                }),
+              ),
+            ),
+
+
+          ],
+        ));
   }
 }
+
+

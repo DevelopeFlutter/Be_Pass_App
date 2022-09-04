@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unused_import
 
 import 'package:be_pass/Authentication/View/sign_up_view.dart';
-import 'package:be_pass/Screens/searching_screen.dart';
 import 'package:be_pass/Widgets/category_dropdown.dart';
 import 'package:be_pass/Widgets/country_dropdown.dart';
 import 'package:flutter/material.dart';
@@ -193,8 +192,8 @@ class HomeScreen extends StatelessWidget {
                           child: Center(
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed(SearchingScreen.routeName);
+                                // Navigator.of(context)
+                                //     .pushNamed(SearchingScreen.routeName);
                               },
                               child: Text(
                                 "Find Professinals",
