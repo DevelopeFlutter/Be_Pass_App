@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace, use_key_in_widget_constructors, camel_case_types, unnecessary_null_comparison
 
+import 'package:be_pass/ForgetPasswordView/verifiyEmail.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
+import 'package:be_pass/Screens/gallery_view.dart';
 import 'package:be_pass/Screens/generl_profile_screen.dart';
 import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/social_screen.dart';
@@ -34,6 +36,7 @@ class _ProfileState extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Headse(),
+
                     Bio(),
                     ProfileCard(
                         "Services",
@@ -54,7 +57,7 @@ class _ProfileState extends State<Profile> {
                     ProfileCard(
                         "Gallery",
                         "Upload all the images that you have for each service, to impress everyone",
-                        "null"),
+                        GalleryScreenView.routeName),
                     ProfileCard(
                         "Social Media",
                         "Add all the links to your social media",
@@ -351,11 +354,16 @@ class _HeadseState extends State<Headse> {
               ],
             ),
             SizedBox(height: 5),
-            Text("Confirm Your Email",
-                style: TextStyle(
-                    color: Color.fromRGBO(89, 223, 86, 1),
-                    fontSize: 15,
-                    decoration: TextDecoration.underline)),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(VerifyEmailView.routeName);
+              },
+              child: Text("Confirm Your Email",
+                  style: TextStyle(
+                      color: Color.fromRGBO(89, 223, 86, 1),
+                      fontSize: 15,
+                      decoration: TextDecoration.underline)),
+            ),
             Divider(
               color: AppColors.greyText,
               thickness: 0.8,

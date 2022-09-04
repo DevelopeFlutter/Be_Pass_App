@@ -11,7 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import '../Widgets/custom_button_widget.dart';
 
 class GalleryScreenView extends StatefulWidget {
-  static const routeName = "certificate-screen";
+  static const routeName = "gallery-screen";
   GalleryScreenView({Key? key}) : super(key: key);
 
   @override
@@ -20,9 +20,11 @@ class GalleryScreenView extends StatefulWidget {
 
 class _GalleryScreenViewState extends State<GalleryScreenView> {
   List<Widget> certificateList = [];
+  int galNum = 1;
   void _addCard() {
     setState(() {
-      certificateList.add(certificateCard(context, _removeCard));
+      certificateList
+          .add(certificateCard(context, certificateList.length, _removeCard));
     });
   }
 
@@ -82,7 +84,8 @@ class _GalleryScreenViewState extends State<GalleryScreenView> {
             child: ListView.builder(
               itemCount: certificateList.length,
               itemBuilder: (BuildContext context, int index) {
-                return certificateCard(context, _removeCard);
+                return certificateCard(
+                    context, certificateList.length, _removeCard);
               },
             ),
           ),
@@ -136,7 +139,7 @@ class _GalleryScreenViewState extends State<GalleryScreenView> {
   }
 }
 
-Column certificateCard(BuildContext context, void Function() remove) {
+Column certificateCard(BuildContext context, int Num, void Function() remove) {
   return Column(
     children: [
       // main container
@@ -157,7 +160,7 @@ Column certificateCard(BuildContext context, void Function() remove) {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Gallery 1",
+                  "Gallery $Num",
                   style: GoogleFonts.poppins(
                     textStyle: TextStyle(
                         color: AppColors.greyText,

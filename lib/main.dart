@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: GalleryScreenView(),
+      home: BottomBar(),
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
         ChangeEmailView.routeName: (ctx) => ChangeEmailView(),
         ChangeUserName.routeName: (ctx) => ChangeUserName(),
         VerifyEmailView.routeName: (ctx) => VerifyEmailView(),
-        // SearchingScreen.routeName: (ctx) => SearchingScreen()
+        GalleryScreenView.routeName: (ctx) => GalleryScreenView(),
       },
     );
   }
