@@ -10,7 +10,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import '../Widgets/custom_button_widget.dart';
 
-
 class GalleryScreenView extends StatefulWidget {
   static const routeName = "certificate-screen";
   GalleryScreenView({Key? key}) : super(key: key);
@@ -54,7 +53,7 @@ class _GalleryScreenViewState extends State<GalleryScreenView> {
               children: [
                 Center(
                   child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
                           icon: Icon(Icons.arrow_back_ios),
@@ -115,7 +114,6 @@ class _GalleryScreenViewState extends State<GalleryScreenView> {
               },
             ),
           ),
-
           SizedBox(
             height: 30,
           ),
@@ -194,7 +192,9 @@ Column certificateCard(BuildContext context, void Function() remove) {
                           )).pOnly(right: 8),
                     ),
                   ),
-                  SizedBox(height: 60,)
+                  SizedBox(
+                    height: 60,
+                  )
                 ],
               )
             ],
@@ -216,7 +216,10 @@ class _ImageSelState extends State<ImageSel> {
 
   List<XFile>? imageFile = [];
 
-  List Index = [{"asd"},{"dfr"}];
+  List Index = [
+    {"asd"},
+    {"dfr"}
+  ];
   void getImageFromGallery() async {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
     setState(() {
@@ -233,26 +236,28 @@ class _ImageSelState extends State<ImageSel> {
       }
     });
   }
+
   // void initState() {
   //   super.initState();
   //   imageFile!.add(XFile();
   // }
   @override
   Widget build(BuildContext context) {
-    int length =  imageFile!.length +1;
+    int length = imageFile!.length + 1;
     print('length === ${length}');
     return Scaffold(
         body: Column(
-          children: [
-            SizedBox(
-              height: 300,
-              // color: AppColors.greyText,
-              width: double.infinity,
-              child: GridView.count(
-                crossAxisCount: 4,
-                children: List.generate(length, (index) {
-                  bool show = length == index+1;
-                  return !show? SizedBox(
+      children: [
+        SizedBox(
+          height: 300,
+          // color: AppColors.greyText,
+          width: double.infinity,
+          child: GridView.count(
+            crossAxisCount: 4,
+            children: List.generate(length, (index) {
+              bool show = length == index + 1;
+              return !show
+                  ? SizedBox(
                       height: 120,
                       width: 120,
                       child: Padding(
@@ -275,11 +280,11 @@ class _ImageSelState extends State<ImageSel> {
                                       height: 25,
                                       width: 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(100),
+                                        borderRadius:
+                                            BorderRadius.circular(100),
                                         // color: AppColors.gradientGreen,
                                         image: const DecorationImage(
-                                            image:
-                                            AssetImage("assets/X.png")),
+                                            image: AssetImage("assets/X.png")),
                                       )),
                                   onTap: () {
                                     _removeImage();
@@ -287,32 +292,28 @@ class _ImageSelState extends State<ImageSel> {
                                 )),
                           ],
                         ),
-                      )):GestureDetector(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(14,10,16,20),
-                    child: DottedBorder(
-                      borderType: BorderType.RRect,
-                      radius: Radius.circular(5),
-                      dashPattern: [10, 10],
-                      color: AppColors.greenishText,
-                      strokeWidth: 2,
-                      child: Align(
-                          alignment: Alignment.center,
-                          child: Image.asset("assets/upload-image.png"))
-                    ),
-                  ),
-                  onTap: () {
-                  getImageFromGallery();
-                  },
-                  );
-                }),
-              ),
-            ),
-
-
-          ],
-        ));
+                      ))
+                  : GestureDetector(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(14, 10, 16, 20),
+                        child: DottedBorder(
+                            borderType: BorderType.RRect,
+                            radius: Radius.circular(5),
+                            dashPattern: [10, 10],
+                            color: AppColors.greenishText,
+                            strokeWidth: 2,
+                            child: Align(
+                                alignment: Alignment.center,
+                                child: Image.asset("assets/upload-image.png"))),
+                      ),
+                      onTap: () {
+                        getImageFromGallery();
+                      },
+                    );
+            }),
+          ),
+        ),
+      ],
+    ));
   }
 }
-
-
