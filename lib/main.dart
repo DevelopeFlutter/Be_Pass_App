@@ -26,7 +26,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';
 import 'Screens/gallery_view.dart';
-import 'Screens/generl_profile_screen.dart';
+import 'Screens/general_profile_screen.dart';
 import 'Screens/landingPageView.dart';
 import 'Screens/profile_screen.dart';
 import 'Screens/working_areas.dart';

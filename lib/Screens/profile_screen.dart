@@ -4,7 +4,7 @@ import 'package:be_pass/ForgetPasswordView/verifiyEmail.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
 import 'package:be_pass/Screens/gallery_view.dart';
-import 'package:be_pass/Screens/generl_profile_screen.dart';
+import 'package:be_pass/Screens/general_profile_screen.dart';
 import 'package:be_pass/Screens/services.dart';
 import 'package:be_pass/Screens/social_screen.dart';
 import 'package:be_pass/Screens/working_areas.dart';
