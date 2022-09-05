@@ -18,7 +18,9 @@ import '../app_Colors.dart';
 class Profile extends StatefulWidget {
   static const routeName = "user-profile";
   final bool userCheck;
-  Profile(this.userCheck);
+  final bool bioCheck;
+  final String bioText;
+  Profile(this.userCheck, this.bioCheck, this.bioText);
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -36,8 +38,7 @@ class _ProfileState extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Headse(),
-
-                    Bio(),
+                    Bio(bioCheck: widget.bioCheck, bioText: widget.bioText),
                     ProfileCard(
                         "Services",
                         "Describe your services, explain everything you are doing and set the prices",
@@ -62,22 +63,6 @@ class _ProfileState extends State<Profile> {
                         "Social Media",
                         "Add all the links to your social media",
                         SocialScreen.routeName),
-                    // ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                    //     GenProfile.routeName),
-                    // ProfileCard("Information",
-                    //     "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    // // ProfileCard("Social", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                    // //     SocialScreen.routeName),
-                    // ProfileCard(
-                    //     "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    // ProfileCard("General", "Lorem Ipsum Lorem IpsumLorem Ipsum",
-                    //     GenProfile.routeName),
-                    // ProfileCard("Information",
-                    //     "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    // ProfileCard(
-                    //     "About", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
-                    // ProfileCard(
-                    //     "Price", "Lorem Ipsum Lorem IpsumLorem Ipsum", "null"),
                   ],
                 ),
               ),
@@ -389,30 +374,6 @@ class _HeadseState extends State<Headse> {
               color: AppColors.greyText,
               thickness: 0.8,
             ),
-            // textformwidget(
-            //     labeltext: "Date of Birth",
-            //     controller: _uname,
-            //     actionKeyboard: TextInputAction.next,
-            //     onSubmitField: () {},
-            //     textInputType: TextInputType.datetime,
-            //     hintText: "13/2/1998"),
-
-            // textformwidget(
-            //     labeltext: "Location",
-            //     controller: _uname,
-            //     actionKeyboard: TextInputAction.next,
-            //     onSubmitField: () {},
-            //     textInputType: TextInputType.streetAddress,
-            //     hintText: "Barcelona, Spain"),
-
-            // textformwidget(
-            //     labeltext: "Username",
-            //     controller: _uname,
-            //     actionKeyboard: TextInputAction.next,
-            //     onSubmitField: () {},
-            //     textInputType: TextInputType.datetime,
-            //     hintText: "kylo.neee"),
-
             SizedBox(
               height: 20,
             ),
@@ -473,7 +434,10 @@ class textformwidget extends StatelessWidget {
 }
 
 class Bio extends StatefulWidget {
-  const Bio({Key? key}) : super(key: key);
+  final bool bioCheck;
+  final String bioText;
+  const Bio({Key? key, required this.bioCheck, required this.bioText})
+      : super(key: key);
 
   @override
   State<Bio> createState() => _BioState();
@@ -482,163 +446,112 @@ class Bio extends StatefulWidget {
 class _BioState extends State<Bio> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Bio",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              TextFormField(
-                minLines: 2,
-                maxLines: 5,
-                textInputAction: TextInputAction.send,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  hintText:
-                      'Here you can introduce yourself better Write couple of words',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
+    return widget.bioCheck == true
+        ? Card(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(BioScreen.routeName);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Bio",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.edit, color: AppColors.gradientGreen),
+                              Text("Edit",
+                                  style:
+                                      TextStyle(color: AppColors.gradientGreen))
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                        height: 120,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(widget.bioText),
+                        )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: Container(
-                  width: 200,
-                  child: CustomButton(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(BioScreen.routeName);
-                    },
-                    buttonText: "Add Info",
-                    buttonColor: AppColors.gradientGreen,
-                    textColor: AppColors.white,
-                    borderRadius: 20,
-                  ),
+            ),
+          )
+        : Card(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Container(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Bio",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                        height: 120,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              "Here you can introduce yourself better Write couple of words",
+                              style: TextStyle(color: Colors.grey)),
+                        )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: Container(
+                        width: 200,
+                        child: CustomButton(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(BioScreen.routeName);
+                          },
+                          buttonText: "Add Info",
+                          buttonColor: AppColors.gradientGreen,
+                          textColor: AppColors.white,
+                          borderRadius: 20,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+              ),
+            ),
+          );
   }
 }
-
-// class Gen extends StatelessWidget {
-//   const Gen({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       child: Padding(
-//         padding: const EdgeInsets.all(15.0),
-//         child: Container(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text(
-//                 "General",
-//                 style: TextStyle(fontSize: 20),
-//               ),
-//               Divider(
-//                 thickness: 0.8,
-//               ),
-//               Text(
-//                 "About, Service, Certificate, Working hours, Gallery, Price ",
-//                 style: GoogleFonts.poppins(
-//                   textStyle: TextStyle(
-//                       color: AppColors.greyText, wordSpacing: 10, fontSize: 12),
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 20,
-//               ),
-//               Material(
-//                 child: Center(
-//                   child: Container(
-//                     width: 200,
-//                     child: CustomButton(
-//                       onTap: () {},
-//                       buttonText: "Add Information",
-//                       buttonColor: AppColors.gradientGreen,
-//                       textColor: AppColors.white,
-//                       borderRadius: 20,
-//                     ),
-//                   ),
-//                 ),
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class Info extends StatelessWidget {
-//   const Info({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       child: Padding(
-//         padding: const EdgeInsets.all(15.0),
-//         child: Container(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text(
-//                 "Information",
-//                 style: TextStyle(fontSize: 20),
-//               ),
-//               Divider(
-//                 thickness: 0.8,
-//               ),
-//               Text(
-//                 "About, Service, Certificate, Working hours, Gallery, Price ",
-//                 style: GoogleFonts.poppins(
-//                   textStyle: TextStyle(
-//                       color: AppColors.greyText, wordSpacing: 10, fontSize: 12),
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 20,
-//               ),
-//               Material(
-//                 child: Center(
-//                   child: Container(
-//                     width: 200,
-//                     child: CustomButton(
-//                       onTap: () {
-//                         Navigator.of(context).pushNamed(GenProfile.routeName);
-//                       },
-//                       buttonText: "Add Information",
-//                       buttonColor: AppColors.gradientGreen,
-//                       textColor: AppColors.white,
-//                       borderRadius: 20,
-//                     ),
-//                   ),
-//                 ),
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class ProfileCard extends StatelessWidget {
   final String title;
