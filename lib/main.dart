@@ -57,7 +57,8 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
-        Profile.routeName: (ctx) => Profile(false),
+        Profile.routeName: (ctx) => Profile(false, false,
+            "Here you can introduce yourself better write couple of words"),
         ForgetPasswordView.routeName: (ctx) => ForgetPasswordView(),
         ResetPasswordView.routeName: (ctx) => ResetPasswordView(),
         LandingPageView.routeName: (ctx) => LandingPageView(true),

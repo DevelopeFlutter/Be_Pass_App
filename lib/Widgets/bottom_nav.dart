@@ -26,7 +26,8 @@ class _BottomBarState extends State<BottomBar> {
     HomeScreen(true),
     LandingPageView(true),
     ChatScreen(),
-    Profile(true),
+    Profile(true, true,
+        "Here you can introduce yourself better write couple of words"),
     AppDrawer(true),
   ];
 

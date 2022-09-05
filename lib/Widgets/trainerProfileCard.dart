@@ -1,12 +1,24 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, file_names, camel_case_types, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../app_Colors.dart';
 
 class TrainerProfileCard extends StatelessWidget {
   const TrainerProfileCard({Key? key}) : super(key: key);
+  chipList() {
+    return ListView(
+      children: <Widget>[
+        _buildChip('Gamer', Color(0xFFff6666)),
+        _buildChip('Hacker', Color(0xFF007f5c)),
+        _buildChip('Developer', Color(0xFF5f65d3)),
+        _buildChip('Racer', Color(0xFF19ca21)),
+        _buildChip('Traveller', Color(0xFF60230b)),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +32,9 @@ class TrainerProfileCard extends StatelessWidget {
                 child: Container(
                     height: 70,
                     width: 70,
-                    child: Image(image: AssetImage("assets/fitness.png"))),
+                    child: SvgPicture.asset(
+                      "assets/user.svg",
+                    )),
               ),
               Text(
                 'Personal fitness trainer',
@@ -50,8 +64,10 @@ class TrainerProfileCard extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 70,
-          ),
+              height: 70,
+              child: Wrap(
+                children: chipList(),
+              )),
         ],
       ),
     );
@@ -89,4 +105,24 @@ class customProfieWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget _buildChip(String label, Color color) {
+  return Chip(
+    labelPadding: EdgeInsets.all(2.0),
+    avatar: CircleAvatar(
+      backgroundColor: Colors.white70,
+      child: Text(label[0].toUpperCase()),
+    ),
+    label: Text(
+      label,
+      style: TextStyle(
+        color: Colors.white,
+      ),
+    ),
+    backgroundColor: color,
+    elevation: 6.0,
+    shadowColor: Colors.grey[60],
+    padding: EdgeInsets.all(8.0),
+  );
 }

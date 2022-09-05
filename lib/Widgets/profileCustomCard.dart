@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, file_names, avoid_print, must_be_immutable, use_key_in_widget_constructors, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -20,35 +21,19 @@ class ProfileCustomCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: Row(children: [
-              SizedBox(
-                  height: 120,
-                  width: 120,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          image: const DecorationImage(
-                              image: AssetImage('assets/Ellipse 29.png')),
-                        ),
-                      ),
-                      Positioned(
-                          top: 0,
-                          right: 15,
-                          child: Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: AppColors.gradientGreen,
-                                image: const DecorationImage(
-                                    image:
-                                        AssetImage("assets/Rectangle 290.png")),
-                              ))),
-                    ],
+              Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(55),
+                  ),
+                  child: SvgPicture.asset(
+                    "assets/user.svg",
                   )),
+              SizedBox(
+                width: 20,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.baseline,
                 textBaseline: TextBaseline.ideographic,
@@ -97,14 +82,14 @@ class ProfileCustomCard extends StatelessWidget {
               textBaseline: TextBaseline.ideographic,
               children: [
                 customWidget(
-                  icon: ("assets/Group 222.png"),
+                  icon: Icons.mail,
                   dataText: 'ericathomas@gmail.com',
                 ),
                 SizedBox(
                   width: 20,
                 ),
                 customWidget(
-                  icon: ("assets/Vector (3).png"),
+                  icon: Icons.phone,
                   dataText: '+7911010118',
                 ),
               ],
@@ -117,11 +102,11 @@ class ProfileCustomCard extends StatelessWidget {
               textBaseline: TextBaseline.ideographic,
               children: [
                 customWidget(
-                  icon: ("assets/XMLID_1718_.png"),
+                  icon: Icons.person,
                   dataText: 'Age:34',
                 ),
                 customWidget(
-                  icon: ("assets/Vector (4).png"),
+                  icon: Icons.location_on,
                   dataText: 'San Fransisco, Newburg City',
                 ),
               ],
@@ -164,7 +149,7 @@ class ProfileCustomCard extends StatelessWidget {
 
 class customWidget extends StatelessWidget {
   final String dataText;
-  dynamic icon;
+  IconData icon;
   customWidget({required this.dataText, required this.icon});
 
   @override
@@ -173,13 +158,12 @@ class customWidget extends StatelessWidget {
       textBaseline: TextBaseline.ideographic,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: ImageIcon(
-            AssetImage(icon),
-            color: AppColors.gradientGreen,
-            size: 16,
-          ),
-        ),
+            padding: const EdgeInsets.only(left: 20),
+            child: Icon(
+              icon,
+              color: AppColors.gradientGreen,
+              size: 16,
+            )),
         Padding(
           padding: EdgeInsets.only(left: 10),
           child: Text(
