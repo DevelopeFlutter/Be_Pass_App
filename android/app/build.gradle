@@ -50,6 +50,8 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    compileSdkVersion 32
+    buildToolsVersion "31"
     defaultConfig {
         applicationId "com.example.be_pass"
         minSdkVersion 22
