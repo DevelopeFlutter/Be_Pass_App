@@ -6,6 +6,7 @@ import 'package:be_pass/Widgets/bottom_nav.dart';
 import 'package:be_pass/utils/Loader.dart';
 import 'package:be_pass/utils/showMessage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -58,27 +59,23 @@ class _LoginViewState extends State<LoginView> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Image.asset("assets/logo.png", height: 60, width: 60),
+                child: Container(
+                    height: 60,
+                    width: 60,
+                    child: SvgPicture.asset("assets/splash-img.svg",
+                        color: AppColors.gradientGreen)),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 40, 0, 10),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Text(
-                      "Adventure starts here",
-                      style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black54),
-                    ),
-                    const Icon(
-                      Icons.rocket_launch,
-                      color: AppColors.starColor,
-                    )
-                  ],
+                child: Text(
+                  "Adventure starts here 👋🏻",
+                  style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black54),
                 ),
               ),
             ),
@@ -226,7 +223,11 @@ class _LoginViewState extends State<LoginView> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset("assets/google-icon.png"),
+                            Container(
+                                height: 40,
+                                width: 40,
+                                child:
+                                    SvgPicture.asset("assets/google-icon.svg")),
                             Text(
                               "Log in with Google",
                               style: GoogleFonts.poppins(

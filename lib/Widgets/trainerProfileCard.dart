@@ -7,17 +7,31 @@ import 'package:google_fonts/google_fonts.dart';
 import '../app_Colors.dart';
 
 class TrainerProfileCard extends StatelessWidget {
-  const TrainerProfileCard({Key? key}) : super(key: key);
-  chipList() {
-    return ListView(
-      children: <Widget>[
-        _buildChip('Gamer', Color(0xFFff6666)),
-        _buildChip('Hacker', Color(0xFF007f5c)),
-        _buildChip('Developer', Color(0xFF5f65d3)),
-        _buildChip('Racer', Color(0xFF19ca21)),
-        _buildChip('Traveller', Color(0xFF60230b)),
-      ],
-    );
+  TrainerProfileCard({Key? key}) : super(key: key);
+  List options = [
+    "haha",
+    "hoho",
+    "heheh",
+    "hoho",
+    "heheh",
+    "hoho",
+    "heheh",
+  ];
+  Widget chipList(BuildContext context) {
+    return Wrap(
+        children: List<Widget>.generate(
+      options.length,
+      (int idx) {
+        return ChoiceChip(
+          label: Text(
+            options[idx],
+          ),
+          selected: true,
+          selectedColor: Color.fromARGB(255, 168, 230, 167),
+          labelStyle: TextStyle(color: Colors.black),
+        );
+      },
+    ).toList());
   }
 
   @override
@@ -57,16 +71,17 @@ class TrainerProfileCard extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "My professional and Skills",
+                "My Professions and Skills",
                 style: GoogleFonts.poppins(
                     fontSize: 20, fontWeight: FontWeight.w700),
               ),
             ),
           ),
           SizedBox(
-              height: 70,
-              child: Wrap(
-                children: chipList(),
+              height: 120,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: chipList(context),
               )),
         ],
       ),

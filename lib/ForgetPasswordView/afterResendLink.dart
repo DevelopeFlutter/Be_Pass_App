@@ -37,7 +37,11 @@ class _AfterResendLinkViewState extends State<AfterResendLinkView> {
           const SizedBox(
             height: 180,
           ),
-          Image.asset("assets/Mask.png",height: 70,color: AppColors.greenishText,),
+          const Icon(
+            Icons.file_download_done_outlined,
+            color: AppColors.gradientGreen,
+            size: 30,
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 40, 5, 10),
             child: Align(
@@ -62,8 +66,9 @@ class _AfterResendLinkViewState extends State<AfterResendLinkView> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Text(
-              "We sent an email to: hello@pixinvent.com\n""Please follow the link inside to continue."
-                  "If you can’t find the email within your Inbox,please check your Spam folder.",
+              "We sent an email to: hello@pixinvent.com\n"
+              "Please follow the link inside to continue."
+              "If you can’t find the email within your Inbox,please check your Spam folder.",
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
@@ -71,7 +76,6 @@ class _AfterResendLinkViewState extends State<AfterResendLinkView> {
               ),
             ),
           ),
-
           Column(
             children: [
               const SizedBox(
@@ -98,17 +102,18 @@ class _AfterResendLinkViewState extends State<AfterResendLinkView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Didn't recive an email?",
-                      style: GoogleFonts.poppins(
-                        color: AppColors.greyText,
-                      ),),
+                  Text(
+                    "Didn't recive an email?",
+                    style: GoogleFonts.poppins(
+                      color: AppColors.greyText,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 5),
                     child: Text(
                       "Resend",
-                      style:
-                      GoogleFonts.poppins(color: AppColors.gradientGreen,
-                      fontSize: 16),
+                      style: GoogleFonts.poppins(
+                          color: AppColors.gradientGreen, fontSize: 16),
                     ),
                   )
                 ],
