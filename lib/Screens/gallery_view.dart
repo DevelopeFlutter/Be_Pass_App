@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:be_pass/app_Colors.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -285,10 +286,16 @@ class _ImageSelState extends State<ImageSel> {
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(100),
-                                        // color: AppColors.gradientGreen,
-                                        image: const DecorationImage(
-                                            image: AssetImage("assets/X.png")),
-                                      )),
+                                      ),
+                                      child: Icon(
+                                        Icons.cancel_rounded,
+                                        color: Colors.red,
+                                      )
+                                      // SvgPicture.asset(
+                                      //   "assets/X.svg",
+                                      //   color: Colors.red,
+                                      // ),
+                                      ),
                                   onTap: () {
                                     _removeImage();
                                   },
@@ -307,7 +314,7 @@ class _ImageSelState extends State<ImageSel> {
                             strokeWidth: 2,
                             child: Align(
                                 alignment: Alignment.center,
-                                child: Image.asset("assets/upload-image.png"))),
+                                child: Icon(Icons.add, color: Colors.grey))),
                       ),
                       onTap: () {
                         getImageFromGallery();

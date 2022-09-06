@@ -8,7 +8,15 @@ import '../app_Colors.dart';
 
 class TrainerProfileCard extends StatelessWidget {
   TrainerProfileCard({Key? key}) : super(key: key);
-  List options = ["haha", "hoho", "heheh"];
+  List options = [
+    "haha",
+    "hoho",
+    "heheh",
+    "hoho",
+    "heheh",
+    "hoho",
+    "heheh",
+  ];
   Widget chipList(BuildContext context) {
     return Wrap(
         children: List<Widget>.generate(
@@ -17,10 +25,10 @@ class TrainerProfileCard extends StatelessWidget {
         return ChoiceChip(
           label: Text(
             options[idx],
-            style: TextStyle(color: Colors.white),
           ),
           selected: true,
-          selectedColor: AppColors.gradientGreen,
+          selectedColor: Color.fromARGB(255, 168, 230, 167),
+          labelStyle: TextStyle(color: Colors.black),
         );
       },
     ).toList());
@@ -63,13 +71,18 @@ class TrainerProfileCard extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "My professional and Skills",
+                "My Professions and Skills",
                 style: GoogleFonts.poppins(
                     fontSize: 20, fontWeight: FontWeight.w700),
               ),
             ),
           ),
-          SizedBox(height: 70, child: chipList(context)),
+          SizedBox(
+              height: 120,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: chipList(context),
+              )),
         ],
       ),
     );

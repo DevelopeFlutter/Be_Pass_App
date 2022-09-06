@@ -11,6 +11,7 @@ import 'package:be_pass/Screens/working_areas.dart';
 import 'package:be_pass/Screens/working_hours.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Widgets/custom_button_widget.dart';
 import '../app_Colors.dart';
@@ -220,31 +221,23 @@ class _HeadseState extends State<Headse> {
                           child: Stack(
                             children: [
                               SizedBox(
-                                height: 80,
-                                width: 80,
+                                height: 100,
+                                width: 100,
                                 child: Container(
-                                  child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: CircleAvatar(
-                                      backgroundColor: AppColors.gradientGreen,
-                                      radius: 10.0,
-                                      child: Icon(
-                                        Icons.verified,
-                                        size: 15.0,
-                                        color: AppColors.white,
-                                      ),
+                                    height: 150,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 214, 214, 214),
+                                      borderRadius: BorderRadius.circular(55),
                                     ),
-                                  ),
-                                  height: 60,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage("assets/man.jpg"),
-                                      ),
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
+                                    child: SvgPicture.asset(
+                                      "assets/user.svg",
+                                    )),
                               ),
+                              Icon(
+                                Icons.stars,
+                                color: AppColors.gradientGreen,
+                              )
                             ],
                           ),
                         ),
@@ -259,12 +252,9 @@ class _HeadseState extends State<Headse> {
                             Container(
                               height: 50,
                               width: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/logo.png"),
-                                ),
+                              child: SvgPicture.asset(
+                                "assets/splash-img.svg",
+                                color: AppColors.gradientGreen,
                               ),
                             ),
                           ],

@@ -6,6 +6,7 @@ import 'package:be_pass/Services/auth%20services/signUp.dart';
 import 'package:be_pass/utils/Loader.dart';
 import 'package:be_pass/utils/showMessage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -59,37 +60,23 @@ class _SignUpViewState extends State<SignUpView> {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                child: Image.asset("assets/logo.png", height: 60, width: 60),
+                child: Container(
+                    height: 60,
+                    width: 60,
+                    child: SvgPicture.asset("assets/splash-img.svg",
+                        color: AppColors.gradientGreen)),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Text(
-                      "Adventure starts here",
-                      style: GoogleFonts.poppins(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.boldTextColor),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/smiling-face-with-heart-eyes.png"),
-                              fit: BoxFit.fill),
-                        ),
-                      ),
-                    )
-                  ],
+                child: Text(
+                  "Adventure starts here 😍",
+                  style: GoogleFonts.poppins(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.boldTextColor),
                 ),
               ),
             ),
@@ -148,12 +135,14 @@ class _SignUpViewState extends State<SignUpView> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 5),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: SizedBox(
-                            height: 20,
-                            width: 20,
+                            height: 30,
+                            width: 30,
                             child: Checkbox(
                               value: this.value,
                               onChanged: (bool? value) {
@@ -276,13 +265,16 @@ class _SignUpViewState extends State<SignUpView> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset("assets/google-icon.png",
-                                height: 40, width: 40),
+                            Container(
+                                height: 30,
+                                width: 30,
+                                child:
+                                    SvgPicture.asset("assets/google-icon.svg")),
                             Text(
                               " Signup with Google",
                               softWrap: true,
                               style: GoogleFonts.poppins(
-                                  fontSize: 24,
+                                  fontSize: 23,
                                   fontWeight: FontWeight.w600,
                                   color: AppColors.greyText),
                             )

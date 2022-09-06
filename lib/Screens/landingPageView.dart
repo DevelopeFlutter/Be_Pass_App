@@ -18,6 +18,32 @@ class LandingPageView extends StatefulWidget {
 }
 
 class _LandingPageViewState extends State<LandingPageView> {
+  List options = [
+    "haha",
+    "hoho",
+    "heheh",
+    "hoho",
+    "heheh",
+    "hoho",
+    "heheh",
+  ];
+  Widget chipList(BuildContext context) {
+    return Wrap(
+        children: List<Widget>.generate(
+      options.length,
+      (int idx) {
+        return ChoiceChip(
+          label: Text(
+            options[idx],
+          ),
+          selected: true,
+          selectedColor: Color.fromARGB(255, 168, 230, 167),
+          labelStyle: TextStyle(color: Colors.black),
+        );
+      },
+    ).toList());
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.userCheck == true) {
@@ -68,8 +94,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                                   const SizedBox(
                                       height: 160,
                                       child: Image(
-                                          image: AssetImage(
-                                              "assets/muscular-man.png"))),
+                                          image: NetworkImage(
+                                              "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?cs=srgb&dl=pexels-victor-freitas-841130.jpg&fm=jpg"))),
                                   Positioned(
                                       bottom: 50,
                                       child: Container(
@@ -214,6 +240,31 @@ class _LandingPageViewState extends State<LandingPageView> {
               SizedBox(
                 height: 20,
               ),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, bottom: 20),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Working Areas",
+                          style: GoogleFonts.poppins(
+                              fontSize: 24, fontWeight: FontWeight.w700),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: chipList(context),
+                        ),
+                        Text("I work in north",
+                            style: TextStyle(fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               CertificatedCared(),
               Padding(
                 padding: const EdgeInsets.only(left: 30, top: 20),
@@ -246,8 +297,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                                   const SizedBox(
                                       height: 140,
                                       child: Image(
-                                          image: AssetImage(
-                                              "assets/motivated-active.png"))),
+                                          image: NetworkImage(
+                                              "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"))),
                                   Positioned(
                                       bottom: 0,
                                       child: Container(

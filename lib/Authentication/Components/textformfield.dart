@@ -21,7 +21,7 @@ Widget textformfeild({
   // Function
 }) {
   return Container(
-    height: boolTitleShowHide ? 110 : 92,
+    height: boolTitleShowHide ? 115 : 92,
     padding: padding ??
         const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
     child: Column(
@@ -78,8 +78,7 @@ Widget textformfeild({
             style: GoogleFonts.poppins(),
             decoration: InputDecoration(
               suffixIcon: Icon(icon),
-              contentPadding:
-                  const EdgeInsets.fromLTRB(10,0,10,0),
+              contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               hintStyle:
                   const TextStyle(fontSize: 14, color: AppColors.greyText),
               focusedBorder: OutlineInputBorder(
