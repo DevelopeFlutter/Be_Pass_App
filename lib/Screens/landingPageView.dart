@@ -39,7 +39,7 @@ class _LandingPageViewState extends State<LandingPageView> {
               Container(
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                  child: const TrainerProfileCard()),
+                  child: TrainerProfileCard()),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(

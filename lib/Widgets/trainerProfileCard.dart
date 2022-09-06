@@ -7,17 +7,23 @@ import 'package:google_fonts/google_fonts.dart';
 import '../app_Colors.dart';
 
 class TrainerProfileCard extends StatelessWidget {
-  const TrainerProfileCard({Key? key}) : super(key: key);
-  chipList() {
-    return ListView(
-      children: <Widget>[
-        _buildChip('Gamer', Color(0xFFff6666)),
-        _buildChip('Hacker', Color(0xFF007f5c)),
-        _buildChip('Developer', Color(0xFF5f65d3)),
-        _buildChip('Racer', Color(0xFF19ca21)),
-        _buildChip('Traveller', Color(0xFF60230b)),
-      ],
-    );
+  TrainerProfileCard({Key? key}) : super(key: key);
+  List options = ["haha", "hoho", "heheh"];
+  Widget chipList(BuildContext context) {
+    return Wrap(
+        children: List<Widget>.generate(
+      options.length,
+      (int idx) {
+        return ChoiceChip(
+          label: Text(
+            options[idx],
+            style: TextStyle(color: Colors.white),
+          ),
+          selected: true,
+          selectedColor: AppColors.gradientGreen,
+        );
+      },
+    ).toList());
   }
 
   @override
@@ -63,11 +69,7 @@ class TrainerProfileCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-              height: 70,
-              child: Wrap(
-                children: chipList(),
-              )),
+          SizedBox(height: 70, child: chipList(context)),
         ],
       ),
     );
