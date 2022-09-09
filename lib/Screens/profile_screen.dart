@@ -25,6 +25,7 @@ class Profile extends StatefulWidget {
 
   @override
   State<Profile> createState() => _ProfileState();
+  List serviceList = ["a", "a", "a"];
 }
 
 class _ProfileState extends State<Profile> {
@@ -40,6 +41,71 @@ class _ProfileState extends State<Profile> {
                   children: [
                     Headse(),
                     Bio(bioCheck: widget.bioCheck, bioText: widget.bioText),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Service",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.edit,
+                                        color: AppColors.gradientGreen),
+                                    Text("Edit",
+                                        style: TextStyle(
+                                            color: AppColors.gradientGreen))
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Type",
+                                    style: TextStyle(color: Colors.grey)),
+                                Text("Price(avg.)",
+                                    style: TextStyle(color: Colors.grey))
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 150,
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    itemBuilder: ((context, index) =>
+                                        Column(children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text("Personal Training"),
+                                              Text("10\$")
+                                            ],
+                                          ),
+                                          Divider()
+                                        ])),
+                                    itemCount: widget.serviceList.length,
+                                  ),
+                                  Text("See More",
+                                      style: TextStyle(
+                                          color: AppColors.gradientGreen))
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                     ProfileCard(
                         "Services",
                         "Describe your services, explain everything you are doing and set the prices",
