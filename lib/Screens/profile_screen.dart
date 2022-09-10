@@ -79,8 +79,7 @@ class _ProfileState extends State<Profile> {
                             SizedBox(height: 10),
                             Container(
                               height: 150,
-                              child: Column(
-                                children: [
+                              child:
                                   ListView.builder(
                                     itemBuilder: ((context, index) =>
                                         Column(children: [
@@ -96,12 +95,11 @@ class _ProfileState extends State<Profile> {
                                         ])),
                                     itemCount: widget.serviceList.length,
                                   ),
-                                  Text("See More",
-                                      style: TextStyle(
-                                          color: AppColors.gradientGreen))
-                                ],
-                              ),
-                            )
+                                  // Text("See More",
+                                  //     style: TextStyle(
+                                  //         color: AppColors.gradientGreen))
+
+                            ),
                           ],
                         ),
                       ),
