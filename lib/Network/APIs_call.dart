@@ -11,8 +11,8 @@ class API{
       return https.post(
         Uri.parse(api_manger.BASE_URL + apiurl),
         body:Data,
-        headers: {"Content-Type": "application/x-www-form-urlencoded"},
-        encoding: Encoding.getByName("utf-8"),
+        headers: {"Content-Type": "application/json"},
+
       );
     }catch(e){
       print(["API exception get",e.toString()]);

@@ -6,6 +6,8 @@ import 'package:be_pass/Screens/landingPageView.dart';
 import 'package:be_pass/Screens/profile_screen.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'app_drawer.dart';
@@ -14,22 +16,39 @@ import 'country_dropdown.dart';
 import 'user_card_widget.dart';
 
 class BottomBar extends StatefulWidget {
-  BottomBar();
 
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
+  String ?registrationCode;
+  bool status = false;
+  Future getValidationData() async {
+    final SharedPreferences sharedPreferences =
+    await SharedPreferences.getInstance();
+    var obtainedValue = sharedPreferences.getString('registrationCode');
+    setState(() {
+      registrationCode = obtainedValue;
+    });
+  }
+  @override
+  initState() {
+    getValidationData().whenComplete(() async {});
+    super.initState();
+  }
+  bool checkStatus(String? code){
+    if(code == null){
+      status = false;
+      return status;
+    }
+    else{
+      status = true;
+      return status;
+    }
+  }
+
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(true),
-    LandingPageView(true),
-    ChatScreen(),
-    Profile(true, true,
-        "Here you can introduce yourself better write couple of words"),
-    AppDrawer(true),
-  ];
 
   final List appbarText = [
     Text("usercard", textAlign: TextAlign.center),
@@ -49,6 +68,16 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    List<Widget> _widgetOptions = <Widget>[
+
+
+      HomeScreen(registrationCode == null ? false :true),
+      LandingPageView(registrationCode == null ? false :true),
+      ChatScreen(),
+      Profile(registrationCode == null ? false :true, registrationCode == null ? false :true,
+          "Here you can introduce yourself better write couple of words"),
+      AppDrawer(registrationCode == null ? false :true),
+    ];
     return Scaffold(
       // appBar: AppBar(
       //   centerTitle: true,
