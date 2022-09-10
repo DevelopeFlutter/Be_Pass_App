@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
 import 'package:be_pass/Services/auth%20services/login.dart';
 import 'package:be_pass/Widgets/bottom_nav.dart';
@@ -167,8 +168,6 @@ class _LoginViewState extends State<LoginView> {
                         if (_formKey.currentState!.validate()) {
                           _submitform();
                         }
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const ForgetPasswordView()));
                       },
                       child: Text('Log In',
                           style: TextStyle(
@@ -180,19 +179,22 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(
                     height: 20,
                   ),
-                  RichText(
-                      text: TextSpan(
-                          text: "New on our platform?",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16, color: AppColors.greyText),
-                          children: <TextSpan>[
-                        TextSpan(
-                            text: " Create an account",
+                  InkWell(
+                    child: RichText(
+                        text: TextSpan(
+                            text: "New on our platform?",
                             style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: AppColors.gradientGreen,
-                            )),
-                      ])),
+                                fontSize: 16, color: AppColors.greyText),
+                            children: <TextSpan>[
+                          TextSpan(
+                              text: " Create an account",
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                color: AppColors.gradientGreen,
+                              )),
+                        ])),
+                    onTap: (){Get.to(SignUpView());},
+                  ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 30, 20, 40),
                     child: Row(

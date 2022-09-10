@@ -23,6 +23,7 @@ import 'package:be_pass/Widgets/bottom_nav.dart';
 import 'package:be_pass/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ForgetPasswordView/forgetPasswordView.dart';
 import 'Screens/gallery_view.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -57,12 +58,13 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),
-        Profile.routeName: (ctx) => Profile(false, false,
-            "Here you can introduce yourself better write couple of words"),
+        // Profile.routeName: (ctx) => Profile(false, false,
+        //     "Here you can introduce yourself better write couple of words"),
         ForgetPasswordView.routeName: (ctx) => ForgetPasswordView(),
         ResetPasswordView.routeName: (ctx) => ResetPasswordView(),
-        LandingPageView.routeName: (ctx) => LandingPageView(true),
+        // LandingPageView.routeName: (ctx) => LandingPageView(true),
         LoginView.routeName: (ctx) => LoginView(),
+        BottomBar.routeName:(ctx)=>BottomBar(),
         ServicesScreen.routeName: (ctx) => ServicesScreen(),
         CertificatesScreen.routeName: (ctx) => CertificatesScreen(),
         BioScreen.routeName: (ctx) => BioScreen(),

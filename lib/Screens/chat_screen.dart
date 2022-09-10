@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, non_constant_identifier_names
 
+import 'package:be_pass/Authentication/View/login_view.dart';
+import 'package:be_pass/Authentication/View/sign_up_view.dart';
+import 'package:be_pass/Screens/landingPageView.dart';
 import 'package:be_pass/app_Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -74,10 +78,12 @@ class ChatScreen extends StatelessWidget {
                           "Create an account",
                           Icons.person_add_alt_outlined,
                           AppColors.gradientGreen,
-                          Colors.white),
+                          Colors.white,SignUpView.routeName,context),
                       SizedBox(height: 10),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(LoginView());
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -101,24 +107,4 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
-GestureDetector CustomListTile(
-    String text, IconData icon, Color Concolor, Color textColor) {
-  return GestureDetector(
-    onTap: () {},
-    child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Concolor, borderRadius: BorderRadius.circular(10)),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(icon, color: textColor),
-            SizedBox(width: 10),
-            Text(text, style: TextStyle(color: textColor)),
-          ]),
-        ),
-      ),
-    ),
-  );
-}
+

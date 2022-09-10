@@ -32,14 +32,15 @@ class _SignUpViewState extends State<SignUpView> {
     FocusScope.of(context).unfocus();
     try {
       PopupLoader.show();
-      var _authResponse = await signUp(
+      var authResponse = await signUp(
         controller.username.value,
         controller.email.value,
         controller.password.value,
       );
       PopupLoader.hide();
-      if (!_authResponse["error"]) {
+      if (!authResponse["error"]){
         ShowMessage().showMessage(context, "Successfully SignUp");
+        print("User data in main class");
       } else {
         ShowMessage().showErrorMessage(context, "Some error");
       }
@@ -48,7 +49,6 @@ class _SignUpViewState extends State<SignUpView> {
       print(["SubmitLogin exception:", e.toString()]);
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,14 +135,12 @@ class _SignUpViewState extends State<SignUpView> {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                        ),
+                        padding: const EdgeInsets.only(left: 20, right: 5),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: SizedBox(
-                            height: 30,
-                            width: 30,
+                            height: 20,
+                            width: 20,
                             child: Checkbox(
                               value: this.value,
                               onChanged: (bool? value) {
@@ -198,10 +196,6 @@ class _SignUpViewState extends State<SignUpView> {
                             MaterialStateProperty.all(AppColors.gradientGreen),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginView()),
-                        );
                         if (_formKey.currentState!.validate()) {
                           _submitform();
                         }
@@ -231,7 +225,9 @@ class _SignUpViewState extends State<SignUpView> {
                           "Log in in instead",
                           style: GoogleFonts.poppins(fontSize: 16),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(LoginView());
+                        },
                       )
                     ],
                   ),

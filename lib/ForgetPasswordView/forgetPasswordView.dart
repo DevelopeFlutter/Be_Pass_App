@@ -3,7 +3,7 @@ import 'package:be_pass/Widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../app_Colors.dart';
 import '../Authentication/Controller/auth_controller.dart';
 import '../Authentication/Components/textformfield.dart';
@@ -24,15 +24,12 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(children: [
-          const Align(
+          Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 30, 0, 0),
-              child: Image(
-                image: AssetImage("assets/logo.png"),
-                height: 60,
-              ),
-            ),
+                padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
+                child: SvgPicture.asset("assets/splash-img.svg",
+                    color: AppColors.gradientGreen)),
           ),
           const SizedBox(
             height: 150,

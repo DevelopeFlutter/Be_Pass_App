@@ -1,6 +1,9 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
+import 'package:be_pass/Authentication/View/login_view.dart';
+import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Widgets/certificatesCard.dart';
@@ -430,10 +433,12 @@ class _LandingPageViewState extends State<LandingPageView> {
                             "Create an account",
                             Icons.person_add_alt_outlined,
                             AppColors.gradientGreen,
-                            Colors.white),
+                            Colors.white, SignUpView.routeName,context),
                         SizedBox(height: 10),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(LoginView());
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -458,10 +463,12 @@ class _LandingPageViewState extends State<LandingPageView> {
   }
 }
 
-GestureDetector CustomListTile(
-    String text, IconData icon, Color Concolor, Color textColor) {
+Widget CustomListTile(
+     text,  icon, Color Concolor, Color textColor, route, context) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.of(context).pushNamed(route);
+    },
     child: Padding(
       padding: EdgeInsets.symmetric(horizontal: 30),
       child: Container(

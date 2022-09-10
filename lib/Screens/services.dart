@@ -8,6 +8,7 @@ import '../Widgets/custom_button_widget.dart';
 import '../Widgets/text_widget.dart';
 import '../app_Colors.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ServicesScreen extends StatefulWidget //__
 
@@ -194,13 +195,10 @@ class listcheckwid extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  height: 60,
-                  width: 60,
-                  child: Image(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/logo.png"),
-                  ),
-                ),
+                    height: 60,
+                    width: 60,
+                    child: SvgPicture.asset("assets/splash-img.svg",
+                        color: AppColors.gradientGreen)),
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Column(
