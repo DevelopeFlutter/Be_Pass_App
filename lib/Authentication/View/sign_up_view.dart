@@ -225,7 +225,9 @@ class _SignUpViewState extends State<SignUpView> {
                           "Log in in instead",
                           style: GoogleFonts.poppins(fontSize: 16),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(LoginView());
+                        },
                       )
                     ],
                   ),

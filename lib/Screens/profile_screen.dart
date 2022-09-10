@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, unused_field, prefer_final_fields, sized_box_for_whitespace, use_key_in_widget_constructors, camel_case_types, unnecessary_null_comparison
 
+import 'package:be_pass/Authentication/View/login_view.dart';
+import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:be_pass/ForgetPasswordView/verifiyEmail.dart';
 import 'package:be_pass/Screens/bio_screen.dart';
 import 'package:be_pass/Screens/certificates_screen.dart';
@@ -12,9 +14,11 @@ import 'package:be_pass/Screens/working_hours.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Widgets/custom_button_widget.dart';
 import '../app_Colors.dart';
+import 'landingPageView.dart';
 
 class Profile extends StatefulWidget {
   static const routeName = "user-profile";
@@ -202,10 +206,12 @@ class _ProfileState extends State<Profile> {
                                 "Create an account",
                                 Icons.person_add_alt_outlined,
                                 AppColors.gradientGreen,
-                                Colors.white),
+                                Colors.white,SignUpView.routeName,context),
                             SizedBox(height: 10),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(LoginView());
+                              },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -229,27 +235,7 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-GestureDetector CustomListTile(
-    String text, IconData icon, Color Concolor, Color textColor) {
-  return GestureDetector(
-    onTap: () {},
-    child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Concolor, borderRadius: BorderRadius.circular(10)),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(icon, color: textColor),
-            SizedBox(width: 10),
-            Text(text, style: TextStyle(color: textColor)),
-          ]),
-        ),
-      ),
-    ),
-  );
-}
+
 
 class Headse extends StatefulWidget {
   const Headse({Key? key}) : super(key: key);

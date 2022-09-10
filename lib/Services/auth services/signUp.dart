@@ -27,8 +27,7 @@ Future signUp(
       print(_contnet);
       print(_contnet['registrationCode']);
       final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      sharedPreferences.setString('registrationCode',_contnet['registrationCode']);
-      print('move next screen ..........');
+      sharedPreferences.setString('username',_contnet['username']);
       Get.to(BottomBar());
     }else{
       _error = true;

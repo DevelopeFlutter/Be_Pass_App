@@ -2,10 +2,13 @@ import 'dart:convert';
 
 import 'package:be_pass/Network/APIs_call.dart';
 import 'package:be_pass/Network/APIs_manger.dart';
+import 'package:be_pass/Widgets/bottom_nav.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 Future login(
-    String email,
+    String username,
     String password,
     ) async {
   var _content;
@@ -14,17 +17,18 @@ Future login(
   String _errorMessage = "Unable to process request, please try later!";
 
   try {
-    var Data = "email=$email&password=$password";
-    print(Data);
-    var response = await API().post(api_manger.LOGIN, Data);
-
+    var data = jsonEncode({"username":username,"password":password});
+    print(data);
+    var response = await API().post(api_manger.LOGIN, data);
     print('statusCode');
     print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       _error = false;
       _content = jsonDecode(response.body);
-      print(jsonDecode(response.body)["success"]);
-
+      final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      sharedPreferences.setString('username',_content['username']);
+      Get.to(BottomBar());
     } else {
       _error = true;
       _content = jsonDecode(response.body)['error'];

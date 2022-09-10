@@ -16,20 +16,21 @@ import 'country_dropdown.dart';
 import 'user_card_widget.dart';
 
 class BottomBar extends StatefulWidget {
+  static const routeName = "BottomBar";
 
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
-  String ?registrationCode;
+  String ?validateEmail;
   bool status = false;
   Future getValidationData() async {
     final SharedPreferences sharedPreferences =
     await SharedPreferences.getInstance();
-    var obtainedValue = sharedPreferences.getString('registrationCode');
+    var obtainedValue = sharedPreferences.getString('username');
     setState(() {
-      registrationCode = obtainedValue;
+      validateEmail = obtainedValue;
     });
   }
   @override
@@ -67,16 +68,15 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     List<Widget> _widgetOptions = <Widget>[
 
 
-      HomeScreen(registrationCode == null ? false :true),
-      LandingPageView(registrationCode == null ? false :true),
+      HomeScreen(validateEmail == null ? false :true),
+      LandingPageView(validateEmail == null ? false :true),
       ChatScreen(),
-      Profile(registrationCode == null ? false :true, registrationCode == null ? false :true,
+      Profile(validateEmail == null ? false :true, validateEmail == null ? false :true,
           "Here you can introduce yourself better write couple of words"),
-      AppDrawer(registrationCode == null ? false :true),
+      AppDrawer(validateEmail == null ? false :true),
     ];
     return Scaffold(
       // appBar: AppBar(
