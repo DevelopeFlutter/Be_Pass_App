@@ -96,7 +96,7 @@ class _ProfileState extends State<Profile> {
                             "List your certifications, degrees, courses and everything you got to show that you are qualified",
                             CertificatesScreen.routeName),
                     widget.galleryCheck
-                        ? galleryData(galleryList, certificateList)
+                        ? galleryData(galleryList)
                         : ProfileCard(
                             "Gallery",
                             "Upload all the images that you have for each service, to impress everyone",
@@ -259,8 +259,7 @@ class _ProfileState extends State<Profile> {
             ])));
   }
 
-  Card galleryData(List<Map<dynamic, dynamic>> galleryList,
-      List<Map<dynamic, dynamic>> certificateList) {
+  Card galleryData(List<Map<dynamic, dynamic>> galleryList) {
     return Card(
         child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -302,7 +301,7 @@ class _ProfileState extends State<Profile> {
                 height: 20,
               ),
               Container(
-                  height: galleryList.length >= 2 ? 110 : 150,
+                  height: galleryList.length >= 2 ? 170 : 240,
                   child: ListView.builder(
                       itemBuilder: (context, index) => Column(
                             children: [
@@ -311,13 +310,43 @@ class _ProfileState extends State<Profile> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(galleryList[index]["name"]),
-                                    Text(galleryList[index]["photos"]
-                                        .toString()),
+                                    Row(
+                                      children: [
+                                        Container(
+                                            width: 100,
+                                            height: 50,
+                                            child: Stack(children: [
+                                              Positioned(
+                                                right: 0,
+                                                child: Image.network(
+                                                  "https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                                                ),
+                                              ),
+                                              Positioned(
+                                                right: 10,
+                                                child: Image.network(
+                                                  "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?cs=srgb&dl=pexels-victor-freitas-841130.jpg&fm=jpg",
+                                                ),
+                                              ),
+                                              Positioned(
+                                                //right: 0,
+                                                child: Image.network(
+                                                  "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                                                ),
+                                              ),
+                                            ])),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Text(galleryList[index]["photos"]
+                                            .toString()),
+                                      ],
+                                    ),
                                   ]),
                               Divider(),
                             ],
                           ),
-                      itemCount: certificateList.length)),
+                      itemCount: galleryList.length)),
             ])));
   }
 
@@ -555,7 +584,7 @@ class _ProfileState extends State<Profile> {
         ],
       ),
       Container(
-          height: 80,
+          height: 100,
           child: ListView.builder(
             itemBuilder: (context, index) => Column(
               children: [
