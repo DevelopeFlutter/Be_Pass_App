@@ -23,27 +23,28 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  String ?validateEmail;
+  String? validateEmail;
   bool status = false;
   Future getValidationData() async {
     final SharedPreferences sharedPreferences =
-    await SharedPreferences.getInstance();
+        await SharedPreferences.getInstance();
     var obtainedValue = sharedPreferences.getString('username');
     setState(() {
       validateEmail = obtainedValue;
     });
   }
+
   @override
   initState() {
     getValidationData().whenComplete(() async {});
     super.initState();
   }
-  bool checkStatus(String? code){
-    if(code == null){
+
+  bool checkStatus(String? code) {
+    if (code == null) {
       status = false;
       return status;
-    }
-    else{
+    } else {
       status = true;
       return status;
     }
@@ -69,14 +70,11 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
-
-
-      HomeScreen(validateEmail == null ? false :true),
-      LandingPageView(validateEmail == null ? false :true),
+      HomeScreen(validateEmail == null ? false : true),
+      LandingPageView(validateEmail == null ? false : true),
       ChatScreen(),
-      Profile(validateEmail == null ? false :true, validateEmail == null ? false :true,
-          "Here you can introduce yourself better write couple of words"),
-      AppDrawer(validateEmail == null ? false :true),
+      Profile(validateEmail == null ? false : true),
+      AppDrawer(validateEmail == null ? false : true),
     ];
     return Scaffold(
       // appBar: AppBar(

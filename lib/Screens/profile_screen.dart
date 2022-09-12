@@ -23,18 +23,41 @@ import 'landingPageView.dart';
 class Profile extends StatefulWidget {
   static const routeName = "user-profile";
   final bool userCheck;
-  final bool bioCheck;
-  final String bioText;
-  Profile(this.userCheck, this.bioCheck, this.bioText);
+  final bool bioCheck = true;
+  final bool serviceCheck = true;
+  final bool whCheck = true;
+  final bool waCheck = true;
+  final bool certificateCheck = true;
+  final bool galleryCheck = true;
+  final bool socialMediaCheck = true;
+  Profile(this.userCheck);
 
   @override
   State<Profile> createState() => _ProfileState();
-  List serviceList = ["a", "a", "a"];
+  List serviceList = ["a", "a", "a", "a", "a"];
 }
 
 class _ProfileState extends State<Profile> {
+  bool seeMore = false;
+  bool facebook = true;
+  bool insta = true;
+  bool tiktok = true;
+  bool linkedin = false;
+  bool quora = false;
+  bool twitter = false;
   @override
   Widget build(BuildContext context) {
+    List<Map> workingHours = [
+      {"start": "7:00", "end": "8:00"}
+    ];
+    List<Map> certificateList = [
+      {"name": "Personal Train", "exp": 4},
+      {"name": "Gardener", "exp": 2}
+    ];
+    List<Map> galleryList = [
+      {"name": "Endurance", "photos": 4},
+      {"name": "Nutritionist", "photos": 2}
+    ];
     return widget.userCheck
         ? Scaffold(
             backgroundColor: Color(0xffE1E1E3),
@@ -44,94 +67,47 @@ class _ProfileState extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Headse(),
-                    Bio(bioCheck: widget.bioCheck, bioText: widget.bioText),
-                    Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Service",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.edit,
-                                        color: AppColors.gradientGreen),
-                                    Text("Edit",
-                                        style: TextStyle(
-                                            color: AppColors.gradientGreen))
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Divider(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Type",
-                                    style: TextStyle(color: Colors.grey)),
-                                Text("Price(avg.)",
-                                    style: TextStyle(color: Colors.grey))
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            Container(
-                              height: 150,
-                              child:
-                                  ListView.builder(
-                                    itemBuilder: ((context, index) =>
-                                        Column(children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text("Personal Training"),
-                                              Text("10\$")
-                                            ],
-                                          ),
-                                          Divider()
-                                        ])),
-                                    itemCount: widget.serviceList.length,
-                                  ),
-                                  // Text("See More",
-                                  //     style: TextStyle(
-                                  //         color: AppColors.gradientGreen))
-
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    ProfileCard(
-                        "Services",
-                        "Describe your services, explain everything you are doing and set the prices",
-                        ServicesScreen.routeName),
-                    ProfileCard(
-                        "Working Hours",
-                        "Set your working hours for each day and let the clients know when you are available",
-                        WorkingHours.routeName),
-                    ProfileCard(
-                        "Working Areas",
-                        "Let the clients know in what places are you working",
-                        WorkingAreas.routeName),
-                    ProfileCard(
-                        "Certificates",
-                        "List your certifications, degrees, courses and everything you got to show that you are qualified",
-                        CertificatesScreen.routeName),
-                    ProfileCard(
-                        "Gallery",
-                        "Upload all the images that you have for each service, to impress everyone",
-                        GalleryScreenView.routeName),
-                    ProfileCard(
-                        "Social Media",
-                        "Add all the links to your social media",
-                        SocialScreen.routeName),
+                    Bio(
+                        bioCheck: widget.bioCheck,
+                        bioText:
+                            "Here you can introduce yourself better write couple of words"),
+                    widget.serviceCheck
+                        ? serviceData()
+                        : ProfileCard(
+                            "Services",
+                            "Describe your services, explain everything you are doing and set the prices",
+                            ServicesScreen.routeName),
+                    widget.whCheck
+                        ? workingHoursData(workingHours)
+                        : ProfileCard(
+                            "Working Hours",
+                            "Set your working hours for each day and let the clients know when you are available",
+                            WorkingHours.routeName),
+                    widget.waCheck
+                        ? workingAreasData()
+                        : ProfileCard(
+                            "Working Areas",
+                            "Let the clients know in what places are you working",
+                            WorkingAreas.routeName),
+                    widget.certificateCheck
+                        ? certificateData(certificateList)
+                        : ProfileCard(
+                            "Certificates",
+                            "List your certifications, degrees, courses and everything you got to show that you are qualified",
+                            CertificatesScreen.routeName),
+                    widget.galleryCheck
+                        ? galleryData(galleryList, certificateList)
+                        : ProfileCard(
+                            "Gallery",
+                            "Upload all the images that you have for each service, to impress everyone",
+                            GalleryScreenView.routeName),
+                    widget.galleryCheck
+                        ? socialMediaData()
+                        : ProfileCard(
+                            "Social Media",
+                            "Add all the links to your social media",
+                            SocialScreen.routeName),
+                    SizedBox(height: 10)
                   ],
                 ),
               ),
@@ -206,7 +182,9 @@ class _ProfileState extends State<Profile> {
                                 "Create an account",
                                 Icons.person_add_alt_outlined,
                                 AppColors.gradientGreen,
-                                Colors.white,SignUpView.routeName,context),
+                                Colors.white,
+                                SignUpView.routeName,
+                                context),
                             SizedBox(height: 10),
                             GestureDetector(
                               onTap: () {
@@ -233,9 +211,368 @@ class _ProfileState extends State<Profile> {
             ),
           );
   }
+
+  Card socialMediaData() {
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Social Media",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(SocialScreen.routeName);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, color: AppColors.gradientGreen),
+                        Text("Edit",
+                            style: TextStyle(color: AppColors.gradientGreen))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Icon(Icons.facebook,
+                      color: facebook ? AppColors.gradientGreen : Colors.grey),
+                  SvgPicture.asset("assets/insta-icon.svg",
+                      color: insta ? AppColors.gradientGreen : Colors.grey),
+                  Icon(Icons.tiktok,
+                      color: tiktok ? AppColors.gradientGreen : Colors.grey),
+                  SvgPicture.asset("assets/linkedIn-icon.svg",
+                      color: linkedin ? AppColors.gradientGreen : Colors.grey),
+                  Icon(Icons.quora,
+                      color: quora ? AppColors.gradientGreen : Colors.grey),
+                  SvgPicture.asset("assets/twitter-icon.svg",
+                      color: twitter ? AppColors.gradientGreen : Colors.grey),
+                ],
+              )
+            ])));
+  }
+
+  Card galleryData(List<Map<dynamic, dynamic>> galleryList,
+      List<Map<dynamic, dynamic>> certificateList) {
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Gallery",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(GalleryScreenView.routeName);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, color: AppColors.gradientGreen),
+                        Text("Edit",
+                            style: TextStyle(color: AppColors.gradientGreen))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Name",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Text("Photos", style: TextStyle(color: Colors.grey))
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                  height: galleryList.length >= 2 ? 110 : 150,
+                  child: ListView.builder(
+                      itemBuilder: (context, index) => Column(
+                            children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(galleryList[index]["name"]),
+                                    Text(galleryList[index]["photos"]
+                                        .toString()),
+                                  ]),
+                              Divider(),
+                            ],
+                          ),
+                      itemCount: certificateList.length)),
+            ])));
+  }
+
+  Card certificateData(List<Map<dynamic, dynamic>> certificateList) {
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Certificates",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(CertificatesScreen.routeName);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, color: AppColors.gradientGreen),
+                        Text("Edit",
+                            style: TextStyle(color: AppColors.gradientGreen))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Name",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  Text("Exp(Years)", style: TextStyle(color: Colors.grey))
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                  height: certificateList.length >= 2 ? 110 : 150,
+                  child: ListView.builder(
+                      itemBuilder: (context, index) => Column(
+                            children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(certificateList[index]["name"]),
+                                    Text(certificateList[index]["exp"]
+                                        .toString()),
+                                  ]),
+                              Divider(),
+                            ],
+                          ),
+                      itemCount: certificateList.length)),
+            ])));
+  }
+
+  Card workingAreasData() {
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Working Areas",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(WorkingAreas.routeName);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, color: AppColors.gradientGreen),
+                        Text("Edit",
+                            style: TextStyle(color: AppColors.gradientGreen))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Divider(),
+              Text(
+                  "This is supposed to be the working areas mentioned by the user. I don't know it seems like it should also have some chips but nevermind",
+                  style: TextStyle(color: Colors.grey))
+            ])));
+  }
+
+  Card workingHoursData(List<Map<dynamic, dynamic>> workingHours) {
+    return Card(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Working Hours",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(WorkingHours.routeName);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, color: AppColors.gradientGreen),
+                        Text("Edit",
+                            style: TextStyle(color: AppColors.gradientGreen))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Divider(indent: 20, endIndent: 20),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Monday", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Tuesday", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Wednesday",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Thursday", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Friday", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Saturday", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Text("Sunday", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(workingHours[0]["start"] + "-" + workingHours[0]["end"],
+                    style: TextStyle(color: Colors.grey))
+              ]),
+              Divider(),
+            ])));
+  }
+
+  Card serviceData() {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Service",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(ServicesScreen.routeName);
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.edit, color: AppColors.gradientGreen),
+                      Text("Edit",
+                          style: TextStyle(color: AppColors.gradientGreen))
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Type", style: TextStyle(color: Colors.grey)),
+                Text("Price(avg.)", style: TextStyle(color: Colors.grey))
+              ],
+            ),
+            SizedBox(height: 10),
+            Container(
+              height: seeMore ? 300 : 150,
+              child: ListView.builder(
+                itemBuilder: ((context, index) => serviceWidget()),
+                itemCount: seeMore ? widget.serviceList.length : 1,
+              ),
+            ),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    seeMore = !seeMore;
+                  });
+                },
+                child: Text(seeMore ? "See Less" : "See More",
+                    style: TextStyle(color: AppColors.gradientGreen)))
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column serviceWidget() {
+    return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("Service #", style: TextStyle(color: Colors.grey)),
+          Text("Prices", style: TextStyle(color: Colors.grey))
+        ],
+      ),
+      Container(
+          height: 80,
+          child: ListView.builder(
+            itemBuilder: (context, index) => Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text("Personal Training"), Text("10\$")],
+                ),
+                SizedBox(height: 5)
+              ],
+            ),
+            itemCount: 3,
+          )),
+      Divider(),
+      SizedBox(height: 20),
+    ]);
+  }
 }
-
-
 
 class Headse extends StatefulWidget {
   const Headse({Key? key}) : super(key: key);
@@ -507,13 +844,20 @@ class _BioState extends State<Bio> {
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          Row(
-                            children: [
-                              Icon(Icons.edit, color: AppColors.gradientGreen),
-                              Text("Edit",
-                                  style:
-                                      TextStyle(color: AppColors.gradientGreen))
-                            ],
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(BioScreen.routeName);
+                            },
+                            child: Row(
+                              children: [
+                                Icon(Icons.edit,
+                                    color: AppColors.gradientGreen),
+                                Text("Edit",
+                                    style: TextStyle(
+                                        color: AppColors.gradientGreen))
+                              ],
+                            ),
                           ),
                         ],
                       ),
