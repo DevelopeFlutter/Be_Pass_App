@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:be_pass/Screens/stars.dart';
 import 'package:flutter/material.dart';
 
 class SearchedProduct extends StatelessWidget {
@@ -50,9 +49,9 @@ class SearchedProduct extends StatelessWidget {
                   Container(
                     width: 235,
                     padding: const EdgeInsets.only(left: 10, top: 5),
-                    child: Stars(
-                      rating: 4,
-                    ),
+                    // child: Stars(
+                    //   rating: 4,
+                    // ),
                   ),
                   Container(
                     width: 235,

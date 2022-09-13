@@ -40,7 +40,6 @@ class _SignUpViewState extends State<SignUpView> {
       PopupLoader.hide();
       if (!authResponse["error"]){
         ShowMessage().showMessage(context, "Successfully SignUp");
-        print("User data in main class");
       } else {
         ShowMessage().showErrorMessage(context, "Some error");
       }

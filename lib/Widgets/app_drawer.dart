@@ -20,7 +20,7 @@ class AppDrawer extends StatelessWidget {
   AppDrawer(this.userCheck);
   void removeValue()async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.remove('username');
+    sharedPreferences.remove('token');
   }
   @override
   Widget build(BuildContext context) {

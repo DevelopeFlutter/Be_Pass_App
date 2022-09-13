@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:be_pass/Authentication/Controller/loginController.dart';
 import 'package:be_pass/Network/APIs_call.dart';
 import 'package:be_pass/Network/APIs_manger.dart';
 import 'package:be_pass/Widgets/bottom_nav.dart';
@@ -27,7 +28,8 @@ Future login(
       _error = false;
       _content = jsonDecode(response.body);
       final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      sharedPreferences.setString('username',_content['username']);
+      LoginController().setUserData(_content);
+      sharedPreferences.setString('token',_content['token']);
       Get.to(BottomBar());
     } else {
       _error = true;
