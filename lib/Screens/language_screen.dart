@@ -45,6 +45,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     } catch (e) {
       PopupLoader.hide();
       print(["SubmitLogin exception:", e.toString()]);
+      ShowMessage().showErrorMessage(context, e.toString());
     }
   }
   dynamic languageChoice(value) {

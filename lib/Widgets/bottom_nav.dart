@@ -1,5 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_final_fields, prefer_const_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 
+import 'dart:convert';
+
+import 'package:be_pass/Authentication/Controller/loginController.dart';
 import 'package:be_pass/Screens/chat_screen.dart';
 import 'package:be_pass/Screens/home_screen.dart';
 import 'package:be_pass/Screens/landingPageView.dart';
@@ -23,10 +26,12 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
+  final LoginController setInLoginController = Get.put(LoginController());
 
 
 
   bool status = false;
+
   String ?validateEmail;
   Future getValidationData() async {
     final SharedPreferences sharedPreferences =
@@ -73,6 +78,7 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    setInLoginController.setUserData(validateEmail);
     List<Widget> _widgetOptions = <Widget>[
       HomeScreen(validateEmail == null ? false : true),
       LandingPageView(validateEmail == null ? false : true),

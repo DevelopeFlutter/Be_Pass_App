@@ -1,9 +1,13 @@
 import 'dart:convert';
 
+import 'package:be_pass/Authentication/Controller/loginController.dart';
 import 'package:be_pass/Network/APIs_call.dart';
 import 'package:be_pass/Network/APIs_manger.dart';
+import 'package:get/get.dart';
 
 Future language(String value)async{
+
+
   var _contnet;
   bool _error = false;
   String _errorMessage = "Unable to process, please try later";
