@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:be_pass/Authentication/Controller/loginController.dart';
 import 'package:be_pass/Authentication/View/sign_up_view.dart';
 import 'package:be_pass/ForgetPasswordView/forgetPasswordView.dart';
 import 'package:be_pass/Services/auth%20services/login.dart';

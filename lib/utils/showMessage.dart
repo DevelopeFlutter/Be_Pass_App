@@ -8,7 +8,7 @@ class ShowMessage{
       String message,
       ){
     return showToast(
-      '$message',
+      message,
       context:context,
       animation:StyledToastAnimation.slideToBottomFade,
       backgroundColor: AppColors.gradientGreen,
@@ -19,7 +19,7 @@ class ShowMessage{
   }
   showErrorMessage(BuildContext context, String message) {
     return showToast(
-      '$message',
+      message,
       // duration: Duration(seconds: 2),
       context: context,
       // animation: StyledToastAnimation.slideFromTopFade,

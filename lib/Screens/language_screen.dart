@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, constant_identifier_names
 
+import 'package:be_pass/Services/auth%20services/language.dart';
+import 'package:be_pass/utils/Loader.dart';
+import 'package:be_pass/utils/showMessage.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-enum Language { ENG, HEB }
 
 class LanguageScreen extends StatefulWidget {
   static const routeName = "language-screen";
@@ -13,12 +16,45 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-  Language _user = Language.ENG;
-  void languageChoice(value) {
+  String _user = 'EN';
+  String ?token;
+  Future getValidationData() async {
+    final SharedPreferences sharedPreferences =
+    await SharedPreferences.getInstance();
+    var obtainedValue = sharedPreferences.getString('token');
     setState(() {
-      _user = value;
+      token = obtainedValue;
     });
   }
+  @override
+  initState() {
+    getValidationData().whenComplete(() async {});
+    super.initState();
+  }
+  void submitLanguage()async {
+    FocusScope.of(context).unfocus();
+    try {
+      PopupLoader.show();
+      var lagnuageResponse = await language(_user);
+      PopupLoader.hide();
+      if (!lagnuageResponse["error"]) {
+        ShowMessage().showMessage(context, "Successfully Language selected");
+      } else {
+        ShowMessage().showErrorMessage(context, "Some error");
+      }
+    } catch (e) {
+      PopupLoader.hide();
+      print(["SubmitLogin exception:", e.toString()]);
+    }
+  }
+  dynamic languageChoice(value) {
+    setState(() {
+      _user = value;
+      submitLanguage();
+    });
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +116,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                   Radio(
                                     groupValue: _user,
                                     onChanged: languageChoice,
-                                    value: Language.ENG,
+                                    value: 'EN',
                                   )
                                 ],
                               ),
@@ -93,7 +129,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                                   Radio(
                                     groupValue: _user,
                                     onChanged: languageChoice,
-                                    value: Language.HEB,
+                                    value: 'HE',
                                   )
                                 ],
                               )
@@ -110,3 +146,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
     );
   }
 }
+
+
+
