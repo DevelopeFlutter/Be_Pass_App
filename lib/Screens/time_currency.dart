@@ -163,7 +163,7 @@ class _CurrencyTimeScreenState extends State<CurrencyTimeScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           currencyRow(
-                              "₪", "ILS", "Israel Shakel", "ILS"),
+                              "₪", "ILS", "Israeli Shekel", "ILS"),
                           Divider(),
                           currencyRow("\$", "USD", "United States Dollar",
                               "USD"),
