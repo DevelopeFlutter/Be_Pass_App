@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, constant_identifier_names
 
-import 'package:be_pass/Services/auth%20services/language.dart';
+import 'package:be_pass/Services/language.dart';
 import 'package:be_pass/utils/Loader.dart';
 import 'package:be_pass/utils/showMessage.dart';
 import 'package:flutter/material.dart';
@@ -17,20 +17,6 @@ class LanguageScreen extends StatefulWidget {
 
 class _LanguageScreenState extends State<LanguageScreen> {
   String _user = 'EN';
-  String ?token;
-  Future getValidationData() async {
-    final SharedPreferences sharedPreferences =
-    await SharedPreferences.getInstance();
-    var obtainedValue = sharedPreferences.getString('token');
-    setState(() {
-      token = obtainedValue;
-    });
-  }
-  @override
-  initState() {
-    getValidationData().whenComplete(() async {});
-    super.initState();
-  }
   void submitLanguage()async {
     FocusScope.of(context).unfocus();
     try {
@@ -45,6 +31,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     } catch (e) {
       PopupLoader.hide();
       print(["SubmitLogin exception:", e.toString()]);
+      ShowMessage().showErrorMessage(context, e.toString());
     }
   }
   dynamic languageChoice(value) {
