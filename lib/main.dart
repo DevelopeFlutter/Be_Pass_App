@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         ResetPasswordView.routeName: (ctx) => ResetPasswordView(),
         // LandingPageView.routeName: (ctx) => LandingPageView(true),
         LoginView.routeName: (ctx) => LoginView(),
-        BottomBar.routeName:(ctx)=>BottomBar(),
+        BottomBar.routeName: (ctx) => BottomBar(),
         ServicesScreen.routeName: (ctx) => ServicesScreen(),
         CertificatesScreen.routeName: (ctx) => CertificatesScreen(),
         BioScreen.routeName: (ctx) => BioScreen(),
