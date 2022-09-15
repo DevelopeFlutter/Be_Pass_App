@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, must_be_immutable, unused_field, sort_child_properties_last, sized_box_for_whitespace, camel_case_types
 
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_place/google_place.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../Widgets/custom_button_widget.dart';
 import '../Widgets/text_widget.dart';
@@ -34,12 +38,64 @@ class _GenProfileState extends State<GenProfile> {
   List<bool> _selectedSkill = [];
   List<String> _valuesPro = [];
   List<bool> _selectedPro = [];
-
+  late GooglePlace googlePlace;
+  List<AutocompletePrediction> predictions = [];
+  Timer? debounce;
+  DetailsResult? position;
+  late FocusNode locFocusNode;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    String apikey = "AIzaSyCkmpaMPmzhJgTLPh2r_14RB4Je-tX76lw";
+    googlePlace = GooglePlace(apikey);
+    locFocusNode = FocusNode();
+  }
+
+  void autoCompleteSearch(String value) async {
+    var result = await googlePlace.autocomplete.get(value);
+    if (result != null && result.predictions != null && mounted) {
+      print(result.predictions!.first.description);
+      setState(() {
+        predictions = result.predictions!;
+      });
+    }
+  }
+
+  // void onChange() {
+  //   if (_sessionToken == null && selectLoc == false) {
+  //     setState(() {
+  //       _sessionToken = uuid.v4();
+  //     });
+  //   }
+  //   getSuggestion(_loc.text);
+  // }
+
+  // void getSuggestion(String input) async {
+  //   String API_KEY = "AIzaSyCkmpaMPmzhJgTLPh2r_14RB4Je-tX76lw";
+  //   String baseURL =
+  //       "https://maps.googleapis.com/maps/api/place/autocomplete/json";
+  //   String request =
+  //       '$baseURL?input=$input&sensor=false&key=$API_KEY&sessiontoken=$_sessionToken';
+
+  //   var response = await http.get(Uri.parse(request));
+  //   var data = response.body.toString();
+  //   print("data");
+  //   print(response.body);
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       _placesList = jsonDecode(response.body.toString())["predictions"];
+  //     });
+  //   } else {
+  //     throw Exception("Failed to load data");
+  //   }
+  // }
+
   void dispose() {
     _fname.dispose();
     _lname.dispose();
     _loc.dispose();
+    locFocusNode.dispose();
     super.dispose();
   }
 
@@ -171,25 +227,10 @@ class _GenProfileState extends State<GenProfile> {
                           width: 60,
                           child: Container(
                             child: Align(
-                              alignment: Alignment.topRight,
-                              child: CircleAvatar(
-                                backgroundColor: AppColors.red,
-                                radius: 10.0,
-                                child: Icon(
-                                  Icons.close,
-                                  size: 15.0,
-                                  color: AppColors.white,
-                                ),
-                              ),
-                            ),
+                                alignment: Alignment.topRight,
+                                child: Icon(Icons.add)),
                             height: 60,
                             width: 60,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage("assets/man.jpg"),
-                                ),
-                                borderRadius: BorderRadius.circular(20)),
                           ),
                         ).p(8),
                         Column(
@@ -326,21 +367,86 @@ class _GenProfileState extends State<GenProfile> {
             ),
             Mytextwidget(
                 labeltext: "Date of Birth",
-                controller: _fname,
+                controller: _dob,
                 actionKeyboard: TextInputAction.next,
                 onSubmitField: () {},
                 textInputType: TextInputType.datetime,
                 hintText: "19/2/2000"),
-            Mytextwidget(
-                labeltext: "Your Location",
-                controller: _fname,
-                actionKeyboard: TextInputAction.done,
-                onSubmitField: () {},
-                textInputType: TextInputType.streetAddress,
-                hintText: "City, town"),
-            SizedBox(
-              height: 100,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                onChanged: (value) {
+                  if (debounce?.isActive ?? false) debounce!.cancel();
+                  debounce = Timer(Duration(milliseconds: 100), () {
+                    if (value.isNotEmpty) {
+                      //call place api
+                      autoCompleteSearch(value);
+                    } else {
+                      //shutup
+                      setState(() {
+                        predictions = [];
+                        position = null;
+                      });
+                    }
+                  });
+                },
+                focusNode: locFocusNode,
+                controller: _loc,
+                decoration: InputDecoration(
+                  suffixIcon: _loc.text.isNotEmpty
+                      ? IconButton(
+                          icon: Icon(Icons.clear_outlined),
+                          onPressed: () {
+                            predictions = [];
+                            _loc.clear();
+                          },
+                        )
+                      : null,
+                  hintText: "Search Places",
+                  fillColor: Color.fromARGB(255, 255, 255, 255),
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide(
+                      color: AppColors.greyText,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide(
+                      color: AppColors.greyText,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+              ),
             ),
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: predictions.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                      onTap: () async {
+                        final placeId = predictions[index].placeId!.toString();
+                        final details = await googlePlace.details.get(placeId);
+                        if (details != null &&
+                            details.result != null &&
+                            mounted) {
+                          if (locFocusNode.hasFocus) {
+                            setState(() {
+                              position = details.result;
+                              _loc.text = details.result!.name.toString();
+                              predictions = [];
+                            });
+                          }
+                        }
+                      },
+                      leading: CircleAvatar(
+                          backgroundColor: AppColors.gradientGreen,
+                          child: Icon(Icons.pin_drop, color: Colors.white)),
+                      title: Text(predictions[index].description.toString()));
+                }),
+            SizedBox(height: 50),
             Container(
               height: 50,
               width: 150,
@@ -349,7 +455,8 @@ class _GenProfileState extends State<GenProfile> {
                   borderRadius: 20,
                   onTap: () {},
                   buttonText: "Save Changes"),
-            )
+            ),
+            SizedBox(height: 30)
           ],
         ),
       ),
