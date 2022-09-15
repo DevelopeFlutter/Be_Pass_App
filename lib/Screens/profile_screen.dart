@@ -26,7 +26,7 @@ class Profile extends StatefulWidget {
   final bool bioCheck = true;
   final bool serviceCheck = true;
   final bool whCheck = true;
-  final bool waCheck = true;
+  final bool waCheck = false;
   final bool certificateCheck = true;
   final bool galleryCheck = true;
   final bool socialMediaCheck = true;
