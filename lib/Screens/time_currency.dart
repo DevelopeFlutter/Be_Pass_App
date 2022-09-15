@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, constant_identifier_names
 
+import 'package:be_pass/Services/time&currency.dart';
+import 'package:be_pass/utils/Loader.dart';
+import 'package:be_pass/utils/showMessage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../app_Colors.dart';
 
-enum Currency { ILS, USD, EUR, GBP }
 
 class CurrencyTimeScreen extends StatefulWidget {
   static const routeName = "language-and-time-format";
@@ -16,27 +18,67 @@ class CurrencyTimeScreen extends StatefulWidget {
 }
 
 class _CurrencyTimeScreenState extends State<CurrencyTimeScreen> {
-  String time = "13:00";
+  String time = "01:00";
 
-  bool _toggleState = true;
+   bool _toggleState = false;
 
   void _attemptChange(bool newState) {
     setState(() {
       _toggleState = !_toggleState;
-      if (_toggleState == true) {
-        time = "13:00";
-      } else {
+      print('togle state value$_toggleState');
+      timeFormatChange();
+      if (_toggleState == false) {
         time = "1:00 PM";
+      } else {
+        time = "13:00";
       }
     });
   }
 
-  Currency _user = Currency.ILS;
+   String _user = 'USD';
 
   void currencyChoice(value) {
     setState(() {
       _user = value;
+      currencyS();
     });
+  }
+  void timeFormatChange()async{
+    try{
+      PopupLoader.show();
+      var timeFormatResponse = await changeTimeFormat(_toggleState);
+
+       _toggleState = timeFormatResponse['_contnet']['timeFormat24'];
+       print(_toggleState);
+      PopupLoader.hide();
+      if (!timeFormatResponse['error']) {
+        ShowMessage().showMessage(context, "Time Format changed to $time");
+      } else {
+        ShowMessage().showErrorMessage(context, "Some error");
+      }
+    }catch(e){
+      PopupLoader.hide();
+      print(["SubmitLogin exception:", e.toString()]);
+      ShowMessage().showErrorMessage(context, e.toString());
+    }
+  }
+
+  void currencyS()async{
+    try{
+      PopupLoader.show();
+      var currencyResponse = await changeCurrency(_user);
+      print(currencyResponse);
+      PopupLoader.hide();
+      if (!currencyResponse['error']) {
+        ShowMessage().showMessage(context, "Currency changed to $_user");
+      } else {
+        ShowMessage().showErrorMessage(context, "Some error");
+      }
+    }catch(e){
+      PopupLoader.hide();
+      print(["SubmitLogin exception:", e.toString()]);
+      ShowMessage().showErrorMessage(context, e.toString());
+    }
   }
 
   @override
@@ -121,15 +163,15 @@ class _CurrencyTimeScreenState extends State<CurrencyTimeScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           currencyRow(
-                              "₪", "ILS", "Israel Shakel", Currency.ILS),
+                              "₪", "ILS", "Israeli Shekel", "ILS"),
                           Divider(),
                           currencyRow("\$", "USD", "United States Dollar",
-                              Currency.USD),
+                              "USD"),
                           Divider(),
-                          currencyRow("€", "EUR", "Euro", Currency.EUR),
+                          currencyRow("€", "EUR", "Euro", "EUR"),
                           Divider(),
                           currencyRow(
-                              "£", "GBP", "British Pound", Currency.GBP),
+                              "£", "GBP", "British Pound", "GBP"),
                         ],
                       ))))
         ],
@@ -137,7 +179,7 @@ class _CurrencyTimeScreenState extends State<CurrencyTimeScreen> {
     );
   }
 
-  Row currencyRow(String icon, String title, String name, Currency value) {
+  Row currencyRow(String icon, String title, String name,  value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

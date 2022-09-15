@@ -28,7 +28,6 @@ Future login(
       _error = false;
       _content = jsonDecode(response.body);
       final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      LoginController().setUserData(_content);
       sharedPreferences.setString('token',_content['token']);
       Get.to(BottomBar());
     } else {
