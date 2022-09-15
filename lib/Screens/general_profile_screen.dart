@@ -10,8 +10,6 @@ import 'package:velocity_x/velocity_x.dart';
 import '../Widgets/custom_button_widget.dart';
 import '../Widgets/text_widget.dart';
 import '../app_Colors.dart';
-import 'package:uuid/uuid.dart';
-import 'package:http/http.dart' as http;
 
 class GenProfile extends StatefulWidget {
   static const routeName = "gen-profile";
