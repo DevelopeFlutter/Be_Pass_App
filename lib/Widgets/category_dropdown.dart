@@ -28,6 +28,7 @@ class _CatbutState extends State<Catbut> {
     return Center(
       child: DropdownButtonHideUnderline(
         child: DropdownButton2(
+          dropdownElevation: 0,
           isExpanded: true,
           hint: Row(
             children: const [
@@ -43,8 +44,7 @@ class _CatbutState extends State<Catbut> {
                 child: Text(
                   'Chose Categories',
                   style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                     color: Colors.white,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -59,7 +59,6 @@ class _CatbutState extends State<Catbut> {
                       item,
                       style: const TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                       overflow: TextOverflow.ellipsis,
@@ -78,17 +77,13 @@ class _CatbutState extends State<Catbut> {
           iconSize: 34,
           iconEnabledColor: Colors.white,
           iconDisabledColor: Colors.white,
-          buttonHeight: 65,
+          buttonHeight: 68,
           buttonWidth: 300,
           buttonPadding: const EdgeInsets.only(left: 14, right: 14),
           buttonDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: Colors.black26,
-            ),
             color: Color(0xff2DC52A),
           ),
-          buttonElevation: 2,
           itemHeight: 40,
           itemPadding: const EdgeInsets.only(left: 14, right: 14),
           dropdownMaxHeight: 200,
@@ -98,7 +93,6 @@ class _CatbutState extends State<Catbut> {
             borderRadius: BorderRadius.circular(14),
             color: Color(0xff2DC52A),
           ),
-          dropdownElevation: 8,
           scrollbarRadius: const Radius.circular(40),
           scrollbarThickness: 6,
           scrollbarAlwaysShow: true,
