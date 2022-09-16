@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Catbut extends StatefulWidget {
   @override
@@ -77,7 +78,7 @@ class _CatbutState extends State<Catbut> {
           iconSize: 34,
           iconEnabledColor: Colors.white,
           iconDisabledColor: Colors.white,
-          buttonHeight: 48,
+          buttonHeight: 65,
           buttonWidth: 300,
           buttonPadding: const EdgeInsets.only(left: 14, right: 14),
           buttonDecoration: BoxDecoration(
@@ -101,6 +102,10 @@ class _CatbutState extends State<Catbut> {
           scrollbarRadius: const Radius.circular(40),
           scrollbarThickness: 6,
           scrollbarAlwaysShow: true,
+          style: TextStyle(
+            fontWeight: FontWeight.w100,
+            fontFamily: GoogleFonts.poppins().fontFamily,
+          ),
           // offset: const Offset(-20, 0),
         ),
       ),
