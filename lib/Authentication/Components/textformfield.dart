@@ -37,8 +37,8 @@ Widget textformfeild({
                     Text(
                       fieldName,
                       style: GoogleFonts.poppins(
-                          color: AppColors.greyText,
-                          fontWeight: FontWeight.w400,
+                          color: AppColors.boldTextColor,
+                          fontWeight: FontWeight.w500,
                           fontSize: 16),
                     ),
                     InkWell(

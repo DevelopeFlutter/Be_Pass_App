@@ -180,7 +180,7 @@ Column certificateCard(BuildContext context, int Num, void Function() remove) {
                 ),
               ),
               Expanded(
-                child: ImageSel(),
+                child: SelectMultiImage(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -210,20 +210,17 @@ Column certificateCard(BuildContext context, int Num, void Function() remove) {
   );
 }
 
-class ImageSel extends StatefulWidget {
+class SelectMultiImage extends StatefulWidget {
+  const SelectMultiImage({Key? key}) : super(key: key);
+
   @override
-  State<ImageSel> createState() => _ImageSelState();
+  State<SelectMultiImage> createState() => _SelectMultiImageState();
 }
 
-class _ImageSelState extends State<ImageSel> {
+class _SelectMultiImageState extends State<SelectMultiImage> {
   final ImagePicker imagePicker = ImagePicker();
 
   List<XFile>? imageFile = [];
-
-  List Index = [
-    {"asd"},
-    {"dfr"}
-  ];
   void getImageFromGallery() async {
     final List<XFile>? selectedImages = await imagePicker.pickMultiImage();
     setState(() {

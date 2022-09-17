@@ -161,8 +161,8 @@ Column certificateCard(BuildContext context, void Function() remove) {
               ),
               child: Row(
                 children: [
-                  //image picler container
-                  Container(
+                  //image picker container
+                  SizedBox(
                     height: 99,
                     width: 93,
                     child: ImageSel(),

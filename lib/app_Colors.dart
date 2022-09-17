@@ -16,7 +16,7 @@ class AppColors {
   static const Color gradientGreen = Color(0xff2DC52A);
   static const Color starColor = Color(0xffF29843);
   static const Color backgroundColor = Color(0xffE5E5E5);
-  static const Color boldTextColor = Color(0xff5E5873);
+  static const Color boldTextColor = Color(0xff03110C);
 
 // ! Text Colors
   static const Color DarkText = Color(0xFF0e255b);

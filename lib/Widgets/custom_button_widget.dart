@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: buttonColor ?? AppColors.gradientGreen,
           border: Border.all(color: borderColor ?? Colors.white),
-          borderRadius: BorderRadius.circular((buttonText == "Send Reset Link"|| buttonText=="Set New Password" || buttonText=="Resend Link" ||buttonText =="Back to profile")?borderRadius ??10:buttonText == "Update" || buttonText == "Change Email"?borderRadius??30:0)),
+          borderRadius: BorderRadius.circular((buttonText == "Send Reset Link"|| buttonText=="Set New Password" || buttonText=="Resend Link" ||buttonText =="Back to profile" || buttonText == "Upload")?borderRadius ??10:buttonText == "Update" || buttonText == "Change Email" || buttonText=="Save Changes"?borderRadius??30:0)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
