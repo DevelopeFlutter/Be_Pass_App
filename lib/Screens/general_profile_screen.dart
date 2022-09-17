@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, must_be_immutable, unused_field, sort_child_properties_last, sized_box_for_whitespace, camel_case_types
 
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -61,35 +60,6 @@ class _GenProfileState extends State<GenProfile> {
       });
     }
   }
-
-  // void onChange() {
-  //   if (_sessionToken == null && selectLoc == false) {
-  //     setState(() {
-  //       _sessionToken = uuid.v4();
-  //     });
-  //   }
-  //   getSuggestion(_loc.text);
-  // }
-
-  // void getSuggestion(String input) async {
-  //   String API_KEY = "AIzaSyCkmpaMPmzhJgTLPh2r_14RB4Je-tX76lw";
-  //   String baseURL =
-  //       "https://maps.googleapis.com/maps/api/place/autocomplete/json";
-  //   String request =
-  //       '$baseURL?input=$input&sensor=false&key=$API_KEY&sessiontoken=$_sessionToken';
-
-  //   var response = await http.get(Uri.parse(request));
-  //   var data = response.body.toString();
-  //   print("data");
-  //   print(response.body);
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       _placesList = jsonDecode(response.body.toString())["predictions"];
-  //     });
-  //   } else {
-  //     throw Exception("Failed to load data");
-  //   }
-  // }
 
   void dispose() {
     _fname.dispose();
