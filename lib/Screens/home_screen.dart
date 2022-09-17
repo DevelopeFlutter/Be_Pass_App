@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:be_pass/Authentication/View/login_view.dart';
 import 'package:be_pass/Authentication/View/sign_up_view.dart';
+import 'package:be_pass/Screens/search_screen.dart';
 import 'package:be_pass/Widgets/category_dropdown.dart';
 import 'package:be_pass/Widgets/country_dropdown.dart';
 import 'package:flutter/material.dart';
@@ -210,20 +211,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 20,
                     ),
-                    Card(
-                      elevation: 6.0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Container(
-                        height: 50,
-                        width: 312,
-                        decoration: BoxDecoration(
-                            color: Color(0xff59DF56),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            "Find Professinals",
-                            style: TextStyle(fontSize: 14, color: Colors.white),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(Search.routeName);
+                      },
+                      child: Card(
+                        elevation: 6.0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Container(
+                          height: 50,
+                          width: 312,
+                          decoration: BoxDecoration(
+                              color: Color(0xff59DF56),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              "Find Professinals",
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.white),
+                            ),
                           ),
                         ),
                       ),

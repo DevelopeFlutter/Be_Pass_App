@@ -50,7 +50,7 @@ class UserCardWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Stack(children: [
                     CircleAvatar(
-                      backgroundImage: AssetImage(imgUrl),
+                      backgroundImage: NetworkImage(imgUrl),
                       maxRadius: 45,
                     ),
                     Container(

@@ -30,6 +30,7 @@ import 'Screens/gallery_view.dart';
 import 'Screens/general_profile_screen.dart';
 import 'Screens/landingPageView.dart';
 import 'Screens/profile_screen.dart';
+import 'Screens/search_screen.dart';
 import 'Screens/working_areas.dart';
 import 'app_Colors.dart';
 import 'Screens/splash_screen.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
         ChangeUserName.routeName: (ctx) => ChangeUserName(),
         VerifyEmailView.routeName: (ctx) => VerifyEmailView(),
         GalleryScreenView.routeName: (ctx) => GalleryScreenView(),
+        Search.routeName: (ctx) => Search(),
       },
     );
   }
