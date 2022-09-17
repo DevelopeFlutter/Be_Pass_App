@@ -18,7 +18,7 @@ if (flutterVersionCode == null) {
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0.2'
+    flutterVersionName = '1.0.1'
 }
 
 apply plugin: 'com.android.application'
@@ -54,10 +54,11 @@ android {
     buildToolsVersion "31"
     defaultConfig {
         applicationId "com.example.be_pass"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 32
-        versionCode 1
-        versionName "1.0"
+        multiDexEnabled true
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
         multiDexEnabled true
     }
 
@@ -85,6 +86,7 @@ android {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
         implementation 'com.android.support:multidex:1.0.3'
         implementation 'com.google.firebase:firebase-analytics'
+        implementation "androidx.multidex:multidex:2.0.1"
         implementation 'com.google.firebase:firebase-crashlytics'
         implementation platform('com.google.firebase:firebase-bom:30.3.2')
     }
