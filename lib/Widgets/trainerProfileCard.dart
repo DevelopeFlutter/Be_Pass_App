@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, file_names, camel_case_types, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, file_names, camel_case_types, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -46,9 +46,8 @@ class TrainerProfileCard extends StatelessWidget {
                 child: Container(
                     height: 70,
                     width: 70,
-                    child: SvgPicture.asset(
-                      "assets/user.svg",
-                    )),
+                    child: SvgPicture.asset("assets/splash-img.svg",
+                        color: AppColors.gradientGreen)),
               ),
               Text(
                 'Personal fitness trainer',
@@ -83,6 +82,23 @@ class TrainerProfileCard extends StatelessWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: chipList(context),
               )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.facebook, color: AppColors.gradientGreen),
+              SvgPicture.asset("assets/insta-icon.svg",
+                  color: AppColors.gradientGreen),
+              Icon(Icons.tiktok, color: AppColors.gradientGreen),
+              SvgPicture.asset("assets/linkedIn-icon.svg",
+                  color: AppColors.gradientGreen),
+              Icon(Icons.quora, color: AppColors.gradientGreen),
+              SvgPicture.asset("assets/twitter-icon.svg",
+                  color: AppColors.gradientGreen),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
     );
