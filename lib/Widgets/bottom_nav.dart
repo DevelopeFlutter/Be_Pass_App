@@ -34,9 +34,7 @@ class _BottomBarState extends State<BottomBar> {
 
   String ?validateEmail;
   Future getValidationData() async {
-    final SharedPreferences sharedPreferences =
-
-    await SharedPreferences.getInstance();
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var obtainedValue = sharedPreferences.getString('token');
     setState(() {
       validateEmail = obtainedValue;

@@ -24,8 +24,9 @@ Future signUp(
       _error = false;
       _contnet = jsonDecode(response.body);
       print(_contnet);
-      Get.to(()=> const LoginView());
-    }else{
+      final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      sharedPreferences.setString('token',_contnet['token']);
+      Get.to(BottomBar());    }else{
       _error = true;
       _contnet = jsonDecode(response.body)["error"];
     }
