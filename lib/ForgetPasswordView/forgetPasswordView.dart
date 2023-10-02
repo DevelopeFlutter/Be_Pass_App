@@ -24,15 +24,15 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
-                child: SvgPicture.asset("assets/splash-img.svg",
-                    color: AppColors.gradientGreen)),
+          SizedBox(
+            height: 70,
           ),
-          const SizedBox(
-            height: 150,
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: SvgPicture.asset("assets/splash-img.svg",
+                    color: AppColors.gradientGreen,height: 70,width: 50,)),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 5, 10),
@@ -66,9 +66,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          // const SizedBox(
+          //   height: 30,
+          // ),
           Column(
             children: [
               textformfeild(
@@ -80,11 +80,11 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   controller.email.value = val;
                 },
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               Container(
-                height: 45,
+                height: 00,
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -98,9 +98,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   textColor: AppColors.white,
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               TextButton(
                   onPressed: () {
                     // Navigator.of(context).pop();

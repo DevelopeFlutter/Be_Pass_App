@@ -2,6 +2,7 @@ import 'package:be_pass/ForgetPasswordView/afterResendLink.dart';
 import 'package:be_pass/ForgetPasswordView/resetPassword.dart';
 import 'package:be_pass/Widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,18 +26,16 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(children: [
-          const Align(
+           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 30, 0, 0),
-              child: Image(
-                image: AssetImage("assets/logo.png"),
-                height: 60,
-              ),
+              padding: EdgeInsets.fromLTRB(100, 100, 0, 0),
+              child:SvgPicture.asset("assets/splash-img.svg",
+                color: AppColors.gradientGreen,height: 70,width: 50,)
             ),
           ),
           const SizedBox(
-            height: 220,
+            height: 100,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 5, 10),

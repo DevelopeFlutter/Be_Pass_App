@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../Widgets/bottom_nav.dart';
 import '../Controller/auth_controller.dart';
 import '../../ForgetPasswordView/resetPassword.dart';
 import '../Components/textformfield.dart';
@@ -26,6 +27,10 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   final _formKey = GlobalKey<FormState>();
+  TextEditingController namecontroller  = TextEditingController();
+  TextEditingController emailcontroller  = TextEditingController();
+  TextEditingController passwordcontroller  = TextEditingController();
+
   AuthController controller = Get.put(AuthController());
   bool value = false;
   void _submitform() async {
@@ -38,7 +43,7 @@ class _SignUpViewState extends State<SignUpView> {
         controller.password.value,
       );
       PopupLoader.hide();
-      if (!authResponse["error"]){
+      if (!authResponse["error"]) {
         ShowMessage().showMessage(context, "Successfully SignUp");
       } else {
         ShowMessage().showErrorMessage(context, "Some error");
@@ -48,6 +53,7 @@ class _SignUpViewState extends State<SignUpView> {
       print(["SubmitLogin exception:", e.toString()]);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -195,9 +201,10 @@ class _SignUpViewState extends State<SignUpView> {
                             MaterialStateProperty.all(AppColors.gradientGreen),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _submitform();
-                        }
+                        Get.to(BottomBar());
+                        // if (_formKey.currentState!.validate()) {
+                        //   _submitform();
+                        // }
                       },
                       child: Text('Sign up',
                           style: GoogleFonts.poppins(
@@ -255,26 +262,27 @@ class _SignUpViewState extends State<SignUpView> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 40),
                       child: Card(
-                          child: Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                                height: 30,
-                                width: 30,
-                                child:
-                                    SvgPicture.asset("assets/google-icon.svg")),
-                            Text(
-                              " Signup with Google",
-                              softWrap: true,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.greyText),
-                            )
-                          ],
-                        ),
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 30,
+                            width: 30,
+                            child: SvgPicture.asset(
+                              "assets/google-icon.svg",
+                              height: 20,
+                              width: 20,
+                            ),
+                          ),
+                          Text(
+                            " Signup with Google",
+                            softWrap: true,
+                            style: GoogleFonts.poppins(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.greyText),
+                          )
+                        ],
                       )),
                     ),
                   )

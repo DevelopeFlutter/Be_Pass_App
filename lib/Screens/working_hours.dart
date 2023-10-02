@@ -306,26 +306,30 @@ class _WorkingHoursState extends State<WorkingHours> {
               ),
             ),
             SizedBox(height: 10),
-            DayCard(size, "Sunday", _rowListSunDay, _addRowSunDay,
-                _toggleStateSun, _attemptChangeSun),
+
+              DayCard(size, "Sunday",
+                  _toggleStateSun, _attemptChangeSun),
+
             SizedBox(height: 10),
-            DayCard(size, "Monday", _rowListMonDay, _addRowMonDay,
+            DayCard(size, "Monday",
                 _toggleStateMon, _attemptChangeMon),
             SizedBox(height: 10),
-            DayCard(size, "Tuesday", _rowListTuesDay, _addRowTuesDay,
+            DayCard(size, "Tuesday",
                 _toggleStateTues, _attemptChangeTues),
             SizedBox(height: 10),
-            DayCard(size, "Wednesday", _rowListWedDay, _addRowWedDay,
+            DayCard(size, "Wednesday",
                 _toggleStateWed, _attemptChangeWed),
             SizedBox(height: 10),
-            DayCard(size, "Thursday", _rowListThursDay, _addRowThursDay,
+            DayCard(size, "Thursday",
                 _toggleStateThurs, _attemptChangeThurs),
             SizedBox(height: 10),
-            DayCard(size, "Friday", _rowListFriDay, _addRowFriDay,
+            DayCard(size, "Friday",
                 _toggleStateFri, _attemptChangeFri),
             SizedBox(height: 10),
-            DayCard(size, "Saturday", _rowListSatDay, _addRowSatDay,
+            DayCard(size, "Saturday",
                 _toggleStateSat, _attemptChangeSat),
+            SizedBox(height: 20,),
+
             // Container(
             //   width: size.width / 1.1,
             //   child: Card(
@@ -345,15 +349,16 @@ class _WorkingHoursState extends State<WorkingHours> {
     );
   }
 
-  Container DayCard(Size size, String day, List rowList, void Function() addFun,
+  Container DayCard(Size size, String day,
       bool state, void Function(bool) toggle) {
     return Container(
       width: size.width / 1.1,
       child: Card(
+
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        color: Colors.white,
+        color:state?Colors.white:Colors.grey.shade400,
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           SizedBox(
             height: 10,
@@ -367,148 +372,75 @@ class _WorkingHoursState extends State<WorkingHours> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            height: 80,
+          // _toggleStateSun || _toggleStateMon || _toggleStateWed || _toggleStateThurs || _toggleStateFri || _toggleStateSat ==false ?
+          state == false?
+          IgnorePointer(
+            child:customDayCard( _rowListSunDay,_addRowSunDay,state),
+          ):
+        customDayCard( _rowListSunDay,_addRowSunDay,state ),]),
+      ),
+    );
+  }
+}
+
+Column customDayCard(List rowList, void Function() addFun, bool state){
+  return           Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          height: 80,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(children: [
+                DropDownButton(),
+                SizedBox(width: 5),
+                DropDownButton(),
+              ]),
+              IconButton(icon: Icon(Icons.cancel), onPressed: () {})
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          height: 80,
+          child: ListView.builder(
+              primary: false,
+              itemCount: rowList.length,
+              itemBuilder: (context, index) {
+                return rowList[index];
+              }),
+        ),
+        GestureDetector(
+          onTap: addFun,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(children: [
-                  DropDownButton(),
-                  SizedBox(width: 5),
-                  DropDownButton(),
-                ]),
-                IconButton(icon: Icon(Icons.cancel), onPressed: () {})
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Add Item",
+                        style: TextStyle(color: AppColors.gradientGreen)),
+                    Icon(
+                      Icons.add,
+                      color: AppColors.gradientGreen,
+                    )
+                  ],
+                ),
+                GestureDetector(
+                    onTap: () {},
+                    child: Text("Apply",
+                        style: TextStyle(color: AppColors.gradientGreen))),
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            height: 80,
-            child: ListView.builder(
-                primary: false,
-                itemCount: rowList.length,
-                itemBuilder: (context, index) {
-                  return rowList[index];
-                }),
-          ),
-          GestureDetector(
-            onTap: addFun,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Add Item",
-                          style: TextStyle(color: AppColors.gradientGreen)),
-                      Icon(
-                        Icons.add,
-                        color: AppColors.gradientGreen,
-                      )
-                    ],
-                  ),
-                  GestureDetector(
-                      onTap: () {},
-                      child: Text("Apply",
-                          style: TextStyle(color: AppColors.gradientGreen))),
-                ],
-              ),
-            ),
-          )
-        ]),
-      ),
-      // child: Accordion(
-      //     maxOpenSections: 3,
-      //     rightIcon: Icon(
-      //       Icons.arrow_drop_down,
-      //       color: AppColors.black,
-      //     ),
-      //     headerBorderRadius: 20,
-      //     contentBorderColor: AppColors.gradientGreen,
-      //     contentBorderRadius: 2,
-      //     headerBackgroundColor: AppColors.white,
-      //     headerPadding:
-      //         EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-      //     children: [
-      //       AccordionSection(
-      //         isOpen: false,
-      //         rightIcon: Icon(Icons.arrow_drop_down),
-      //         leftIcon:
-      //             const Icon(Icons.contact_page, color: Colors.white),
-      //         header: Row(
-      //           children: [
-      //             Text('Sunday',
-      //                 style: TextStyle(fontWeight: FontWeight.bold)),
-      //             Switch(
-      //               onChanged: _attemptChange,
-      //               value: _toggleState,
-      //             )
-      //           ],
-      //         ),
-      //         content: Column(children: [
-      //           Container(
-      //             padding: EdgeInsets.symmetric(horizontal: 10),
-      //             height: 80,
-      //             child: Row(
-      //               mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //               children: [
-      //                 Row(children: [
-      //                   DropDownButton(),
-      //                   SizedBox(width: 5),
-      //                   DropDownButton(),
-      //                 ]),
-      //                 IconButton(
-      //                     icon: Icon(Icons.cancel), onPressed: () {})
-      //               ],
-      //             ),
-      //           ),
-      //           Container(
-      //             padding: EdgeInsets.symmetric(horizontal: 10),
-      //             height: 80,
-      //             child: ListView.builder(
-      //                 itemCount: _rowListDay.length,
-      //                 itemBuilder: (context, index) {
-      //                   return _rowListDay[index];
-      //                 }),
-      //           ),
-      //           GestureDetector(
-      //             onTap: _addRowDay,
-      //             child: Padding(
-      //               padding: const EdgeInsets.all(8.0),
-      //               child: Row(
-      //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //                 children: [
-      //                   Row(
-      //                     mainAxisAlignment:
-      //                         MainAxisAlignment.spaceBetween,
-      //                     children: [
-      //                       Text("Add Item",
-      //                           style: TextStyle(
-      //                               color: AppColors.gradientGreen)),
-      //                       Icon(
-      //                         Icons.add,
-      //                         color: AppColors.gradientGreen,
-      //                       )
-      //                     ],
-      //                   ),
-      //                   GestureDetector(
-      //                       onTap: () {},
-      //                       child: Text("Apply",
-      //                           style: TextStyle(
-      //                               color: AppColors.gradientGreen))),
-      //                 ],
-      //               ),
-      //             ),
-      //           )
-      //         ]),
-      //         headerPadding: EdgeInsets.all(10),
-      //       ),
-      //     ]),
-    );
-  }
+        )
+
+      ]
+  );
+
 }
 
 class DropDownButton extends StatefulWidget {
@@ -520,7 +452,6 @@ class _DropDownButtonState extends State<DropDownButton> {
   final List<String> items =
       List.generate(24, (index) => index.toString() + ":00");
   String? selectedValue;
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -565,7 +496,7 @@ class _DropDownButtonState extends State<DropDownButton> {
             border: Border.all(
               color: Colors.black26,
             ),
-            color: Colors.white,
+            color:Colors.white,
           ),
           buttonElevation: 1,
           itemHeight: 20,
@@ -587,3 +518,5 @@ class _DropDownButtonState extends State<DropDownButton> {
     );
   }
 }
+
+

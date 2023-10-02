@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:http/http.dart' as https;
 
-class API{
+class
+API{
   LoginController getData = Get.find<LoginController>();
   Future post(String apiurl, var Data )async{
     if(!await this._networkStatus())return Future(() {});
@@ -25,3 +26,4 @@ class API{
   _networkStatus()=>InternetConnectionChecker().hasConnection;
 
 }
+

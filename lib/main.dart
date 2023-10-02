@@ -54,7 +54,8 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: generateMaterialColor(AppColors.gradientGreen),
       ),
-      home: BottomBar(),
+      home:LoginView(),
+      // BottomBar(),
       builder: EasyLoading.init(),
       routes: {
         GenProfile.routeName: (ctx) => GenProfile(),

@@ -78,11 +78,11 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     setInLoginController.setUserData(validateEmail);
     List<Widget> _widgetOptions = <Widget>[
-      HomeScreen(validateEmail == null ? false : true),
-      LandingPageView(validateEmail == null ? false : true),
+      HomeScreen(validateEmail == null ? true : true),
+      LandingPageView(validateEmail == null ? true : true),
       ChatScreen(),
-      Profile(validateEmail == null ? false : true),
-      AppDrawer(validateEmail == null ? false : true),
+      Profile(validateEmail == null ? true : true),
+      AppDrawer(validateEmail == null ? true : true),
     ];
     return Scaffold(
       // appBar: AppBar(

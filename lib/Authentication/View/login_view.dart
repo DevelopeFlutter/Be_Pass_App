@@ -166,9 +166,10 @@ class _LoginViewState extends State<LoginView> {
                             MaterialStateProperty.all(AppColors.gradientGreen),
                       ),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _submitform();
-                        }
+                      Get.to(BottomBar());
+                        // if (_formKey.currentState!.validate()) {
+                        //   _submitform();
+                        // }
                       },
                       child: Text('Log In',
                           style: TextStyle(
